@@ -11,7 +11,7 @@ export default function Reveal({
 }: {
   children: ReactNode
   className?: string
-  from?: 'left' | 'right' | 'up'
+  from?: 'left' | 'right'
   delay?: number
 }) {
   const ref = useRef<HTMLDivElement>(null)

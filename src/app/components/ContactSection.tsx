@@ -5,7 +5,7 @@ import { BRAND, FORM_OPTIONS } from '../brand'
 import styles from './ContactSection.module.css'
 
 type FormState = { name: string; phone: string; service: string; comment: string; consent: boolean }
-type Status = 'idle' | 'loading' | 'success' | 'error'
+type Status = 'idle' | 'loading' | 'success'
 
 export default function ContactSection({
   defaultService = '',

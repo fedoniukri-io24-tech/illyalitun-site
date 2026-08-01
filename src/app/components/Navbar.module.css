@@ -30,30 +30,6 @@
   background: var(--color-bg);
 }
 
-.transparentDark .brand {
-  color: #f5f2eb;
-}
-
-.transparentDark .brand span {
-  color: var(--color-accent);
-}
-
-.transparentDark .center a {
-  color: rgba(245, 242, 235, 0.72);
-}
-
-.transparentDark .center a:hover {
-  color: #f2ead8;
-}
-
-.transparentDark .hamburger span {
-  background: #f5f2eb;
-}
-
-.transparentDark .cta {
-  background: rgba(255, 255, 255, 0.95);
-}
-
 .solid {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(18px);

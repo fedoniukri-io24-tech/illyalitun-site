@@ -7,8 +7,7 @@
   --c-max-text: 760px;
 }
 
-.sectionLight,
-.sectionLightAlt {
+.sectionLight {
   background: #fff;
   color: var(--c-text-dark);
   padding: var(--c-pad) var(--page-pad);

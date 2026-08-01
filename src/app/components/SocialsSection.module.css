@@ -51,6 +51,11 @@
   transition: color 0.22s;
 }
 
+.iconWrap svg {
+  width: 22px;
+  height: 22px;
+}
+
 .badge:hover .iconWrap {
   color: #fff;
 }
@@ -83,25 +88,6 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-.badgeArrow {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background 0.22s, color 0.22s, transform 0.22s;
-}
-
-.badge:hover .badgeArrow {
-  background: #fff;
-  color: var(--color-accent);
-  transform: rotate(45deg);
-}
-
 @media (max-width: 1100px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
@@ -132,11 +118,6 @@
 
   .badgeName {
     font-size: 14px;
-  }
-
-  .badgeArrow {
-    width: 30px;
-    height: 30px;
   }
 }
 

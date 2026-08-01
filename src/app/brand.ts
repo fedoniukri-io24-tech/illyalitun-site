@@ -1,6 +1,5 @@
 export const BRAND = {
   name: 'Ілля Літун',
-  shortName: 'Літун',
   tagline: 'Освітній бізнес з Іллею Літуном',
   role: 'Засновник однієї з найкращих освітніх екосистем — Turbo Education',
   phone: '+380 67 000 00 00',
@@ -8,7 +7,6 @@ export const BRAND = {
   address: 'онлайн · Київ',
   city: 'Україна',
   heroDesktop: '/images/hero-author.png',
-  heroMobile: '/images/hero-author.png',
   contactImage: '/images/hero.jpg',
 } as const
 
@@ -26,14 +24,11 @@ export const SOCIALS = [
   { label: 'TikTok', href: 'https://www.tiktok.com/@illialitun', short: 'TT' },
 ] as const
 
-export type ServiceSlug = 'konsaltyng' | 'konsultatsiya' | 'strat-sesiya' | 'klub'
-
 export const SERVICES = [
   {
     slug: 'konsaltyng' as const,
     label: 'Консалтинг',
     title: 'Консалтинг для освітнього бізнесу',
-    cardSub: 'Стратегія, масштабування\nі системний ріст',
     href: '/konsaltyng',
     color: 'blue' as const,
     lead: 'Глибокий супровід освітніх проєктів: від діагностики моделі до побудови процесів, які тримають ріст.',
@@ -48,7 +43,6 @@ export const SERVICES = [
     slug: 'konsultatsiya' as const,
     label: 'Консультація',
     title: 'Особиста консультація',
-    cardSub: 'Точкові рішення\nпід ваш запит',
     href: '/konsultatsiya',
     color: 'teal' as const,
     lead: 'Коротка, сфокусована сесія: розберемо вузьке місце, пріоритети й конкретні кроки, які варто зробити вже зараз.',
@@ -63,7 +57,6 @@ export const SERVICES = [
     slug: 'strat-sesiya' as const,
     label: 'Страт сесія',
     title: 'Стратегічна сесія',
-    cardSub: 'Фокусна робота\nнад напрямом росту',
     href: '/strat-sesiya',
     color: 'indigo' as const,
     lead: 'Інтенсивна робота над стратегією: цілі, позиціонування, офери та план дій для команди чи соло-засновника.',
@@ -78,7 +71,6 @@ export const SERVICES = [
     slug: 'klub' as const,
     label: 'Клуб',
     title: 'Клуб освітніх підприємців',
-    cardSub: 'Спільнота, обмін\nі постійний ріст',
     href: '/klub',
     color: 'sky' as const,
     lead: 'Закрита спільнота для тих, хто будує освітній бізнес: регулярні зустрічі, розбори кейсів і доступ до експертизи.',

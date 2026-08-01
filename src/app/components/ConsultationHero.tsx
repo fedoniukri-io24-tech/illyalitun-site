@@ -56,7 +56,7 @@ export default function ConsultationHero() {
           <p className={`${hero.role} ${styles.role}`}>{data.lead}</p>
           <div className={styles.actions}>
             <PillCta href="#kontakt" label="Забронювати місце" />
-            <PillCta href="#dlya-koho" label="Деталі" variant="primary" />
+            <PillCta href="#dlya-koho" label="Деталі" />
           </div>
         </div>
 

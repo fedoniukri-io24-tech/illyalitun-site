@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { SERVICES } from '../brand'
 import styles from './Navbar.module.css'
 
-export default function Navbar({ transparent = false, darkHero = false }: { transparent?: boolean; darkHero?: boolean }) {
+export default function Navbar({ transparent = false }: { transparent?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -31,7 +31,6 @@ export default function Navbar({ transparent = false, darkHero = false }: { tran
   const navClass = [
     styles.nav,
     transparent && !scrolled ? styles.transparent : styles.solid,
-    transparent && !scrolled && darkHero ? styles.transparentDark : '',
   ].join(' ')
 
   return (

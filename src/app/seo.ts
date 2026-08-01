@@ -2,12 +2,10 @@ import type { Metadata } from 'next'
 
 export const SITE = {
   name: 'Ілля Літун',
-  shortName: 'Літун',
   title: 'Освітній бізнес з Іллею Літуном',
   description:
     'Ілля Літун — засновник Turbo Education (Forbes Next 250). Консалтинг, особисті консультації, стратегічні сесії та клуб для власників освітнього бізнесу.',
   locale: 'uk_UA',
-  language: 'uk',
   url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://illyalitun.com',
   email: 'hello@turbo.education',
   phone: '+380670000000',
@@ -36,13 +34,11 @@ export function pageMetadata({
   description,
   path = '/',
   image = SITE.image,
-  noIndex = false,
 }: {
   title: string
   description: string
   path?: string
   image?: string
-  noIndex?: boolean
 }): Metadata {
   const url = absoluteUrl(path)
   const ogImage = absoluteUrl(image)
@@ -74,8 +70,6 @@ export function pageMetadata({
       images: [ogImage],
       creator: SITE.twitter,
     },
-    robots: noIndex
-      ? { index: false, follow: false }
-      : { index: true, follow: true },
+    robots: { index: true, follow: true },
   }
 }

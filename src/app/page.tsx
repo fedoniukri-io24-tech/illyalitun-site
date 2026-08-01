@@ -3,8 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import SocialsSection from './components/SocialsSection'
 import Footer from './components/Footer'
-import { pageMetadata } from './seo'
-import { SITE } from './seo'
+import { pageMetadata, SITE } from './seo'
 
 export const metadata: Metadata = pageMetadata({
   title: SITE.title,
