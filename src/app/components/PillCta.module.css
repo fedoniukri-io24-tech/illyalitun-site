@@ -1,0 +1,118 @@
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: var(--radius-pill);
+  padding: 10px 10px 10px 22px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  white-space: nowrap;
+}
+
+.label {
+  line-height: 1.1;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+/* Light sections */
+.lightTheme.primary {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-bg);
+  border: 1px solid rgba(42, 100, 233, 0.14);
+  box-shadow: 0 8px 24px rgba(26, 49, 105, 0.1);
+}
+
+.lightTheme.primary .arrow {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.lightTheme.primary:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+.lightTheme.primary:hover .arrow {
+  background: #fff;
+  color: var(--color-accent);
+  transform: rotate(45deg);
+}
+
+.lightTheme.ghost {
+  background: transparent;
+  color: var(--color-bg);
+  border: 1.5px solid rgba(15, 15, 15, 0.18);
+}
+
+.lightTheme.ghost .arrow {
+  background: rgba(15, 15, 15, 0.08);
+  color: var(--color-bg);
+}
+
+.lightTheme.ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.lightTheme.ghost:hover .arrow {
+  background: var(--color-accent);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+/* Dark hero / problem */
+.darkTheme.primary {
+  background: #f2ead8;
+  color: #141414;
+  border: 1px solid rgba(242, 234, 216, 0.4);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+}
+
+.darkTheme.primary .arrow {
+  background: #141414;
+  color: #f2ead8;
+}
+
+.darkTheme.primary:hover {
+  transform: translateY(-2px);
+  background: #fff;
+}
+
+.darkTheme.primary:hover .arrow {
+  transform: rotate(45deg);
+}
+
+.darkTheme.ghost {
+  background: transparent;
+  color: #f5f2eb;
+  border: 1.5px solid rgba(245, 242, 235, 0.35);
+}
+
+.darkTheme.ghost .arrow {
+  background: rgba(245, 242, 235, 0.12);
+  color: #f5f2eb;
+}
+
+.darkTheme.ghost:hover {
+  background: rgba(245, 242, 235, 0.08);
+  border-color: rgba(245, 242, 235, 0.55);
+}
+
+.darkTheme.ghost:hover .arrow {
+  transform: rotate(45deg);
+}

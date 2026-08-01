@@ -1,0 +1,476 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(42, 100, 233, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 100, 233, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.portrait {
+  position: absolute;
+  right: -2%;
+  bottom: 0;
+  width: min(48vw, 640px);
+  height: min(92vh, 920px);
+  z-index: 2;
+  pointer-events: none;
+  animation: slideUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+}
+
+.portraitImage {
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 24px 48px rgba(26, 49, 105, 0.18));
+}
+
+.body {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 110px var(--page-pad) 48px;
+  width: 100%;
+  min-height: inherit;
+}
+
+.copy {
+  max-width: min(92vw, 1100px);
+  animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both;
+  position: relative;
+  z-index: 9;
+}
+
+@media (min-width: 769px) {
+  .body {
+    padding-top: 96px;
+  }
+
+  .copy {
+    margin-top: auto;
+    margin-bottom: clamp(120px, 13vh, 148px);
+    transform: translateY(-20px);
+  }
+
+  .glassCells {
+    z-index: 6;
+  }
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(56px, 9vw, 118px);
+  line-height: 0.92;
+  color: var(--color-bg);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+.headline em {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-accent);
+  letter-spacing: -0.01em;
+}
+
+.role {
+  margin-top: 20px;
+  max-width: 42ch;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.55;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.glassCells {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.glassCard {
+  position: absolute;
+  pointer-events: auto;
+  padding: 16px 18px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(42, 100, 233, 0.16);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 16px 40px rgba(26, 49, 105, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.glassOrb {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(42, 100, 233, 0.12);
+  box-shadow: 0 4px 12px rgba(26, 49, 105, 0.08);
+}
+
+.glassRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 28px;
+}
+
+.glassValue {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-bg);
+  white-space: nowrap;
+}
+
+.glassMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: rgba(15, 15, 15, 0.58);
+  text-transform: lowercase;
+}
+
+.glassLeft {
+  left: clamp(12px, 5vw, 72px);
+  bottom: clamp(48px, 10vh, 112px);
+  width: min(230px, 30vw);
+}
+
+.glassMid {
+  left: 50%;
+  right: auto;
+  top: auto;
+  bottom: clamp(56px, 6.5vh, 80px);
+  transform: translateX(-50%);
+  width: min(270px, 34vw);
+  z-index: 11;
+}
+
+.glassRight {
+  right: clamp(16px, 4vw, 72px);
+  bottom: clamp(128px, 16vh, 200px);
+  width: min(210px, 28vw);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: fit-content;
+  margin-inline: auto;
+  flex-shrink: 0;
+  animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s both;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius-pill);
+  padding: 12px 14px 12px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-bg);
+  transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, background 0.25s, color 0.25s;
+  box-shadow: 0 8px 24px rgba(26, 49, 105, 0.12);
+  border: 1px solid rgba(42, 100, 233, 0.12);
+  width: 196px;
+  backdrop-filter: blur(8px);
+  box-sizing: border-box;
+}
+.card:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 28px rgba(42, 100, 233, 0.35);
+}
+
+.cardBlue {
+  --card-accent: #2a64e9;
+  --card-shadow: rgba(42, 100, 233, 0.4);
+}
+.cardTeal {
+  --card-accent: #1cbc27;
+  --card-shadow: rgba(28, 188, 39, 0.35);
+}
+.cardIndigo {
+  --card-accent: #1a3169;
+  --card-shadow: rgba(26, 49, 105, 0.45);
+}
+.cardSky {
+  --card-accent: #2357dc;
+  --card-shadow: rgba(35, 87, 220, 0.4);
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-bg);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+
+.card:hover .cardTitle {
+  color: #fff;
+}
+
+.cardArrow {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+  box-shadow: 0 3px 10px var(--card-shadow);
+}
+.card:hover .cardArrow {
+  background: #fff;
+  color: var(--card-accent);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 980px) {
+  .body {
+    gap: 20px;
+  }
+
+  .portrait {
+    right: 0;
+    width: min(46vw, 520px);
+    height: min(85vh, 780px);
+  }
+
+  .card {
+    width: 176px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 100svh;
+    max-height: 100svh;
+    min-height: unset;
+  }
+
+  .portrait {
+    right: -12%;
+    width: min(88vw, 460px);
+    height: min(72vh, 560px);
+    opacity: 0.95;
+    z-index: 3;
+  }
+
+  .body {
+    justify-content: flex-start;
+    padding: 88px var(--page-pad) max(24px, calc(14px + env(safe-area-inset-bottom)));
+    gap: 0;
+  }
+
+  .cards {
+    width: 100%;
+    margin-top: 12px;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    width: auto;
+    padding: 12px 12px 12px 16px;
+    gap: 10px;
+  }
+
+  .cardTitle { font-size: 15px; }
+  .cardArrow {
+    width: 30px;
+    height: 30px;
+  }
+  .cardArrow svg { width: 12px; height: 12px; }
+
+  .copy {
+    margin-top: 28px;
+    max-width: 58%;
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .headline {
+    font-size: clamp(42px, 12.5vw, 64px);
+    line-height: 0.94;
+  }
+
+  .role {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.45;
+    max-width: 100%;
+    position: relative;
+    z-index: 6;
+  }
+
+  .glassCells {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: min(78%, 280px);
+    max-width: 280px;
+    margin-top: auto;
+    padding-top: 20px;
+    z-index: 6;
+    align-self: flex-start;
+  }
+
+  .glassCard {
+    position: relative;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100%;
+    max-width: none;
+    padding: 14px 16px 12px;
+    border-radius: 14px;
+  }
+
+  .glassOrb {
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .glassRow {
+    gap: 10px;
+    padding-right: 22px;
+  }
+
+  .glassValue {
+    font-size: 24px;
+  }
+
+  .glassMeta {
+    font-size: 11px;
+    gap: 2px;
+    line-height: 1.2;
+  }
+
+  .glassLeft,
+  .glassMid,
+  .glassRight {
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .portrait {
+    right: -16%;
+    width: 92vw;
+    height: 62vh;
+    opacity: 0.92;
+  }
+
+  .cards {
+    margin-top: 16px;
+  }
+
+  .copy {
+    margin-top: 24px;
+    max-width: 56%;
+  }
+
+  .role {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .headline {
+    font-size: clamp(40px, 12vw, 56px);
+  }
+
+  .glassCells {
+    width: min(82%, 300px);
+    max-width: 300px;
+  }
+
+  .glassValue {
+    font-size: 22px;
+  }
+
+  .card {
+    padding: 11px 11px 11px 15px;
+  }
+
+  .cardTitle { font-size: 14px; }
+}
+
+@media (min-width: 769px) {
+  .glassLeft {
+    left: clamp(12px, 5vw, 72px);
+    bottom: clamp(28px, 4vh, 44px);
+    width: min(220px, 28vw);
+    z-index: 6;
+  }
+
+  .glassMid {
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: clamp(56px, 6.5vh, 80px);
+    transform: translateX(-50%);
+    width: min(270px, 34vw);
+    z-index: 11;
+  }
+
+  .glassRight {
+    z-index: 11;
+  }
+}

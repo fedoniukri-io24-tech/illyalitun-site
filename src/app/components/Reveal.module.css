@@ -1,0 +1,32 @@
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.left {
+  transform: translate3d(-72px, 18px, 0) rotate(-2deg);
+}
+
+.right {
+  transform: translate3d(72px, 18px, 0) rotate(2deg);
+}
+
+.up {
+  transform: translate3d(0, 36px, 0);
+}
+
+.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

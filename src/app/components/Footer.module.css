@@ -1,0 +1,246 @@
+.footer {
+  background: #fff;
+  color: var(--color-bg);
+  padding: 88px var(--page-pad) 36px;
+  border-top: 1px solid rgba(15, 15, 15, 0.06);
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 56px 72px;
+  align-items: start;
+}
+
+.brandBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 420px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--color-bg);
+  text-decoration: none;
+  width: fit-content;
+  line-height: 1;
+}
+
+.brand span {
+  color: var(--color-accent);
+  margin-left: 0.22em;
+}
+
+.tagline {
+  font-size: 18px;
+  line-height: 1.55;
+  color: rgba(15, 15, 15, 0.62);
+  max-width: 30ch;
+  font-weight: 500;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  box-shadow: none;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.social:hover {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.social svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 48px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.col h3 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin-bottom: 8px;
+}
+
+.col p,
+.col a {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(15, 15, 15, 0.78);
+  text-decoration: none;
+  line-height: 1.45;
+  transition: color 0.2s;
+  width: fit-content;
+}
+
+.col a:hover {
+  color: var(--color-accent);
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(15, 15, 15, 0.08);
+}
+
+.bottom > span {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(15, 15, 15, 0.5);
+}
+
+.credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-pill);
+  padding: 10px 12px 10px 20px;
+  text-decoration: none;
+  color: var(--color-bg);
+  border: 1px solid rgba(42, 100, 233, 0.14);
+  box-shadow: 0 8px 24px rgba(26, 49, 105, 0.12);
+  transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.credit:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+.creditLabel {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+.creditArrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+  box-shadow: 0 3px 10px rgba(42, 100, 233, 0.35);
+}
+
+.credit:hover .creditArrow {
+  background: #fff;
+  color: var(--color-accent);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .brandBlock {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 64px var(--page-pad) 28px;
+  }
+
+  .inner {
+    gap: 48px;
+  }
+
+  .brand {
+    font-size: 32px;
+  }
+
+  .tagline {
+    font-size: 16px;
+  }
+
+  .col p,
+  .col a {
+    font-size: 17px;
+  }
+
+  .social {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 52px var(--page-pad) 24px;
+  }
+
+  .cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .creditLabel {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,198 @@
+.consultHero {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.body {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.back {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(15, 15, 15, 0.5);
+  text-decoration: none;
+  margin-bottom: 0;
+  width: fit-content;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: var(--color-accent);
+}
+
+.portraitBlend {
+  mix-blend-mode: lighten;
+}
+
+.headline {
+  font-size: clamp(38px, 5.5vw, 72px) !important;
+  line-height: 0.94 !important;
+}
+
+.role {
+  font-size: clamp(17px, 1.7vw, 21px) !important;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 460px);
+  margin-top: 28px;
+}
+
+.actions > a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 14px 13px 20px;
+  font-size: 15px;
+  box-sizing: border-box;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: 0 8px 24px rgba(42, 100, 233, 0.28);
+  white-space: nowrap;
+  min-height: 50px;
+}
+
+.actions > a span:first-child {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.actions > a span:last-child {
+  width: 34px;
+  height: 34px;
+}
+
+.actions > a:first-child {
+  background: var(--color-accent) !important;
+}
+
+.actions > a:first-child span:last-child {
+  background: #fff !important;
+  color: var(--color-accent) !important;
+}
+
+.actions > a:last-child {
+  background: var(--color-accent-dark) !important;
+}
+
+.actions > a:last-child span:last-child {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+}
+
+.actions > a:hover {
+  transform: translateY(-2px);
+}
+
+.actions > a:first-child:hover {
+  background: var(--color-accent-hover) !important;
+}
+
+.actions > a:last-child:hover {
+  background: #152952 !important;
+}
+
+.actions > a:hover span:last-child {
+  transform: rotate(45deg);
+}
+
+.formatCard {
+  padding: 18px 20px 16px;
+}
+
+.formatLabel {
+  margin: 0 0 6px;
+  padding-right: 28px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+}
+
+.formatText {
+  margin: 0;
+  padding-right: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgba(15, 15, 15, 0.72);
+}
+
+@media (max-width: 768px) {
+  .consultHero {
+    height: 100svh;
+    max-height: 100svh;
+    min-height: unset;
+  }
+
+  .body {
+    min-height: unset;
+    height: 100%;
+  }
+
+  .copy {
+    max-width: 62% !important;
+    width: auto;
+  }
+
+  .headline {
+    font-size: clamp(34px, 9.5vw, 50px) !important;
+  }
+
+  .role {
+    font-size: 16px !important;
+    max-width: 100%;
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: max-content;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .actions > a {
+    width: 100%;
+    max-width: none;
+    font-size: 14px;
+    padding: 12px 14px 12px 18px;
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: clamp(30px, 8.8vw, 40px) !important;
+  }
+
+  .role {
+    font-size: 15px !important;
+  }
+
+  .actions > a {
+    min-width: 0;
+    font-size: 13px;
+    padding: 11px 12px 11px 16px;
+    min-height: 46px;
+  }
+
+  .actions > a span:last-child {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+}

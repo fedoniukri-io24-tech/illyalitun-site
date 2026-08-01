@@ -1,0 +1,104 @@
+.hero {
+  background:
+    radial-gradient(ellipse 70% 55% at 90% 0%, rgba(42, 100, 233, 0.28), transparent 55%),
+    linear-gradient(160deg, #0f0f0f 0%, #131514 48%, #1a3169 100%);
+  color: #fff;
+  padding: 140px var(--page-pad) 88px;
+}
+
+.inner {
+  max-width: 760px;
+  animation: slideUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.back {
+  display: inline-flex;
+  margin-bottom: 28px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back:hover { color: var(--color-accent); }
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(36px, 5.5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 48ch;
+  margin-bottom: 36px;
+}
+
+.points {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.points li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 16px;
+  font-weight: 550;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.45;
+}
+
+.points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(42, 100, 233, 0.2);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-accent);
+  border-radius: var(--radius-sm);
+  padding: 15px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 6px 28px rgba(42, 100, 233, 0.45);
+}
+.cta:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(42, 100, 233, 0.55);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 110px var(--page-pad) 64px;
+  }
+}
