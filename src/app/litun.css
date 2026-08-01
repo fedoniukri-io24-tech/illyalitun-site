@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
 
-.litun {
+/* On :root so portals (modals) outside .litun still get brand tokens */
+:root {
   /* Brand book — «Особистий консалтинг» */
   --color-bg: #0f0f0f;
   --color-bg-secondary: #171617;
@@ -26,29 +27,39 @@
   --orange-soft: var(--blue-soft);
   --white: #ffffff;
   --black: #0f0f0f;
-  --page-pad: 64px;
+  /* Side inset: sections / nav / footer. Heroes keep --hero-pad. */
+  --page-pad: 88px;
   --page-pad-sm: 24px;
+  --hero-pad: 64px;
   --radius: 20px;
   --radius-sm: 12px;
   --radius-pill: 999px;
   --font-sans: 'Manrope', sans-serif;
   --font-display: 'Oswald', sans-serif;
   --font-accent: 'Oswald', sans-serif;
+}
 
+.litun {
   font-family: var(--font-sans);
   color: var(--color-bg);
   background: #fff;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 @media (max-width: 768px) {
-  .litun {
+  :root {
     --page-pad: var(--page-pad-sm);
+    --hero-pad: var(--page-pad-sm);
   }
 }
 
 .litunSky {
   position: relative;
   isolation: isolate;
+  overflow-x: hidden;
   background:
     radial-gradient(ellipse 70% 40% at 78% 28%, rgba(42, 100, 233, 0.26), transparent 60%),
     radial-gradient(ellipse 50% 35% at 12% 12%, rgba(255, 255, 255, 0.92), transparent 55%),

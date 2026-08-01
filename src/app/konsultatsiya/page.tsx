@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { SERVICES } from '../brand'
 import { pageMetadata } from '../seo'
 import Navbar from '../components/Navbar'
 import ConsultationHero from '../components/ConsultationHero'
@@ -9,8 +8,6 @@ import ConsultationFaq from '../components/ConsultationFaq'
 import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import page from './consultation.module.css'
-
-const service = SERVICES[1]
 
 export const metadata: Metadata = pageMetadata({
   title: 'Особиста консультація',
@@ -29,7 +26,7 @@ export default function KonsultatsiyaPage() {
         <ConsultationProblem />
         <ConsultationSections />
         <ConsultationFaq />
-        <ContactSection defaultService={service.label} tightTop />
+        <ContactSection tightTop />
       </main>
       <Footer />
     </>

@@ -21,7 +21,7 @@ export default function KonsaltyngPage() {
       <main>
         <ServiceHero service={service} />
         <div className="litunBand">
-          <ContactSection defaultService={service.label} />
+          <ContactSection />
         </div>
       </main>
       <Footer />

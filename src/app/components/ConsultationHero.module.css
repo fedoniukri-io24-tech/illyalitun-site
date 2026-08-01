@@ -1,6 +1,9 @@
 .consultHero {
   min-height: 100vh;
   min-height: 100dvh;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .body {
@@ -26,6 +29,32 @@
 
 .portraitBlend {
   mix-blend-mode: lighten;
+  object-position: right bottom !important;
+}
+
+.portrait {
+  right: 0 !important;
+  margin-right: 0;
+}
+
+@media (max-width: 980px) {
+  .portrait {
+    right: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .portrait {
+    right: 0 !important;
+    width: min(82vw, 420px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portrait {
+    right: 0 !important;
+    width: min(88vw, 380px) !important;
+  }
 }
 
 .headline {
@@ -45,7 +74,8 @@
   margin-top: 28px;
 }
 
-.actions > a {
+.actions > a,
+.actions > button {
   width: 100%;
   display: flex;
   align-items: center;
@@ -60,49 +90,59 @@
   min-height: 50px;
 }
 
-.actions > a span:first-child {
+.actions > a span:first-child,
+.actions > button span:first-child {
   flex: 1;
   min-width: 0;
   text-align: left;
   line-height: 1.2;
 }
 
-.actions > a span:last-child {
+.actions > a span:last-child,
+.actions > button span:last-child {
   width: 34px;
   height: 34px;
 }
 
-.actions > a:first-child {
+.actions > a:first-child,
+.actions > button:first-child {
   background: var(--color-accent) !important;
 }
 
-.actions > a:first-child span:last-child {
+.actions > a:first-child span:last-child,
+.actions > button:first-child span:last-child {
   background: #fff !important;
   color: var(--color-accent) !important;
 }
 
-.actions > a:last-child {
+.actions > a:last-child,
+.actions > button:last-child {
   background: var(--color-accent-dark) !important;
 }
 
-.actions > a:last-child span:last-child {
+.actions > a:last-child span:last-child,
+.actions > button:last-child span:last-child {
   background: rgba(255, 255, 255, 0.18) !important;
   color: #fff !important;
 }
 
-.actions > a:hover {
+.actions > a:hover,
+.actions > button:hover {
   transform: translateY(-2px);
 }
 
-.actions > a:first-child:hover {
+.actions > a:first-child:hover,
+.actions > button:first-child:hover {
   background: var(--color-accent-hover) !important;
 }
 
-.actions > a:last-child:hover {
+.actions > a:last-child:hover,
+.actions > button:last-child:hover {
   background: #152952 !important;
 }
 
-.actions > a:hover span:last-child {
+.actions > a:hover span:last-child,
+.actions > button:hover span:last-child {
   transform: rotate(45deg);
 }
 

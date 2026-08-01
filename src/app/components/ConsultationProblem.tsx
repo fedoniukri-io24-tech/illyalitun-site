@@ -1,16 +1,48 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import { CONSULTATION } from '../konsultatsiya/data'
-import PillCta from './PillCta'
+import BookCta from './BookCta'
 import page from '../konsultatsiya/consultation.module.css'
 import styles from './ConsultationProblem.module.css'
 
 export default function ConsultationProblem() {
   const { problem } = CONSULTATION
+  const stageRef = useRef<HTMLDivElement>(null)
+  const [revealed, setRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = stageRef.current
+    if (!el) return
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) {
+      setRevealed(true)
+      return
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          io.disconnect()
+        }
+      },
+      { threshold: 0.28, rootMargin: '0px 0px -10% 0px' },
+    )
+
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   return (
     <section className={styles.section} id="problem">
       <div className={styles.chart} aria-hidden="true" />
 
-      <div className={styles.stage}>
+      <div
+        ref={stageRef}
+        className={`${styles.stage} ${revealed ? styles.revealed : ''}`}
+      >
         <div className={styles.copy}>
           <p className={styles.eyebrow}>[ {problem.eyebrow} ]</p>
 
@@ -28,6 +60,7 @@ export default function ConsultationProblem() {
             <div
               key={b.text}
               className={`${styles.bubble} ${styles[`pos${i}`]} ${b.tone === 'filled' ? styles.filled : styles.outline}`}
+              style={{ transitionDelay: `${120 + i * 90}ms` }}
             >
               {b.text}
             </div>
@@ -36,7 +69,7 @@ export default function ConsultationProblem() {
       </div>
 
       <div className={page.sectionCta}>
-        <PillCta href="#kontakt" />
+        <BookCta />
       </div>
     </section>
   )

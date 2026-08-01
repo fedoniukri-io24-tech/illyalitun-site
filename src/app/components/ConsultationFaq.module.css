@@ -1,6 +1,7 @@
 .inner {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .list {
@@ -57,26 +58,6 @@
   line-height: 1.65;
   color: rgba(20, 20, 20, 0.65);
   margin: 0;
-}
-
-.legal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 28px;
-  justify-content: center;
-  margin-top: 36px;
-}
-
-.legal a {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(20, 20, 20, 0.45);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.legal a:hover {
-  color: var(--color-accent);
 }
 
 @media (max-width: 768px) {

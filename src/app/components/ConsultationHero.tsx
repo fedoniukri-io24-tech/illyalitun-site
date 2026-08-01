@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import { CONSULTATION } from '../konsultatsiya/data'
 import PillCta from './PillCta'
+import { useLeadModal } from './LeadModalContext'
 import hero from './Hero.module.css'
 import styles from './ConsultationHero.module.css'
 
@@ -30,10 +33,11 @@ function GlassStat({
 
 export default function ConsultationHero() {
   const { hero: data } = CONSULTATION
+  const { openModal } = useLeadModal()
 
   return (
     <section className={`${hero.hero} ${styles.consultHero} litunSky`}>
-      <div className={hero.portrait}>
+      <div className={`${hero.portrait} ${styles.portrait}`}>
         <Image
           src={data.image}
           alt="Ілля Літун"
@@ -55,7 +59,7 @@ export default function ConsultationHero() {
           </h1>
           <p className={`${hero.role} ${styles.role}`}>{data.lead}</p>
           <div className={styles.actions}>
-            <PillCta href="#kontakt" label="Забронювати місце" />
+            <PillCta label="Забронювати місце" onClick={openModal} />
             <PillCta href="#dlya-koho" label="Деталі" />
           </div>
         </div>

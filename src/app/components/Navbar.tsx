@@ -1,11 +1,13 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { SERVICES } from '../brand'
+import { useLeadModal } from './LeadModalContext'
 import styles from './Navbar.module.css'
 
 export default function Navbar({ transparent = false }: { transparent?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { openModal } = useLeadModal()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -15,8 +17,11 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+      return () => { document.body.style.overflow = '' }
+    }
+    return undefined
   }, [menuOpen])
 
   useEffect(() => {
@@ -27,6 +32,11 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
+
+  const openLead = () => {
+    setMenuOpen(false)
+    openModal()
+  }
 
   const navClass = [
     styles.nav,
@@ -45,14 +55,14 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
         </div>
 
         <div className={styles.right}>
-          <a href="/konsaltyng#kontakt" className={styles.cta}>
+          <button type="button" className={styles.cta} onClick={openLead}>
             <span className={styles.ctaLabel}>Записатися</span>
             <span className={styles.ctaArrow} aria-hidden="true">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 14 L14 2 M6 2 H14 V10"/>
               </svg>
             </span>
-          </a>
+          </button>
         </div>
 
         <button className={styles.hamburger} onClick={() => setMenuOpen(true)} aria-label="Відкрити меню">
@@ -76,14 +86,14 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
             <a key={s.slug} href={s.href} onClick={() => setMenuOpen(false)}>{s.label}</a>
           ))}
         </nav>
-        <a href="/konsaltyng#kontakt" className={styles.drawerCta} onClick={() => setMenuOpen(false)}>
+        <button type="button" className={styles.drawerCta} onClick={openLead}>
           <span className={styles.ctaLabel}>Записатися</span>
           <span className={styles.ctaArrow} aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M2 14 L14 2 M6 2 H14 V10"/>
             </svg>
           </span>
-        </a>
+        </button>
       </div>
     </>
   )

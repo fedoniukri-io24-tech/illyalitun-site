@@ -1,0 +1,13 @@
+---
+description: Modal UX — always lock page scroll while a modal/dialog is open
+alwaysApply: true
+---
+
+# Modal scroll lock
+
+When a modal, dialog, or overlay is open:
+
+- Always disable background page scroll (html + body).
+- Prefer a robust lock: `position: fixed` on `body` with saved `scrollY`, restore on close.
+- Also set `overflow: hidden` on `html` and `body`.
+- Do not leave the page scrollable behind an open modal on desktop or mobile.

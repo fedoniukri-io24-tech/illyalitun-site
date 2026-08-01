@@ -1,17 +1,26 @@
 'use client'
 
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import styles from './Reveal.module.css'
+
+export type RevealEffect = 'up' | 'left' | 'right' | 'clip' | 'blur' | 'tilt' | 'pop' | 'fan'
+
+function isInView(el: HTMLElement) {
+  const rect = el.getBoundingClientRect()
+  const vh = window.innerHeight || document.documentElement.clientHeight
+  const vw = window.innerWidth || document.documentElement.clientWidth
+  return rect.top < vh * 0.92 && rect.bottom > 0 && rect.left < vw && rect.right > 0
+}
 
 export default function Reveal({
   children,
   className = '',
-  from = 'left',
+  from = 'up',
   delay = 0,
 }: {
   children: ReactNode
   className?: string
-  from?: 'left' | 'right'
+  from?: RevealEffect
   delay?: number
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -21,6 +30,11 @@ export default function Reveal({
     const el = ref.current
     if (!el) return
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || isInView(el)) {
+      setVisible(true)
+      return
+    }
+
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,7 +42,7 @@ export default function Reveal({
           io.disconnect()
         }
       },
-      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' },
+      { threshold: 0.05, rootMargin: '0px 0px -8% 0px' },
     )
 
     io.observe(el)
@@ -38,15 +52,10 @@ export default function Reveal({
   return (
     <div
       ref={ref}
-      className={[
-        styles.reveal,
-        styles[from],
-        visible ? styles.visible : '',
-        className,
-      ]
+      className={[styles.reveal, styles[from], visible ? styles.visible : '', className]
         .filter(Boolean)
         .join(' ')}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ '--reveal-delay': `${delay}ms` } as CSSProperties}
     >
       {children}
     </div>

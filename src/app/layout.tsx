@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { SITE, absoluteUrl } from './seo'
 import JsonLd from './components/JsonLd'
+import Providers from './components/Providers'
 import './globals.css'
 import './litun.css'
 
@@ -86,7 +87,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="uk">
       <body>
         <JsonLd />
-        <div className="litun">{children}</div>
+        <Providers>
+          <div className="litun">{children}</div>
+        </Providers>
       </body>
     </html>
   )

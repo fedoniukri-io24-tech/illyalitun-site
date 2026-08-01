@@ -3,7 +3,7 @@
     radial-gradient(ellipse 70% 55% at 90% 0%, rgba(42, 100, 233, 0.28), transparent 55%),
     linear-gradient(160deg, #0f0f0f 0%, #131514 48%, #1a3169 100%);
   color: #fff;
-  padding: 140px var(--page-pad) 88px;
+  padding: 140px var(--hero-pad) 88px;
 }
 
 .inner {
@@ -81,13 +81,16 @@
   align-items: center;
   gap: 10px;
   background: var(--color-accent);
+  border: none;
   border-radius: var(--radius-sm);
   padding: 15px 28px;
   font-size: 14px;
   font-weight: 700;
+  font-family: inherit;
   letter-spacing: 0.04em;
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   box-shadow: 0 6px 28px rgba(42, 100, 233, 0.45);
 }
@@ -99,6 +102,6 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 110px var(--page-pad) 64px;
+    padding: 110px var(--hero-pad) 64px;
   }
 }

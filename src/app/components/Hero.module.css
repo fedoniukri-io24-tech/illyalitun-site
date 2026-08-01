@@ -47,7 +47,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 32px;
-  padding: 110px var(--page-pad) 48px;
+  padding: 110px var(--hero-pad) 48px;
   width: 100%;
   min-height: inherit;
 }
@@ -297,16 +297,16 @@
   }
 
   .portrait {
-    right: -12%;
-    width: min(88vw, 460px);
-    height: min(72vh, 560px);
+    right: -8%;
+    width: min(78vw, 400px);
+    height: min(68vh, 520px);
     opacity: 0.95;
     z-index: 3;
   }
 
   .body {
     justify-content: flex-start;
-    padding: 88px var(--page-pad) max(24px, calc(14px + env(safe-area-inset-bottom)));
+    padding: 88px var(--hero-pad) max(24px, calc(14px + env(safe-area-inset-bottom)));
     gap: 0;
   }
 
@@ -412,9 +412,9 @@
 
 @media (max-width: 480px) {
   .portrait {
-    right: -16%;
-    width: 92vw;
-    height: 62vh;
+    right: -10%;
+    width: min(84vw, 380px);
+    height: min(58vh, 480px);
     opacity: 0.92;
   }
 

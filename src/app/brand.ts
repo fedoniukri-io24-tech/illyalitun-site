@@ -7,7 +7,7 @@ export const BRAND = {
   address: 'онлайн · Київ',
   city: 'Україна',
   heroDesktop: '/images/hero-author.png',
-  contactImage: '/images/hero.jpg',
+  contactImage: '/images/contact-author.jpg',
 } as const
 
 export const STATS = [
@@ -17,11 +17,11 @@ export const STATS = [
 ] as const
 
 export const SOCIALS = [
-  { label: 'Instagram', href: 'https://www.instagram.com/illya_litun/', short: 'Insta' },
-  { label: 'Telegram', href: 'https://t.me/illialitun234', short: 'TG' },
-  { label: 'Threads', href: 'https://www.threads.com/@illya_litun?xmt=AQG0Dr6vsQGbvBeSROu0ogqonBOjSkIb7XpYGAPbYMw-__k', short: 'Threads' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/illia-litun-7354b92b6/', short: 'LinkedIn' },
-  { label: 'TikTok', href: 'https://www.tiktok.com/@illialitun', short: 'TT' },
+  { label: 'Instagram', href: 'https://www.instagram.com/illya_litun/' },
+  { label: 'Telegram', href: 'https://t.me/illialitun234' },
+  { label: 'Threads', href: 'https://www.threads.com/@illya_litun?xmt=AQG0Dr6vsQGbvBeSROu0ogqonBOjSkIb7XpYGAPbYMw-__k' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/illia-litun-7354b92b6/' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@illialitun' },
 ] as const
 
 export const SERVICES = [
@@ -81,12 +81,4 @@ export const SERVICES = [
       'Підтримка на етапі впровадження',
     ],
   },
-] as const
-
-export const FORM_OPTIONS = [
-  'Консалтинг',
-  'Консультація',
-  'Страт сесія',
-  'Клуб',
-  'Інше',
 ] as const

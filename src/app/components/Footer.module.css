@@ -3,6 +3,9 @@
   color: var(--color-bg);
   padding: 88px var(--page-pad) 36px;
   border-top: 1px solid rgba(15, 15, 15, 0.06);
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .inner {
@@ -87,8 +90,8 @@
 
 .cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px 48px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 40px;
 }
 
 .col {
@@ -212,6 +215,10 @@
 
   .tagline {
     font-size: 16px;
+  }
+
+  .cols {
+    grid-template-columns: 1fr 1fr;
   }
 
   .col p,

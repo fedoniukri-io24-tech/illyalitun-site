@@ -1,28 +1,103 @@
 .reveal {
+  --reveal-delay: 0ms;
+  will-change: transform, opacity, filter;
+}
+
+/* Initial states — only while hidden */
+.up:not(.visible) {
   opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+
+.left:not(.visible) {
+  opacity: 0;
+  transform: translate3d(-48px, 14px, 0) rotate(-1.5deg);
+}
+
+.right:not(.visible) {
+  opacity: 0;
+  transform: translate3d(48px, 14px, 0) rotate(1.5deg);
+}
+
+.clip:not(.visible) {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+}
+
+.blur:not(.visible) {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translate3d(0, 24px, 0) scale(0.98);
+}
+
+.tilt:not(.visible) {
+  opacity: 0;
+  transform: perspective(900px) rotateX(10deg) translate3d(0, 36px, 0);
+  transform-origin: 50% 100%;
+}
+
+.pop:not(.visible) {
+  opacity: 0;
+  transform: scale(0.86);
+}
+
+.fan:not(.visible) {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0) rotate(-5deg) scale(0.92);
+}
+
+.up,
+.left,
+.right,
+.clip,
+.blur,
+.tilt,
+.pop,
+.fan {
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay);
 }
 
-.left {
-  transform: translate3d(-72px, 18px, 0) rotate(-2deg);
-}
-
-.right {
-  transform: translate3d(72px, 18px, 0) rotate(2deg);
-}
-
+/* Shown — always wins over initial transforms */
 .visible {
   opacity: 1;
-  transform: translate3d(0, 0, 0) rotate(0deg);
+  transform: none;
+  filter: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .reveal,
+  .up:not(.visible),
+  .left:not(.visible),
+  .right:not(.visible),
+  .clip:not(.visible),
+  .blur:not(.visible),
+  .tilt:not(.visible),
+  .pop:not(.visible),
+  .fan:not(.visible) {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .left:not(.visible) {
+    transform: translate3d(-24px, 12px, 0);
+  }
+
+  .right:not(.visible) {
+    transform: translate3d(24px, 12px, 0);
+  }
+
+  .tilt:not(.visible) {
+    transform: perspective(900px) rotateX(8deg) translate3d(0, 28px, 0);
+  }
+
+  .blur:not(.visible) {
+    filter: blur(6px);
   }
 }

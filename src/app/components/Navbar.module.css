@@ -134,6 +134,7 @@
   background: rgba(255, 255, 255, 0.92);
   border-radius: var(--radius-pill);
   padding: 8px 10px 8px 18px;
+  font-family: inherit;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -142,6 +143,7 @@
   border: 1px solid rgba(42, 100, 233, 0.12);
   box-shadow: 0 8px 24px rgba(26, 49, 105, 0.12);
   backdrop-filter: blur(8px);
+  cursor: pointer;
   transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, background 0.25s, color 0.25s, border-color 0.25s;
 }
 .cta:hover {
@@ -290,6 +292,7 @@
   color: var(--color-bg);
   border: 1px solid rgba(42, 100, 233, 0.12);
   box-shadow: 0 8px 24px rgba(26, 49, 105, 0.12);
+  cursor: pointer;
   transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, background 0.25s, color 0.25s, border-color 0.25s;
 }
 
@@ -308,9 +311,9 @@
 }
 
 .drawerClose {
-  background: rgba(15, 15, 15, 0.05);
-  border: 1px solid rgba(15, 15, 15, 0.08);
-  border-radius: 12px;
+  background: none;
+  border: none;
+  border-radius: 0;
   cursor: pointer;
   padding: 0;
   width: 44px;
@@ -320,11 +323,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: color 0.2s, opacity 0.2s;
 }
 
 .drawerClose:hover {
-  background: rgba(15, 15, 15, 0.09);
+  background: none;
+  color: var(--color-accent);
 }
 
 @media (max-width: 980px) {
