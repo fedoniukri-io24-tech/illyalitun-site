@@ -10,9 +10,19 @@ type CaseItem = {
   photo: string
   before: readonly string[]
   after: readonly string[]
+  role?: string
+  handle?: string
 }
 
-export default function CasesCarousel({ items }: { items: readonly CaseItem[] }) {
+export default function CasesCarousel({
+  items,
+  beforeLabel = 'До',
+  afterLabel = 'Після',
+}: {
+  items: readonly CaseItem[]
+  beforeLabel?: string
+  afterLabel?: string
+}) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
 
@@ -59,7 +69,7 @@ export default function CasesCarousel({ items }: { items: readonly CaseItem[] })
     <div className={styles.casesWrap}>
       <div ref={scrollerRef} className={styles.cases}>
         {items.map((c, i) => (
-          <Reveal key={c.name} from={i % 2 === 0 ? 'fan' : 'tilt'} delay={i * 90}>
+          <Reveal key={`${c.name}-${i}`} from={i % 2 === 0 ? 'fan' : 'tilt'} delay={i * 90}>
             <article className={styles.case}>
               <div className={styles.caseHead}>
                 <div className={styles.casePhoto}>
@@ -71,11 +81,15 @@ export default function CasesCarousel({ items }: { items: readonly CaseItem[] })
                     className={styles.casePhotoImg}
                   />
                 </div>
-                <h3>{c.name}</h3>
+                <div className={styles.caseIdentity}>
+                  <h3>{c.name}</h3>
+                  {c.handle ? <span className={styles.caseHandle}>{c.handle}</span> : null}
+                  {c.role ? <p className={styles.caseRole}>{c.role}</p> : null}
+                </div>
               </div>
               <div className={styles.caseCols}>
                 <div>
-                  <p className={styles.caseLabel}>До</p>
+                  <p className={styles.caseLabel}>{beforeLabel}</p>
                   <ul>
                     {c.before.map((x) => (
                       <li key={x}>{x}</li>
@@ -83,7 +97,7 @@ export default function CasesCarousel({ items }: { items: readonly CaseItem[] })
                   </ul>
                 </div>
                 <div>
-                  <p className={styles.caseLabelAfter}>Після</p>
+                  <p className={styles.caseLabelAfter}>{afterLabel}</p>
                   <ul>
                     {c.after.map((x) => (
                       <li key={x}>{x}</li>
@@ -112,7 +126,7 @@ export default function CasesCarousel({ items }: { items: readonly CaseItem[] })
         <div className={styles.casesDots} role="tablist" aria-label="Слайди">
           {items.map((c, i) => (
             <button
-              key={c.name}
+              key={`${c.name}-dot-${i}`}
               type="button"
               role="tab"
               aria-selected={active === i}

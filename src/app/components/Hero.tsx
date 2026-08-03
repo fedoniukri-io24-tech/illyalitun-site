@@ -6,14 +6,15 @@ const COLOR_CLASS: Record<(typeof SERVICES)[number]['color'], string> = {
   blue: styles.cardBlue,
   teal: styles.cardTeal,
   indigo: styles.cardIndigo,
-  sky: styles.cardSky,
+  orange: styles.cardOrange,
 }
 
 const GLASS_POS = [styles.glassLeft, styles.glassMid, styles.glassRight] as const
 
 function statLines(label: string): string[] {
   if (label === 'Next 250') return ['Next', '250']
-  if (label.includes('щомісяця')) return ['активних учнів', 'щомісяця']
+  if (label === 'активних учнів') return ['активних', 'учнів']
+  if (label === 'випускників') return ['випускників']
   return [label]
 }
 

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { CONSULTATION } from '../konsultatsiya/data'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
@@ -144,24 +145,40 @@ export default function ConsultationSections() {
       </section>
 
       <section className={styles.aboutBand}>
-        <div className={page.wrapNarrow}>
+        <div className={page.wrap}>
           <Reveal from="blur">
             <h2 className={styles.aboutTitle}>{d.about.title}</h2>
           </Reveal>
-          <div className={styles.aboutText}>
-            <Reveal from="up" delay={80}>
-              <p>{d.about.p1}</p>
-            </Reveal>
-            <Reveal from="up" delay={140}>
-              <p>{d.about.p2}</p>
-            </Reveal>
-            <Reveal from="clip" delay={200}>
-              <blockquote className={styles.aboutQuote}>
-                <p>{d.about.p3}</p>
-                <footer>— {d.about.name}</footer>
-              </blockquote>
+
+          <div className={styles.aboutLayout}>
+            <div className={styles.aboutCopy}>
+              <Reveal from="up" delay={80}>
+                <p className={styles.aboutLead}>{d.about.p1}</p>
+              </Reveal>
+              <Reveal from="up" delay={140}>
+                <p>{d.about.p2}</p>
+              </Reveal>
+              <Reveal from="clip" delay={200}>
+                <blockquote className={styles.aboutQuote}>
+                  <p>{d.about.p3}</p>
+                  <footer>— {d.about.name}</footer>
+                </blockquote>
+              </Reveal>
+            </div>
+
+            <Reveal from="tilt" delay={120}>
+              <div className={styles.aboutPhoto}>
+                <Image
+                  src={d.about.image}
+                  alt={d.about.name}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 42vw"
+                  className={styles.aboutPhotoImg}
+                />
+              </div>
             </Reveal>
           </div>
+
           <div className={`${page.sectionCta} ${styles.aboutCta}`}>
             <Reveal from="pop" delay={120}>
               <BookCta />

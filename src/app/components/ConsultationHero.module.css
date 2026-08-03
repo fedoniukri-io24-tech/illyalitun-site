@@ -58,20 +58,20 @@
 }
 
 .headline {
-  font-size: clamp(38px, 5.5vw, 72px) !important;
+  font-size: clamp(46px, 6.4vw, 88px) !important;
   line-height: 0.94 !important;
 }
 
 .role {
-  font-size: clamp(17px, 1.7vw, 21px) !important;
+  font-size: clamp(16px, 1.6vw, 20px) !important;
 }
 
 .actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  width: min(100%, 460px);
-  margin-top: 28px;
+  gap: 14px;
+  width: min(100%, 520px);
+  margin-top: 32px;
 }
 
 .actions > a,
@@ -80,14 +80,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 14px 13px 20px;
-  font-size: 15px;
+  padding: 16px 16px 16px 24px;
+  font-size: 17px;
   box-sizing: border-box;
   border: none !important;
   color: #fff !important;
   box-shadow: 0 8px 24px rgba(42, 100, 233, 0.28);
   white-space: nowrap;
-  min-height: 50px;
+  min-height: 58px;
 }
 
 .actions > a span:first-child,
@@ -100,8 +100,8 @@
 
 .actions > a span:last-child,
 .actions > button span:last-child {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
 }
 
 .actions > a:first-child,

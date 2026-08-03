@@ -68,6 +68,53 @@
     linear-gradient(180deg, #ffffff 0%, #e8efff 28%, #d4ddfa 58%, #c8d6f5 78%, #d4ddfa 100%);
 }
 
+.litunSkyMint {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 70% 40% at 78% 28%, rgba(28, 188, 39, 0.18), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 12% 12%, rgba(255, 255, 255, 0.94), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 10% 72%, rgba(210, 236, 214, 0.8), transparent 58%),
+    radial-gradient(ellipse 50% 35% at 88% 88%, rgba(28, 188, 39, 0.1), transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #eef8ef 28%, #d8edd9 58%, #c8e6cb 78%, #d8edd9 100%);
+}
+
+.litunSkyNavy {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 65% 45% at 85% 20%, rgba(42, 100, 233, 0.35), transparent 58%),
+    radial-gradient(ellipse 50% 40% at 8% 80%, rgba(26, 49, 105, 0.55), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 20% 10%, rgba(91, 138, 242, 0.16), transparent 50%),
+    linear-gradient(165deg, #0f1a38 0%, #122047 38%, #1a3169 72%, #152952 100%);
+}
+
+.litunSkyDeep {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 70% 42% at 80% 26%, rgba(26, 49, 105, 0.42), transparent 58%),
+    radial-gradient(ellipse 50% 35% at 12% 10%, rgba(210, 220, 245, 0.55), transparent 55%),
+    radial-gradient(ellipse 55% 42% at 8% 78%, rgba(140, 162, 220, 0.72), transparent 58%),
+    radial-gradient(ellipse 48% 36% at 90% 90%, rgba(26, 49, 105, 0.32), transparent 55%),
+    linear-gradient(180deg, #d7dff2 0%, #b7c5e8 26%, #8fa3d4 55%, #6f87c4 78%, #8499cf 100%);
+}
+
+.litunSkyOrange {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 70% 40% at 78% 28%, rgba(232, 122, 46, 0.3), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 12% 12%, rgba(255, 255, 255, 0.94), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 10% 72%, rgba(255, 214, 180, 0.82), transparent 58%),
+    radial-gradient(ellipse 50% 35% at 88% 88%, rgba(232, 122, 46, 0.16), transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #fff3ea 28%, #ffdfc4 58%, #ffd0a8 78%, #ffdfc4 100%);
+}
+
 .litunBand {
   background: transparent;
 }

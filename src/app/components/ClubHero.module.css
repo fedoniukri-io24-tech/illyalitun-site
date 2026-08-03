@@ -1,0 +1,121 @@
+.hero {
+  height: 100svh;
+  max-height: 100svh;
+  min-height: unset !important;
+  overflow: hidden;
+}
+
+.body {
+  min-height: unset !important;
+  height: 100%;
+}
+
+.titleRow {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.titleRow h1 {
+  max-width: none;
+  width: auto;
+}
+
+.titleRow > :last-child {
+  position: absolute;
+  left: calc(100% + 16px);
+  top: 0.15em;
+  margin: 0;
+  transform: none;
+}
+
+.lead {
+  max-width: 42ch !important;
+}
+
+.actions {
+  margin-top: 32px;
+  width: fit-content;
+}
+
+.actions :global(button),
+.actions :global(a) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+.portrait :global(img) {
+  object-position: right bottom;
+}
+
+@media (min-width: 769px) {
+  .actions :global(button),
+  .actions :global(a) {
+    min-width: 260px;
+    padding: 16px 16px 16px 24px;
+    font-size: 17px;
+    min-height: 58px;
+  }
+
+  .actions :global(button) span:last-child,
+  .actions :global(a) span:last-child {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 100svh;
+    max-height: 100svh;
+  }
+
+  .titleRow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .titleRow h1 {
+    width: 100%;
+  }
+
+  .titleRow > :last-child {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actions > button,
+  .actions > a {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 12px 13px 20px;
+    font-size: 15px;
+    min-height: 52px;
+  }
+
+  .actions > button span:first-child,
+  .actions > a span:first-child {
+    flex: 1;
+    text-align: left;
+  }
+
+  .actions > button span:last-child,
+  .actions > a span:last-child {
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+  }
+}

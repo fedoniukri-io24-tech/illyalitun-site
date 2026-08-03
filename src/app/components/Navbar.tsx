@@ -46,7 +46,7 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
   return (
     <>
       <nav className={navClass}>
-        <a href="/" className={styles.brand}>Turbo <span>Education</span></a>
+        <a href="/" className={styles.brand}>TURBO <span>EDUCATION</span></a>
 
         <div className={styles.center}>
           {SERVICES.map((s) => (
@@ -73,7 +73,7 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
       <div className={`${styles.drawer} ${menuOpen ? styles.open : ''}`} role="dialog" aria-modal="true" aria-hidden={!menuOpen}>
         <div className={styles.drawerTop}>
           <a href="/" className={styles.drawerBrand} onClick={() => setMenuOpen(false)}>
-            Turbo <span>Education</span>
+            TURBO <span>EDUCATION</span>
           </a>
           <button className={styles.drawerClose} onClick={() => setMenuOpen(false)} aria-label="Закрити">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">

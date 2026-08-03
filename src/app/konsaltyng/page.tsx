@@ -1,28 +1,30 @@
 import type { Metadata } from 'next'
-import { SERVICES } from '../brand'
 import { pageMetadata } from '../seo'
 import Navbar from '../components/Navbar'
-import ServiceHero from '../components/ServiceHero'
+import ConsultingHero from '../components/ConsultingHero'
+import ConsultingSections from '../components/ConsultingSections'
+import ConsultingFaq from '../components/ConsultingFaq'
 import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
-
-const service = SERVICES[0]
+import page from '../konsultatsiya/consultation.module.css'
 
 export const metadata: Metadata = pageMetadata({
-  title: service.title,
-  description: service.lead,
-  path: service.href,
+  title: 'Консалтинг',
+  description:
+    'Систематизуй онлайн-школу та збільши чистий прибуток у 2 рази під особистим супроводом Іллі Літуна. Програма «Бізнес під крилом».',
+  path: '/konsaltyng',
+  image: '/images/consulting-hero.png',
 })
 
 export default function KonsaltyngPage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <ServiceHero service={service} />
-        <div className="litunBand">
-          <ContactSection />
-        </div>
+      <Navbar transparent />
+      <main className={page.page}>
+        <ConsultingHero />
+        <ConsultingSections />
+        <ConsultingFaq />
+        <ContactSection tightTop />
       </main>
       <Footer />
     </>

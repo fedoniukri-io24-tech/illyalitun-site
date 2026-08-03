@@ -1,28 +1,30 @@
 import type { Metadata } from 'next'
-import { SERVICES } from '../brand'
 import { pageMetadata } from '../seo'
 import Navbar from '../components/Navbar'
-import ServiceHero from '../components/ServiceHero'
+import ClubHero from '../components/ClubHero'
+import ClubSections from '../components/ClubSections'
+import ClubFaq from '../components/ClubFaq'
 import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
-
-const service = SERVICES[3]
+import page from '../konsultatsiya/consultation.module.css'
 
 export const metadata: Metadata = pageMetadata({
-  title: service.title,
-  description: service.lead,
-  path: service.href,
+  title: 'Клуб',
+  description:
+    'Turbo Education Club for owners — місце, де ти знаходиш сильне оточення і рішення на будь-яке своє питання. Перший потік — 20 місць.',
+  path: '/klub',
+  image: '/images/club-hero.png',
 })
 
 export default function KlubPage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <ServiceHero service={service} />
-        <div className="litunBand">
-          <ContactSection />
-        </div>
+      <Navbar transparent />
+      <main className={page.page}>
+        <ClubHero />
+        <ClubSections />
+        <ClubFaq />
+        <ContactSection tightTop />
       </main>
       <Footer />
     </>

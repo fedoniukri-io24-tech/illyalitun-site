@@ -220,10 +220,10 @@
 }
 .card:hover {
   transform: translateY(-2px);
-  background: var(--color-accent);
+  background: var(--card-accent);
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 10px 28px rgba(42, 100, 233, 0.35);
+  box-shadow: 0 10px 28px var(--card-shadow);
 }
 
 .cardBlue {
@@ -241,6 +241,10 @@
 .cardSky {
   --card-accent: #2357dc;
   --card-shadow: rgba(35, 87, 220, 0.4);
+}
+.cardOrange {
+  --card-accent: #e87a2e;
+  --card-shadow: rgba(232, 122, 46, 0.4);
 }
 
 .cardTitle {

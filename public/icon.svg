@@ -1,12 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#2A64E9"/>
-  <text
-    x="32"
-    y="42"
-    text-anchor="middle"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="28"
-    font-weight="700"
-    fill="#FFFFFF"
-  ></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TE">
+  <defs>
+    <linearGradient id="te-bg" x1="6" y1="2" x2="58" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4A7FF0"/>
+      <stop offset=".45" stop-color="#2A64E9"/>
+      <stop offset="1" stop-color="#152A5C"/>
+    </linearGradient>
+    <linearGradient id="te-shine" x1="32" y1="4" x2="32" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark -->
+  <rect width="64" height="64" rx="15" fill="url(#te-bg)"/>
+  <rect width="64" height="64" rx="15" fill="url(#te-shine)"/>
+  <circle cx="32" cy="33" r="23" fill="#fff" fill-opacity=".07"/>
+  <rect x="1.25" y="1.25" width="61.5" height="61.5" rx="13.75" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.25"/>
+
+  <!-- TE monogram -->
+  <g fill="#fff">
+    <!-- T -->
+    <path d="M9.5 15.5h22.5v6.2H22.4V48.5h-6.4V21.7H9.5z"/>
+    <!-- E -->
+    <path d="M34.2 15.5H54.5v6.2H40.6v5.4h11.2v5.6H40.6v5.5H54.5v6.3H34.2z"/>
+  </g>
 </svg>

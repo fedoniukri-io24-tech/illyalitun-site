@@ -6,7 +6,7 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: BRAND.name,
-    jobTitle: 'Засновник Turbo Education',
+    jobTitle: 'Засновник TURBO EDUCATION',
     description: SITE.description,
     url: SITE.url,
     image: absoluteUrl(SITE.image),
@@ -15,7 +15,7 @@ export default function JsonLd() {
     sameAs: SOCIALS.map((s) => s.href),
     worksFor: {
       '@type': 'Organization',
-      name: 'Turbo Education',
+      name: 'TURBO EDUCATION',
       url: SITE.url,
     },
   }

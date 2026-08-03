@@ -13,7 +13,7 @@ export default function Footer() {
           <Reveal from="up">
             <div className={styles.main}>
               <div className={styles.brandBlock}>
-                <a href="/" className={styles.brand}>Turbo <span>Education</span></a>
+                <a href="/" className={styles.brand}>TURBO <span>EDUCATION</span></a>
                 <p className={styles.tagline}>{BRAND.tagline}</p>
                 <div className={styles.socials}>
                   {SOCIALS.map((s) => (

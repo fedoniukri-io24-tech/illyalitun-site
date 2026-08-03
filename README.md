@@ -1,6 +1,6 @@
 # Ілля Літун — Освітній бізнес
 
-Сайт особистого консалтингу Іллі Літуна / Turbo Education.
+Сайт особистого консалтингу Іллі Літуна / TURBO EDUCATION.
 
 Репозиторій: [romchhh/illyalitun-site](https://github.com/romchhh/illyalitun-site)
 
