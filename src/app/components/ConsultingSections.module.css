@@ -9,9 +9,7 @@
 }
 
 .bandSoft {
-  background:
-    radial-gradient(ellipse 60% 40% at 90% 0%, rgba(42, 100, 233, 0.06), transparent 55%),
-    #f7f9ff;
+  background: #fff;
 }
 
 .keyN {
@@ -51,9 +49,10 @@
 
 .painCard {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: start;
+  justify-items: start;
   height: 100%;
   padding: 18px 18px;
   border-radius: 18px;
@@ -204,58 +203,79 @@
   font-weight: 500;
 }
 
-/* After */
+/* After — bubble circles like consultation problem block */
 .afterGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 1.8vw, 22px);
+  max-width: 1120px;
+  margin-inline: auto;
 }
 
 .afterGrid > * {
-  min-width: 0;
-  height: 100%;
+  flex: 0 0 auto;
 }
 
-.afterCard {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  align-items: start;
-  height: 100%;
-  padding: 18px 20px;
-  border-radius: 18px;
-  background: #f8f9fc;
-  border: 1px solid rgba(42, 100, 233, 0.1);
-}
-
-.check {
-  width: 22px;
-  height: 22px;
-  margin-top: 2px;
+.afterBubble {
+  aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 4px rgba(42, 100, 233, 0.16);
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(20px, 2.4vw, 32px);
 }
 
-.check::after {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 5px;
-  width: 6px;
-  height: 10px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+.afterLg {
+  width: clamp(210px, 22vw, 268px);
 }
 
-.afterCard p {
+.afterMd {
+  width: clamp(178px, 18vw, 222px);
+}
+
+.afterSm {
+  width: clamp(148px, 15vw, 186px);
+}
+
+.afterFilled {
+  background: radial-gradient(circle at 35% 30%, #6b9af5 0%, #2a64e9 48%, #1a3169 100%);
+  color: #fff;
+  box-shadow: 0 20px 48px rgba(42, 100, 233, 0.28);
+}
+
+.afterOutline {
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid rgba(42, 100, 233, 0.28);
+  color: #141414;
+  box-shadow: 0 12px 32px rgba(26, 49, 105, 0.1);
+}
+
+.afterBubble p {
   margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: rgba(15, 15, 15, 0.82);
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.45vw, 19px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: 0.01em;
+}
+
+.afterSm p {
+  font-size: clamp(13px, 1.2vw, 16px);
+}
+
+.afterLg p {
+  font-size: clamp(16px, 1.55vw, 20px);
+}
+
+.afterFilled p {
+  color: #fff;
+}
+
+.afterOutline p {
+  color: #141414;
 }
 
 /* Tariffs */
@@ -506,18 +526,62 @@
 }
 
 @media (max-width: 900px) {
-  .roadmap,
-  .afterGrid,
-  .caseCols,
-  .aboutLayout {
+  .caseCols {
     grid-template-columns: 1fr;
   }
 
-  .aboutPhoto {
-    aspect-ratio: 16 / 10;
-    max-width: 520px;
-    margin-inline: auto;
+  .roadmap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .afterGrid {
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .afterLg {
+    width: clamp(150px, 42vw, 190px);
+  }
+
+  .afterMd {
+    width: clamp(132px, 38vw, 168px);
+  }
+
+  .afterSm {
+    width: clamp(118px, 34vw, 148px);
+  }
+
+  .afterBubble {
+    padding: 16px 14px;
+  }
+
+  .afterBubble p {
+    font-size: clamp(12px, 3.2vw, 14px);
+  }
+
+  .afterSm p {
+    font-size: clamp(11px, 3vw, 13px);
+  }
+
+  .afterLg p {
+    font-size: clamp(13px, 3.4vw, 15px);
+  }
+
+  .aboutLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .aboutPhotoReveal {
     order: -1;
+    width: 100%;
+  }
+
+  .aboutPhoto {
+    max-width: 280px;
+    margin-inline: auto;
+    justify-self: center;
   }
 
   .aboutCopy,
@@ -528,8 +592,35 @@
 
 @media (max-width: 640px) {
   .painGrid,
-  .benefitGrid {
+  .benefitGrid,
+  .roadmap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .painCard {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .painCard p {
+    font-size: 13px;
+  }
+
+  .benefitCard,
+  .step {
     grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px 12px;
+  }
+
+  .benefitCard p,
+  .step p {
+    font-size: 13px;
+  }
+
+  .step h3 {
+    font-size: 14px;
   }
 
   .bridge {

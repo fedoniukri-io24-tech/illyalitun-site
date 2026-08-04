@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { SITE } from './seo'
+import { SITE, absoluteUrl } from './seo'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,9 +7,39 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/api/', '/_next/'],
+      },
+      // Common AI / search crawlers (explicit allow for policy clarity)
+      {
+        userAgent: 'GPTBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'ChatGPT-User',
+        allow: '/',
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: '/',
+      },
+      {
+        userAgent: 'anthropic-ai',
+        allow: '/',
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Bytespider',
+        allow: '/',
       },
     ],
-    sitemap: `${SITE.url}/sitemap.xml`,
+    sitemap: absoluteUrl('/sitemap.xml'),
     host: SITE.url,
   }
 }

@@ -1,9 +1,9 @@
 .section {
   background: transparent;
   padding: 72px var(--page-pad) 110px;
-  overflow-x: hidden;
   width: 100%;
   max-width: 100%;
+  overflow: visible;
 }
 
 .tightTop {

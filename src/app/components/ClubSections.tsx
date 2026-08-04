@@ -59,13 +59,15 @@ export default function ClubSections() {
           </Reveal>
           <div className={styles.includeGrid}>
             {d.includes.items.map((item, i) => (
-              <Reveal key={item.title} from="tilt" delay={i * 45}>
+              <Reveal key={item.title} from="tilt" delay={i * 45} className={styles.includeReveal}>
                 <article className={styles.includeCard}>
+                  <span className={`${styles.cadence} ${styles.cadenceRight}`}>
+                    {item.cadence}
+                  </span>
                   <div className={styles.includeTop}>
                     <span className={styles.keyN} aria-hidden="true">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className={styles.cadence}>{item.cadence}</span>
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -156,11 +158,10 @@ export default function ClubSections() {
           <div className={styles.aboutLayout}>
             <div className={styles.aboutCopy}>
               <Reveal from="up" delay={80}>
-                <p className={styles.aboutLead}>{d.about.name}</p>
-                <p className={styles.aboutRole}>{d.about.role}</p>
+                <p className={styles.aboutLead}>{d.about.p1}</p>
               </Reveal>
               <Reveal from="up" delay={140}>
-                <p>{d.about.p1}</p>
+                <p>{d.about.role}</p>
               </Reveal>
               <Reveal from="clip" delay={180}>
                 <blockquote className={styles.aboutQuote}>
@@ -169,7 +170,7 @@ export default function ClubSections() {
                 </blockquote>
               </Reveal>
             </div>
-            <Reveal from="tilt" delay={120}>
+            <Reveal from="tilt" delay={120} className={styles.aboutPhotoReveal}>
               <div className={styles.aboutPhoto}>
                 <Image
                   src={d.about.image}

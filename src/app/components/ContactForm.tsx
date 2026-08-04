@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { SERVICES } from '../brand'
 import styles from './ContactSection.module.css'
 
 type FormState = {
@@ -8,9 +10,10 @@ type FormState = {
   phone: string
   comment: string
   consent: boolean
+  website: string // honeypot
 }
 
-type Status = 'idle' | 'loading' | 'success'
+type Status = 'idle' | 'loading' | 'success' | 'error'
 
 /** Format UA phone as +380 XX XXX XX XX */
 function formatUaPhone(raw: string): string {
@@ -41,6 +44,54 @@ function phoneDigits(phone: string) {
   return phone.replace(/\D/g, '')
 }
 
+function collectUtm() {
+  if (typeof window === 'undefined') return {} as Record<string, string>
+  const params = new URLSearchParams(window.location.search)
+  const keys = [
+    'utm_source',
+    'utm_medium',
+    'utm_campaign',
+    'utm_content',
+    'utm_term',
+    'gclid',
+    'fbclid',
+    'ttclid',
+    'msclkid',
+    'ref',
+  ]
+  const out: Record<string, string> = {}
+  for (const key of keys) {
+    const value = params.get(key)
+    if (value) out[key] = value
+  }
+
+  // restore from session if landing UTMs were stripped
+  try {
+    const saved = sessionStorage.getItem('lead_utm')
+    if (saved) {
+      const parsed = JSON.parse(saved) as Record<string, string>
+      for (const [k, v] of Object.entries(parsed)) {
+        if (!out[k] && v) out[k] = v
+      }
+    }
+    if (Object.keys(out).length) {
+      sessionStorage.setItem('lead_utm', JSON.stringify(out))
+    }
+  } catch {
+    // ignore
+  }
+
+  return out
+}
+
+function serviceFromPathname(pathname: string) {
+  const path = pathname.replace(/\/$/, '') || '/'
+  if (path === '/') return { slug: 'home', label: 'Головна (загальна заявка)' }
+  const match = SERVICES.find((s) => s.href === path)
+  if (match) return { slug: match.slug, label: match.title }
+  return { slug: path, label: path }
+}
+
 export default function ContactForm({
   idPrefix = '',
   compact = false,
@@ -48,14 +99,19 @@ export default function ContactForm({
   idPrefix?: string
   compact?: boolean
 }) {
+  const pathname = usePathname() || '/'
+  const service = useMemo(() => serviceFromPathname(pathname), [pathname])
+
   const [form, setForm] = useState<FormState>({
     name: '',
     phone: '',
     comment: '',
     consent: false,
+    website: '',
   })
   const [status, setStatus] = useState<Status>('idle')
   const [touched, setTouched] = useState({ name: false, phone: false })
+  const [errorMsg, setErrorMsg] = useState('')
 
   const id = (name: string) => (idPrefix ? `${idPrefix}-${name}` : name)
 
@@ -72,8 +128,53 @@ export default function ContactForm({
     setTouched({ name: true, phone: true })
     if (!canSubmit) return
     setStatus('loading')
-    await new Promise((r) => setTimeout(r, 1400))
-    setStatus('success')
+    setErrorMsg('')
+
+    const payload = {
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      comment: form.comment.trim(),
+      consent: form.consent,
+      website: form.website,
+      formSource: compact ? `modal:${idPrefix || 'lead'}` : `page:${idPrefix || 'contact'}`,
+      pagePath: pathname,
+      pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+      pageTitle: typeof document !== 'undefined' ? document.title : '',
+      referrer: typeof document !== 'undefined' ? document.referrer : '',
+      serviceSlug: service.slug,
+      serviceLabel: service.label,
+      utm: collectUtm(),
+      language: typeof navigator !== 'undefined' ? navigator.language : '',
+      timezone:
+        typeof Intl !== 'undefined'
+          ? Intl.DateTimeFormat().resolvedOptions().timeZone
+          : '',
+      screen:
+        typeof window !== 'undefined'
+          ? `${window.screen.width}x${window.screen.height}`
+          : '',
+      viewport:
+        typeof window !== 'undefined'
+          ? `${window.innerWidth}x${window.innerHeight}`
+          : '',
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+    }
+
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean }
+      if (!res.ok || !data.ok) {
+        throw new Error('send_failed')
+      }
+      setStatus('success')
+    } catch {
+      setStatus('error')
+      setErrorMsg('Не вдалося надіслати. Спробуйте ще раз або напишіть у месенджер.')
+    }
   }
 
   if (status === 'success') {
@@ -97,10 +198,26 @@ export default function ContactForm({
     >
       {!compact && (
         <div className={styles.formHead}>
-          <p className={styles.formEyebrow}>Контакти</p>
           <p className={styles.formLead}>Залиште ім&apos;я та телефон — відповімо протягом дня.</p>
         </div>
       )}
+
+      {/* Honeypot */}
+      <div
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}
+      >
+        <label htmlFor={id('website')}>Website</label>
+        <input
+          id={id('website')}
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form.website}
+          onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
+        />
+      </div>
 
       <div className={`${styles.field} ${touched.name && !nameOk ? styles.fieldError : ''}`}>
         <label htmlFor={id('name')}>Ім&apos;я</label>
@@ -162,6 +279,12 @@ export default function ContactForm({
         />
         <span>Погоджуюсь на обробку персональних даних</span>
       </label>
+
+      {status === 'error' && errorMsg ? (
+        <p className={styles.hint} role="alert" style={{ margin: 0, color: '#c0392b' }}>
+          {errorMsg}
+        </p>
+      ) : null}
 
       <button type="submit" className={styles.submit} disabled={!canSubmit}>
         {status === 'loading' ? 'Надсилання…' : 'Надіслати заявку'}

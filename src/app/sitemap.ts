@@ -1,21 +1,23 @@
 import type { MetadataRoute } from 'next'
-import { SITE } from './seo'
-
-const routes = [
-  '/',
-  '/konsaltyng',
-  '/konsultatsiya',
-  '/strat-sesiya',
-  '/klub',
-] as const
+import { absoluteUrl, PAGES } from './seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
-  return routes.map((path) => ({
-    url: `${SITE.url}${path === '/' ? '' : path}`,
+  const priorities: Record<string, number> = {
+    '/': 1,
+    '/konsaltyng': 0.95,
+    '/konsultatsiya': 0.9,
+    '/strat-sesiya': 0.85,
+    '/klub': 0.85,
+  }
+
+  return Object.values(PAGES).map((page) => ({
+    url: absoluteUrl(page.path),
     lastModified: now,
-    changeFrequency: path === '/' || path === '/konsultatsiya' ? 'weekly' : 'monthly',
-    priority: path === '/' ? 1 : path === '/konsultatsiya' ? 0.9 : 0.7,
+    changeFrequency: page.path === '/' ? 'weekly' : 'monthly',
+    priority: priorities[page.path] ?? 0.7,
+    // Next MetadataRoute supports images for image sitemap enrichment
+    images: page.image ? [absoluteUrl(page.image)] : undefined,
   }))
 }

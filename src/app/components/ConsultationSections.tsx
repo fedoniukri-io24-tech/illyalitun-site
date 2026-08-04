@@ -166,13 +166,13 @@ export default function ConsultationSections() {
               </Reveal>
             </div>
 
-            <Reveal from="tilt" delay={120}>
+            <Reveal from="tilt" delay={120} className={styles.aboutPhotoReveal}>
               <div className={styles.aboutPhoto}>
                 <Image
                   src={d.about.image}
                   alt={d.about.name}
                   fill
-                  sizes="(max-width: 900px) 100vw, 42vw"
+                  sizes="(max-width: 900px) 90vw, 300px"
                   className={styles.aboutPhotoImg}
                 />
               </div>

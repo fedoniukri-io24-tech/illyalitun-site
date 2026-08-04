@@ -5,14 +5,12 @@
   --c-pad: clamp(56px, 7vw, 100px);
   width: 100%;
   max-width: 100%;
-  overflow-x: clip;
 }
 
 .sectionLight {
   background: #fff;
   color: var(--c-text-dark);
   padding: var(--c-pad) var(--page-pad);
-  overflow-x: clip;
 }
 
 /* Same horizontal inset as header / hero / footer — no extra max-width */

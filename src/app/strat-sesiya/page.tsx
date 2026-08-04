@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '../seo'
+import { STRAT } from './data'
+import { PageJsonLd } from '../components/JsonLd'
 import Navbar from '../components/Navbar'
 import StratHero from '../components/StratHero'
 import StratSections from '../components/StratSections'
@@ -8,17 +10,17 @@ import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import page from '../konsultatsiya/consultation.module.css'
 
-export const metadata: Metadata = pageMetadata({
-  title: 'Страт сесія',
-  description:
-    'Один день — повна перебудова твоєї онлайн-школи. 8 годин інтенсивної роботи в Києві або Львові з Іллею Літуном.',
-  path: '/strat-sesiya',
-  image: '/images/strat-hero.png',
-})
+export const metadata: Metadata = pageMetadata('stratSesiya')
 
 export default function StratSesiyaPage() {
   return (
     <>
+      <PageJsonLd
+        pageKey="stratSesiya"
+        serviceName="Страт сесія"
+        serviceDescription={STRAT.hero.lead}
+        faq={STRAT.faq}
+      />
       <Navbar transparent />
       <main className={page.page}>
         <StratHero />

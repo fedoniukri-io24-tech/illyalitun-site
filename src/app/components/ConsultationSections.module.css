@@ -21,7 +21,7 @@
   align-items: center;
   padding: 18px 20px;
   border-radius: 18px;
-  background: #f8f9fc;
+  background: #fff;
   border: 1px solid rgba(42, 100, 233, 0.1);
 }
 
@@ -67,7 +67,7 @@
 }
 
 .topic {
-  background: #f8f9fc;
+  background: #fff;
   border: 1px solid rgba(15, 15, 15, 0.06);
   border-radius: 20px;
   padding: 28px 24px;
@@ -197,9 +197,7 @@
 }
 
 .offerCard {
-  background:
-    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(42, 100, 233, 0.08), transparent 55%),
-    #f7f9ff;
+  background: #fff;
   border: 1px solid rgba(42, 100, 233, 0.14);
   border-radius: 28px;
   padding: 32px;
@@ -296,7 +294,7 @@
 }
 
 .case {
-  background: #f8f9fc;
+  background: #fff;
   border: 1px solid rgba(15, 15, 15, 0.06);
   border-radius: 20px;
   padding: 24px 20px;
@@ -407,7 +405,7 @@
 .aboutTitle {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(32px, 4.2vw, 52px);
+  font-size: clamp(28px, 3.8vw, 48px);
   line-height: 1.05;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -418,15 +416,16 @@
 
 .aboutLayout {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 40px 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  gap: 40px 56px;
   align-items: center;
+  max-width: 980px;
+  margin-inline: auto;
 }
 
 .aboutCopy {
   display: grid;
   gap: 18px;
-  text-align: left;
 }
 
 .aboutCopy p {
@@ -447,11 +446,13 @@
 .aboutPhoto {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 24px;
+  max-width: 300px;
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(15, 15, 15, 0.28);
+  box-shadow: 0 18px 44px rgba(15, 15, 15, 0.24);
   background: rgba(255, 255, 255, 0.1);
+  justify-self: end;
 }
 
 .aboutPhotoImg {
@@ -464,13 +465,6 @@
   padding: 20px 0 0;
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.22);
-  position: relative;
-  text-align: left;
-  width: 100%;
-}
-
-.aboutQuote::before {
-  content: none;
 }
 
 .aboutQuote p {
@@ -480,7 +474,6 @@
   font-weight: 500;
   font-style: italic;
   line-height: 1.35;
-  letter-spacing: 0.01em;
   color: #fff;
 }
 
@@ -520,39 +513,100 @@
 
 @media (max-width: 980px) {
   .audienceGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Keep desktop-like mosaic: 12-col + varied spans */
   .topics {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 12px;
   }
 
   .topicLg,
   .topicMd,
-  .topicSm,
-  .topics > :nth-child(n) {
-    grid-column: auto;
+  .topicSm {
     min-height: 0;
   }
 
+  .topics > :nth-child(1) {
+    grid-column: span 7;
+  }
+
+  .topics > :nth-child(2) {
+    grid-column: span 5;
+  }
+
+  .topics > :nth-child(3) {
+    grid-column: span 5;
+  }
+
+  .topics > :nth-child(4) {
+    grid-column: span 7;
+  }
+
+  .topics > :nth-child(5) {
+    grid-column: span 4;
+  }
+
+  .topics > :nth-child(6) {
+    grid-column: span 8;
+  }
+
+  .topic {
+    padding: 18px 16px;
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  .topicLg {
+    padding: 22px 18px;
+  }
+
+  .topicSm {
+    padding: 16px 14px;
+  }
+
+  .topicN {
+    font-size: 16px;
+  }
+
+  .topic p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .topicLg p {
+    font-size: 14px;
+  }
+
+  .topicSm p {
+    font-size: 12.5px;
+  }
+
   .split,
-  .offerLayout,
-  .aboutLayout {
+  .offerLayout {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 
-  .aboutPhoto {
-    aspect-ratio: 16 / 10;
-    max-width: 520px;
-    margin-inline: auto;
+  .aboutLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .aboutPhotoReveal {
     order: -1;
+    width: 100%;
   }
 
-  .aboutCopy {
-    text-align: center;
+  .aboutPhoto {
+    max-width: 280px;
+    margin-inline: auto;
+    justify-self: center;
   }
 
+  .aboutCopy,
   .aboutQuote {
     text-align: center;
   }
@@ -687,6 +741,12 @@
   }
 
   .audienceCard {
-    padding: 16px 18px;
+    padding: 14px 12px;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .audienceCard p {
+    font-size: 13px;
   }
 }

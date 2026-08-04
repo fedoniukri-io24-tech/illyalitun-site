@@ -12,12 +12,13 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
-  applicationName: SITE.title,
+  applicationName: SITE.shortTitle,
   authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
-  publisher: SITE.name,
+  publisher: SITE.brand,
   keywords: [...SITE.keywords],
   category: 'education',
+  classification: 'Business Consulting, Education, EdTech',
   referrer: 'origin-when-cross-origin',
   formatDetection: {
     email: false,
@@ -28,6 +29,13 @@ export const metadata: Metadata = {
     canonical: absoluteUrl('/'),
     languages: {
       'uk-UA': absoluteUrl('/'),
+      uk: absoluteUrl('/'),
+    },
+    types: {
+      'text/plain': [
+        { url: absoluteUrl('/llms.txt'), title: 'llms.txt' },
+        { url: absoluteUrl('/llms-full.txt'), title: 'llms-full.txt' },
+      ],
     },
   },
   openGraph: {
@@ -43,6 +51,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: SITE.title,
+        type: 'image/png',
       },
     ],
   },
@@ -52,13 +61,16 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [absoluteUrl(SITE.image)],
     creator: SITE.twitter,
+    site: SITE.twitter,
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-image-preview': 'large',
       'max-snippet': -1,
       'max-video-preview': -1,
@@ -70,6 +82,11 @@ export const metadata: Metadata = {
     apple: '/icon.svg',
   },
   manifest: '/site.webmanifest',
+  other: {
+    'geo.region': 'UA',
+    'geo.placename': 'Kyiv',
+    'content-language': 'uk',
+  },
 }
 
 export const viewport: Viewport = {
@@ -79,6 +96,7 @@ export const viewport: Viewport = {
   ],
   width: 'device-width',
   initialScale: 1,
+  maximumScale: 5,
   colorScheme: 'light',
 }
 

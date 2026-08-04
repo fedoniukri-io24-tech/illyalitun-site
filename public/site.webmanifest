@@ -1,12 +1,15 @@
 {
-  "name": "Ілля Літун — Освітній бізнес",
+  "name": "Ілля Літун",
   "short_name": "Літун",
-  "description": "Консалтинг, консультації, страт сесії та клуб для освітнього бізнесу з Іллею Літуном.",
+  "description": "Консалтинг, консультації, стратегічні сесії та клуб для власників освітнього бізнесу від Іллі Літуна — TURBO EDUCATION.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2a64e9",
-  "lang": "uk",
+  "lang": "uk-UA",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "categories": ["business", "education"],
   "icons": [
     {
       "src": "/icon.svg",

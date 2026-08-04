@@ -1,6 +1,5 @@
 .reveal {
   --reveal-delay: 0ms;
-  will-change: transform, opacity, filter;
 }
 
 /* Initial states — only while hidden */

@@ -81,35 +81,27 @@ export default function StratSections() {
         </div>
       </section>
 
-      <section className={page.sectionLight} id="pidhotovka">
-        <div className={page.wrap}>
-          <div className={styles.prepLayout}>
-            <div>
-              <Reveal from="clip">
-                <h2 className={page.sectionTitle}>{d.prep.title}</h2>
+      <section className={`${page.sectionLight} ${styles.prepSection}`} id="pidhotovka">
+        <div className={`${page.wrap} ${styles.prepLayout}`}>
+          <div className={styles.prepHeader}>
+            <h2 className={page.sectionTitle}>{d.prep.title}</h2>
+            <p className={styles.prepLead}>{d.prep.lead}</p>
+            <p className={styles.prepText}>{d.prep.text}</p>
+          </div>
+          <div className={styles.prepList}>
+            {d.prep.items.map((item, i) => (
+              <Reveal key={item.title} from="right" delay={i * 50}>
+                <article className={styles.prepItem}>
+                  <span className={styles.keyN} aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </article>
               </Reveal>
-              <Reveal from="up" delay={50}>
-                <p className={styles.prepLead}>{d.prep.lead}</p>
-              </Reveal>
-              <Reveal from="up" delay={80}>
-                <p className={styles.prepText}>{d.prep.text}</p>
-              </Reveal>
-            </div>
-            <div className={styles.prepList}>
-              {d.prep.items.map((item, i) => (
-                <Reveal key={item.title} from="right" delay={i * 50}>
-                  <article className={styles.prepItem}>
-                    <span className={styles.keyN} aria-hidden="true">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <div>
-                      <h3>{item.title}</h3>
-                      <p>{item.text}</p>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -128,17 +120,13 @@ export default function StratSections() {
         </div>
       </section>
 
-      <section className={page.sectionLight} id="rozklad">
-        <div className={page.wrap}>
-          <Reveal from="clip">
-            <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.schedule.title}</h2>
-          </Reveal>
-          <Reveal from="up" delay={40}>
-            <p className={styles.sectionLead}>{d.schedule.lead}</p>
-          </Reveal>
-          <Reveal from="up" delay={60}>
-            <p className={styles.sectionNote}>{d.schedule.note}</p>
-          </Reveal>
+      <section className={`${page.sectionLight} ${styles.scheduleSection}`} id="rozklad">
+        <div className={`${page.wrap} ${styles.scheduleLayout}`}>
+          <div className={styles.scheduleHeader}>
+            <h2 className={page.sectionTitle}>{d.schedule.title}</h2>
+            <p className={styles.scheduleLead}>{d.schedule.lead}</p>
+            <p className={styles.scheduleNote}>{d.schedule.note}</p>
+          </div>
           <div className={styles.schedule}>
             {d.schedule.blocks.map((block, i) => (
               <div key={block.time} className={styles.scheduleBlock}>
@@ -163,6 +151,8 @@ export default function StratSections() {
               </div>
             ))}
           </div>
+        </div>
+        <div className={page.wrap}>
           <Book />
         </div>
       </section>
@@ -232,15 +222,12 @@ export default function StratSections() {
           <div className={styles.aboutLayout}>
             <div className={styles.aboutCopy}>
               <Reveal from="up" delay={80}>
-                <p className={styles.aboutLead}>{d.about.name}</p>
+                <p className={styles.aboutLead}>{d.about.p1}</p>
               </Reveal>
               <Reveal from="up" delay={120}>
-                <p>{d.about.p1}</p>
-              </Reveal>
-              <Reveal from="up" delay={150}>
                 <p>{d.about.p2}</p>
               </Reveal>
-              <Reveal from="clip" delay={180}>
+              <Reveal from="clip" delay={160}>
                 <blockquote className={styles.aboutQuote}>
                   <p>{d.about.p3}</p>
                   <footer>— {d.about.name}</footer>
@@ -255,7 +242,7 @@ export default function StratSections() {
                 ))}
               </div>
             </div>
-            <Reveal from="tilt" delay={100}>
+            <Reveal from="tilt" delay={100} className={styles.aboutPhotoReveal}>
               <div className={styles.aboutPhoto}>
                 <Image
                   src={d.about.image}

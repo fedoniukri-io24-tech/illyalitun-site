@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '../seo'
+import { CLUB } from './data'
+import { PageJsonLd } from '../components/JsonLd'
 import Navbar from '../components/Navbar'
 import ClubHero from '../components/ClubHero'
 import ClubSections from '../components/ClubSections'
@@ -8,17 +10,17 @@ import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import page from '../konsultatsiya/consultation.module.css'
 
-export const metadata: Metadata = pageMetadata({
-  title: 'Клуб',
-  description:
-    'Turbo Education Club for owners — місце, де ти знаходиш сильне оточення і рішення на будь-яке своє питання. Перший потік — 20 місць.',
-  path: '/klub',
-  image: '/images/club-hero.png',
-})
+export const metadata: Metadata = pageMetadata('klub')
 
 export default function KlubPage() {
   return (
     <>
+      <PageJsonLd
+        pageKey="klub"
+        serviceName="Turbo Education Club for owners"
+        serviceDescription={CLUB.hero.lead}
+        faq={CLUB.faq}
+      />
       <Navbar transparent />
       <main className={page.page}>
         <ClubHero />

@@ -35,7 +35,9 @@ export default function ConsultingSections() {
             {d.pains.items.map((item, i) => (
               <Reveal key={item} from="tilt" delay={i * 45}>
                 <article className={styles.painCard}>
-                  <span className={styles.keyN} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                  <span className={styles.keyN} aria-hidden="true">
+                    {['!', '@', '#', '$', '%', '&', '*', '?', '~'][i]}
+                  </span>
                   <p>{item}</p>
                 </article>
               </Reveal>
@@ -118,14 +120,29 @@ export default function ConsultingSections() {
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.after.title}</h2>
           </Reveal>
           <div className={styles.afterGrid}>
-            {d.after.items.map((item, i) => (
-              <Reveal key={item} from="tilt" delay={i * 45}>
-                <article className={styles.afterCard}>
-                  <span className={styles.check} aria-hidden="true" />
-                  <p>{item}</p>
-                </article>
-              </Reveal>
-            ))}
+            {d.after.items.map((item, i) => {
+              const sizes = [
+                styles.afterLg,
+                styles.afterMd,
+                styles.afterSm,
+                styles.afterLg,
+                styles.afterSm,
+                styles.afterLg,
+                styles.afterMd,
+                styles.afterSm,
+              ] as const
+              return (
+                <Reveal key={item} from="pop" delay={i * 55}>
+                  <article
+                    className={`${styles.afterBubble} ${sizes[i]} ${
+                      i % 2 === 0 ? styles.afterFilled : styles.afterOutline
+                    }`}
+                  >
+                    <p>{item}</p>
+                  </article>
+                </Reveal>
+              )
+            })}
           </div>
           <Join />
         </div>
@@ -191,7 +208,7 @@ export default function ConsultingSections() {
                 </blockquote>
               </Reveal>
             </div>
-            <Reveal from="tilt" delay={120}>
+            <Reveal from="tilt" delay={120} className={styles.aboutPhotoReveal}>
               <div className={styles.aboutPhoto}>
                 <Image
                   src={d.about.image}

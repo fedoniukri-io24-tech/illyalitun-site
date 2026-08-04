@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '../seo'
+import { CONSULTATION } from './data'
+import { PageJsonLd } from '../components/JsonLd'
 import Navbar from '../components/Navbar'
 import ConsultationHero from '../components/ConsultationHero'
 import ConsultationProblem from '../components/ConsultationProblem'
@@ -9,17 +11,17 @@ import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import page from './consultation.module.css'
 
-export const metadata: Metadata = pageMetadata({
-  title: 'Особиста консультація',
-  description:
-    'Від хаосу до системи за 1 розбір з Іллею Літуном: діагностика, покроковий план масштабування освітнього бізнесу та місяць підтримки в чаті.',
-  path: '/konsultatsiya',
-  image: '/images/consultation-hero.png',
-})
+export const metadata: Metadata = pageMetadata('konsultatsiya')
 
 export default function KonsultatsiyaPage() {
   return (
     <>
+      <PageJsonLd
+        pageKey="konsultatsiya"
+        serviceName="Особиста консультація"
+        serviceDescription={CONSULTATION.hero.lead}
+        faq={CONSULTATION.faq}
+      />
       <Navbar transparent />
       <main className={page.page}>
         <ConsultationHero />
