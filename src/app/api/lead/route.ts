@@ -72,6 +72,7 @@ function buildMessage(payload: {
   phone: string
   comment: string
   serviceLabel: string
+  tariff: string
   formSource: string
   utm: Record<string, string>
   timeKyiv: string
@@ -91,6 +92,7 @@ function buildMessage(payload: {
     ``,
     `🎯 <b>Послуга</b>`,
     line('Послуга', payload.serviceLabel),
+    line('Тариф', payload.tariff || 'не обрано'),
     line('Джерело форми', payload.formSource),
     ``,
     `🏷 <b>UTM / мітки</b>`,
@@ -180,11 +182,14 @@ export async function POST(req: NextRequest) {
       ? { label: clean(body.serviceLabel, 160) }
       : serviceFromPath(pagePath)
 
+  const tariff = clean(body.tariff, 200)
+
   const text = buildMessage({
     name,
     phone,
     comment,
     serviceLabel: service.label,
+    tariff,
     formSource,
     utm,
     timeKyiv: formatKyivTime(),

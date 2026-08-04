@@ -95,12 +95,16 @@ function serviceFromPathname(pathname: string) {
 export default function ContactForm({
   idPrefix = '',
   compact = false,
+  tariff,
 }: {
   idPrefix?: string
   compact?: boolean
+  /** Selected tariff when opened from pricing cards */
+  tariff?: string
 }) {
   const pathname = usePathname() || '/'
   const service = useMemo(() => serviceFromPathname(pathname), [pathname])
+  const selectedTariff = tariff?.trim() || ''
 
   const [form, setForm] = useState<FormState>({
     name: '',
@@ -143,6 +147,7 @@ export default function ContactForm({
       referrer: typeof document !== 'undefined' ? document.referrer : '',
       serviceSlug: service.slug,
       serviceLabel: service.label,
+      tariff: selectedTariff,
       utm: collectUtm(),
       language: typeof navigator !== 'undefined' ? navigator.language : '',
       timezone:

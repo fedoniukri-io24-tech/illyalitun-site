@@ -3,21 +3,47 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 import LeadModal from './LeadModal'
 
+export type LeadIntent = {
+  /** Selected tariff name + price, e.g. "Індивідуальний · $3000" */
+  tariff?: string
+}
+
 type LeadModalContextValue = {
-  openModal: () => void
+  openModal: (intent?: LeadIntent) => void
+  intent: LeadIntent | null
+  clearIntent: () => void
 }
 
 const LeadModalContext = createContext<LeadModalContextValue | null>(null)
 
 export function LeadModalProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
-  const openModal = useCallback(() => setOpen(true), [])
-  const value = useMemo(() => ({ openModal }), [openModal])
+  const [intent, setIntent] = useState<LeadIntent | null>(null)
+
+  const openModal = useCallback((next?: LeadIntent) => {
+    setIntent(next?.tariff ? next : null)
+    setOpen(true)
+  }, [])
+
+  const closeModal = useCallback(() => {
+    setOpen(false)
+  }, [])
+
+  const clearIntent = useCallback(() => setIntent(null), [])
+
+  const value = useMemo(
+    () => ({ openModal, intent, clearIntent }),
+    [openModal, intent, clearIntent],
+  )
 
   return (
     <LeadModalContext.Provider value={value}>
       {children}
-      <LeadModal open={open} onClose={() => setOpen(false)} />
+      <LeadModal
+        open={open}
+        onClose={closeModal}
+        intent={intent}
+      />
     </LeadModalContext.Provider>
   )
 }

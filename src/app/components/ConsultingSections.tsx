@@ -167,7 +167,7 @@ export default function ConsultingSections() {
                       <li key={f}>{f}</li>
                     ))}
                   </ul>
-                  <BookCta label="Доєднатися" />
+                  <BookCta label="Доєднатися" tariff={`${tariff.name} · ${tariff.price}`} />
                 </article>
               </Reveal>
             ))}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import ContactForm from './ContactForm'
+import type { LeadIntent } from './LeadModalContext'
 import styles from './LeadModal.module.css'
 
 function lockScroll() {
@@ -38,9 +39,11 @@ function unlockScroll() {
 export default function LeadModal({
   open,
   onClose,
+  intent = null,
 }: {
   open: boolean
   onClose: () => void
+  intent?: LeadIntent | null
 }) {
   const [mounted, setMounted] = useState(false)
 
@@ -83,10 +86,14 @@ export default function LeadModal({
 
         <div className={styles.head}>
           <h2 id="lead-modal-title" className={styles.title}>Забронювати місце</h2>
-          <p className={styles.lead}>Залиште контакти — узгодимо час і деталі.</p>
+          <p className={styles.lead}>
+            {intent?.tariff
+              ? `Обраний тариф: ${intent.tariff}. Залиште контакти — узгодимо час і деталі.`
+              : 'Залиште контакти — узгодимо час і деталі.'}
+          </p>
         </div>
 
-        <ContactForm idPrefix="modal" compact />
+        <ContactForm idPrefix="modal" compact tariff={intent?.tariff} />
       </div>
     </div>,
     document.body,

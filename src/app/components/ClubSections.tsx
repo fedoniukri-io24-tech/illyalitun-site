@@ -142,7 +142,10 @@ export default function ClubSections() {
                   ) : (
                     <p className={styles.tariffSaveSpacer} aria-hidden="true">&nbsp;</p>
                   )}
-                  <BookCta label="Обрати" />
+                  <BookCta
+                    label="Обрати"
+                    tariff={`${tariff.name} · ${tariff.price}${tariff.perMonth ? ` (${tariff.perMonth}/міс)` : ''}`}
+                  />
                 </article>
               </Reveal>
             ))}
