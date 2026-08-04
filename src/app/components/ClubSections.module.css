@@ -408,10 +408,10 @@
 
 .aboutLayout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
   gap: 40px 56px;
   align-items: center;
-  max-width: 980px;
+  max-width: 1080px;
   margin-inline: auto;
 }
 
@@ -438,7 +438,7 @@
 .aboutPhoto {
   position: relative;
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   overflow: hidden;
@@ -535,7 +535,7 @@
   }
 
   .aboutPhoto {
-    max-width: 280px;
+    max-width: 340px;
     margin-inline: auto;
     justify-self: center;
   }

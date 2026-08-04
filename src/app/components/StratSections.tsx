@@ -248,7 +248,7 @@ export default function StratSections() {
                   src={d.about.image}
                   alt={d.about.name}
                   fill
-                  sizes="(max-width: 900px) 90vw, 300px"
+                  sizes="(max-width: 900px) 86vw, 400px"
                   className={styles.aboutPhotoImg}
                 />
               </div>

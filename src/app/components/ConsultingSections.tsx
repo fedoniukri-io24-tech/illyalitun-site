@@ -121,21 +121,22 @@ export default function ConsultingSections() {
           </Reveal>
           <div className={styles.afterGrid}>
             {d.after.items.map((item, i) => {
+              /* Irregular size mix — not alternating Lg/Md/Sm */
               const sizes = [
                 styles.afterLg,
+                styles.afterSm,
+                styles.afterMd,
+                styles.afterLg,
+                styles.afterSm,
                 styles.afterMd,
                 styles.afterSm,
                 styles.afterLg,
-                styles.afterSm,
-                styles.afterLg,
-                styles.afterMd,
-                styles.afterSm,
               ] as const
               return (
                 <Reveal key={item} from="pop" delay={i * 55}>
                   <article
                     className={`${styles.afterBubble} ${sizes[i]} ${
-                      i % 2 === 0 ? styles.afterFilled : styles.afterOutline
+                      i % 3 === 0 ? styles.afterFilled : styles.afterOutline
                     }`}
                   >
                     <p>{item}</p>
@@ -214,7 +215,7 @@ export default function ConsultingSections() {
                   src={d.about.image}
                   alt={d.about.name}
                   fill
-                  sizes="(max-width: 900px) 90vw, 300px"
+                  sizes="(max-width: 900px) 86vw, 400px"
                   className={styles.aboutPhotoImg}
                 />
               </div>
