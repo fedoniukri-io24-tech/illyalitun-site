@@ -282,7 +282,13 @@ export default function ContactForm({
           onChange={(e) => setForm((f) => ({ ...f, consent: e.target.checked }))}
           required
         />
-        <span>Погоджуюсь на обробку персональних даних</span>
+        <span>
+          Погоджуюсь з{' '}
+          <a href="/polityka" target="_blank" rel="noopener noreferrer">
+            політикою конфіденційності
+          </a>{' '}
+          та обробкою персональних даних
+        </span>
       </label>
 
       {status === 'error' && errorMsg ? (

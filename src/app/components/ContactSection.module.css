@@ -298,6 +298,17 @@
   font-weight: 500;
 }
 
+.consent a {
+  color: var(--color-accent, #2a64e9);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent a:hover {
+  color: var(--color-accent-dark, #1a4bc4);
+}
+
 .submit {
   display: inline-flex;
   align-items: center;

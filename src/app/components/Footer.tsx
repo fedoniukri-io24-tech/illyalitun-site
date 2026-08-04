@@ -49,8 +49,8 @@ export default function Footer() {
 
                 <div className={styles.col}>
                   <h3>Документи</h3>
-                  <a href="#">Договір оферти</a>
-                  <a href="#">Політика конфіденційності</a>
+                  <a href="/oferta">Договір оферти</a>
+                  <a href="/polityka">Політика конфіденційності</a>
                 </div>
               </div>
             </div>
