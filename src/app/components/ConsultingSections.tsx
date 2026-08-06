@@ -185,6 +185,7 @@ export default function ConsultingSections() {
             items={d.cases.items}
             beforeLabel="Точка А"
             afterLabel="Точка Б"
+            variant="instagram"
           />
         </div>
       </section>

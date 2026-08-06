@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { STRAT } from '../strat-sesiya/data'
 import BookCta from './BookCta'
-import CasesCarousel from './CasesCarousel'
 import Reveal from './Reveal'
 import page from '../konsultatsiya/consultation.module.css'
 import styles from './StratSections.module.css'
@@ -262,11 +261,51 @@ export default function StratSections() {
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.results.title}</h2>
           </Reveal>
-          <CasesCarousel
-            items={d.results.items}
-            beforeLabel="До сесії"
-            afterLabel="Після сесії"
-          />
+          <Reveal from="up" delay={80}>
+            <article className={styles.resultFeature}>
+              <div className={styles.resultPhoto}>
+                <Image
+                  src={d.results.photo}
+                  alt={`Фото з ${d.results.name}`}
+                  fill
+                  sizes="(max-width: 900px) 92vw, 44vw"
+                  className={styles.resultPhotoImg}
+                  priority={false}
+                />
+              </div>
+              <div className={styles.resultBody}>
+                <p className={styles.resultName}>{d.results.name}</p>
+                <div className={styles.resultCols}>
+                  <div>
+                    <p className={styles.resultLabel}>До сесії</p>
+                    <ul>
+                      {d.results.before.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={styles.resultFlow} aria-hidden="true">
+                    <span className={styles.resultFlowLine} />
+                    <span className={styles.resultFlowArrow}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 5v14" />
+                        <path d="M6 13l6 6 6-6" />
+                      </svg>
+                    </span>
+                    <span className={styles.resultFlowLine} />
+                  </div>
+                  <div>
+                    <p className={styles.resultLabelAfter}>Після сесії</p>
+                    <ul>
+                      {d.results.after.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </Reveal>
         </div>
       </section>
     </>

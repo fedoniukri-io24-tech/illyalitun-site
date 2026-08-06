@@ -7,24 +7,37 @@ import styles from './ConsultationSections.module.css'
 
 type CaseItem = {
   name: string
-  photo: string
   before: readonly string[]
   after: readonly string[]
+  photo?: string
+  shot?: string
   role?: string
   handle?: string
+  /** Instagram profile URL; derived from handle if omitted */
+  href?: string
+}
+
+function instagramHref(item: CaseItem): string | undefined {
+  if (item.href) return item.href
+  if (!item.handle) return undefined
+  return `https://www.instagram.com/${item.handle.replace(/^@/, '')}/`
 }
 
 export default function CasesCarousel({
   items,
   beforeLabel = 'До',
   afterLabel = 'Після',
+  variant = 'plain',
 }: {
   items: readonly CaseItem[]
   beforeLabel?: string
   afterLabel?: string
+  /** plain = text cards; instagram = phone screenshots + scroll */
+  variant?: 'plain' | 'instagram'
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
+  const isIg = variant === 'instagram'
 
   useEffect(() => {
     const el = scrollerRef.current
@@ -54,7 +67,7 @@ export default function CasesCarousel({
       el.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-  }, [])
+  }, [items.length, variant])
 
   const goTo = (index: number) => {
     const el = scrollerRef.current
@@ -66,51 +79,113 @@ export default function CasesCarousel({
   }
 
   return (
-    <div className={styles.casesWrap}>
-      <div ref={scrollerRef} className={styles.cases}>
-        {items.map((c, i) => (
-          <Reveal key={`${c.name}-${i}`} from={i % 2 === 0 ? 'fan' : 'tilt'} delay={i * 90}>
-            <article className={styles.case}>
-              <div className={styles.caseHead}>
-                <div className={styles.casePhoto}>
+    <div className={`${styles.casesWrap} ${isIg ? styles.casesWrapIg : ''}`}>
+      <div
+        ref={scrollerRef}
+        className={`${styles.cases} ${isIg ? styles.casesIg : styles.casesPlain}`}
+      >
+        {items.map((c, i) => {
+          const href = isIg ? instagramHref(c) : undefined
+          const cardClass = `${styles.case} ${isIg ? styles.caseIg : styles.casePlain} ${
+            isIg && i % 2 === 1 ? styles.caseIgTiltAlt : ''
+          } ${href ? styles.caseLink : ''}`
+
+          const body = (
+            <>
+              {isIg && c.shot ? (
+                <div className={styles.igShot}>
                   <Image
-                    src={c.photo}
-                    alt={c.name}
-                    fill
-                    sizes="96px"
-                    className={styles.casePhotoImg}
+                    src={c.shot}
+                    alt={`Instagram ${c.handle || c.name}`}
+                    width={998}
+                    height={1362}
+                    sizes="(max-width: 900px) 70vw, 320px"
+                    className={styles.igShotImg}
                   />
                 </div>
-                <div className={styles.caseIdentity}>
-                  <h3>{c.name}</h3>
-                  {c.handle ? <span className={styles.caseHandle}>{c.handle}</span> : null}
-                  {c.role ? <p className={styles.caseRole}>{c.role}</p> : null}
+              ) : null}
+
+              <div className={styles.caseContent}>
+                <div className={styles.caseHead}>
+                  {!isIg && c.photo ? (
+                    <div className={styles.casePhoto}>
+                      <Image
+                        src={c.photo}
+                        alt={c.name}
+                        fill
+                        sizes="96px"
+                        className={styles.casePhotoImg}
+                      />
+                    </div>
+                  ) : null}
+                  <div className={styles.caseIdentity}>
+                    <h3>{c.name}</h3>
+                    {c.handle ? <span className={styles.caseHandle}>{c.handle}</span> : null}
+                    {c.role ? <p className={styles.caseRole}>{c.role}</p> : null}
+                  </div>
+                </div>
+
+                <div className={styles.caseCols}>
+                  <div>
+                    <p className={styles.caseLabel}>{beforeLabel}</p>
+                    <ul>
+                      {c.before.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={styles.caseFlow} aria-hidden="true">
+                    <span className={styles.caseFlowLine} />
+                    <span className={styles.caseFlowArrow}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 5v14" />
+                        <path d="M6 13l6 6 6-6" />
+                      </svg>
+                    </span>
+                    <span className={styles.caseFlowLine} />
+                  </div>
+                  <div>
+                    <p className={styles.caseLabelAfter}>{afterLabel}</p>
+                    <ul>
+                      {c.after.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <div className={styles.caseCols}>
-                <div>
-                  <p className={styles.caseLabel}>{beforeLabel}</p>
-                  <ul>
-                    {c.before.map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className={styles.caseLabelAfter}>{afterLabel}</p>
-                  <ul>
-                    {c.after.map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        ))}
+            </>
+          )
+
+          return (
+            <Reveal
+              key={`${c.name}-${i}`}
+              from={i % 2 === 0 ? 'fan' : 'tilt'}
+              delay={i * 90}
+              className={styles.caseReveal}
+            >
+              {href ? (
+                <a
+                  className={cardClass}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${c.name} в Instagram`}
+                >
+                  {body}
+                </a>
+              ) : (
+                <article className={cardClass}>{body}</article>
+              )}
+            </Reveal>
+          )
+        })}
       </div>
 
-      <div className={styles.casesControls} aria-label="Навігація відгуків">
+      <div
+        className={`${styles.casesControls} ${isIg ? styles.casesControlsVisible : ''}`}
+        aria-label="Навігація відгуків"
+      >
         <button
           type="button"
           className={styles.casesArrow}
