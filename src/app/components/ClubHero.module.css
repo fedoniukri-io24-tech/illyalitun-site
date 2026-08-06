@@ -31,7 +31,8 @@
 }
 
 .lead {
-  max-width: 42ch !important;
+  max-width: min(42ch, 48vw) !important;
+  box-sizing: border-box;
 }
 
 .actions {
@@ -92,9 +93,16 @@
     top: auto;
   }
 
-.actions {
+  .lead {
+    max-width: 52vw !important;
+    width: auto;
+    position: relative;
+    z-index: 6;
+  }
+
+  .actions {
     width: max-content;
-    max-width: 58%;
+    max-width: 52vw;
   }
 
   .actions > button,
@@ -128,5 +136,15 @@
     height: 28px !important;
     margin-left: 0;
     flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .lead {
+    max-width: 50vw !important;
+  }
+
+  .actions {
+    max-width: 50vw;
   }
 }

@@ -64,6 +64,8 @@
 
 .role {
   font-size: clamp(16px, 1.6vw, 20px) !important;
+  max-width: min(42ch, 48vw) !important;
+  box-sizing: border-box;
 }
 
 .actions {
@@ -201,11 +203,14 @@
     width: 100%;
   }
 
-  /* Lead + CTA stay in the left column like before */
+  /* Lead + CTA stay in the left column — clear of portrait */
   .role {
     font-size: 16px !important;
-    max-width: 58% !important;
+    max-width: 52vw !important;
     width: auto;
+    position: relative;
+    z-index: 6;
+    box-sizing: border-box;
   }
 
   .actions {
@@ -214,7 +219,7 @@
     flex-direction: column;
     align-items: stretch;
     width: max-content;
-    max-width: 58%;
+    max-width: 52vw;
     gap: 8px;
   }
 
@@ -286,11 +291,11 @@
 
   .role {
     font-size: 15px !important;
-    max-width: 58% !important;
+    max-width: 50vw !important;
   }
 
   .actions {
-    max-width: 58%;
+    max-width: 50vw;
     width: max-content;
     gap: 6px;
     margin-top: 14px;
