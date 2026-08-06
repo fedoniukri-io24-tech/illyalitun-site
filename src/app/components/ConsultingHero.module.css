@@ -88,30 +88,41 @@
     top: auto;
   }
 
-  .actions {
-    width: 100%;
+.actions {
+    width: max-content;
+    max-width: 58%;
   }
 
   .actions > button,
   .actions > a {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 13px 12px 13px 20px;
-    font-size: 15px;
-    min-height: 52px;
+    gap: 8px;
+    padding: 9px 7px 9px 14px;
+    font-size: 13px;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .actions > button span:first-child,
   .actions > a span:first-child {
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: 0;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .actions > button span:last-child,
   .actions > a span:last-child {
-    width: 36px;
-    height: 36px;
-    margin-left: auto;
+    width: 28px !important;
+    height: 28px !important;
+    margin-left: 0;
+    flex: 0 0 auto;
   }
 }

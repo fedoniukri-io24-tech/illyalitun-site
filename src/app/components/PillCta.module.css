@@ -1,9 +1,13 @@
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
   border-radius: var(--radius-pill);
-  padding: 10px 10px 10px 22px;
+  padding: 10px 8px 10px 18px;
   text-decoration: none;
   font-weight: 700;
   font-size: 14px;
@@ -11,11 +15,17 @@
   font-family: inherit;
   cursor: pointer;
   transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
-  white-space: nowrap;
+  overflow: hidden;
 }
 
 .label {
-  line-height: 1.1;
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: 1.15;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .arrow {
@@ -25,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   transition: background 0.25s, color 0.25s, transform 0.2s;
 }
 
@@ -52,4 +62,37 @@
   background: #fff;
   color: var(--color-accent-hover);
   transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+  .cta {
+    gap: 8px;
+    padding: 9px 7px 9px 14px;
+    font-size: 13px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .arrow svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta {
+    gap: 6px;
+    padding: 8px 6px 8px 12px;
+    font-size: 12px;
+  }
+
+  .arrow {
+    width: 26px;
+    height: 26px;
+  }
 }

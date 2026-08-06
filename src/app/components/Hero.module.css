@@ -370,12 +370,12 @@
     inset: auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
-    width: min(78%, 280px);
-    max-width: 280px;
+    gap: 6px;
+    width: min(72%, 200px);
+    max-width: 200px;
     margin-top: auto;
-    padding-top: 20px;
-    padding-bottom: 4px;
+    padding-top: 12px;
+    padding-bottom: 2px;
     z-index: 6;
     align-self: flex-start;
     flex-shrink: 0;
@@ -390,32 +390,31 @@
     transform: none !important;
     width: 100%;
     max-width: none;
-    padding: 14px 16px 12px;
-    border-radius: 14px;
-    /* avoid clip from overflow-hidden ancestors / backdrop edge blur */
+    padding: 8px 10px 7px;
+    border-radius: 12px;
     backface-visibility: hidden;
   }
 
   .glassOrb {
-    top: 10px;
-    right: 10px;
-    width: 18px;
-    height: 18px;
+    top: 7px;
+    right: 7px;
+    width: 14px;
+    height: 14px;
   }
 
   .glassRow {
-    gap: 10px;
-    padding-right: 22px;
+    gap: 8px;
+    padding-right: 16px;
   }
 
   .glassValue {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .glassMeta {
-    font-size: 11px;
-    gap: 2px;
-    line-height: 1.2;
+    font-size: 10px;
+    gap: 0;
+    line-height: 1.15;
   }
 
   .glassLeft,
@@ -452,12 +451,17 @@
   }
 
   .glassCells {
-    width: min(82%, 300px);
-    max-width: 300px;
+    width: min(70%, 180px);
+    max-width: 180px;
+    gap: 5px;
   }
 
   .glassValue {
-    font-size: 22px;
+    font-size: 16px;
+  }
+
+  .glassMeta {
+    font-size: 9px;
   }
 
   .card {
@@ -493,28 +497,28 @@
   }
 
   .glassCells {
-    gap: 8px;
-    padding-top: 12px;
+    gap: 5px;
+    padding-top: 10px;
     padding-bottom: 2px;
   }
 
   .glassCard {
-    padding: 10px 12px 9px;
+    padding: 7px 9px 6px;
   }
 
   .glassValue {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .glassMeta {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .glassOrb {
-    width: 16px;
-    height: 16px;
-    top: 8px;
-    right: 8px;
+    width: 12px;
+    height: 12px;
+    top: 6px;
+    right: 6px;
   }
 }
 
@@ -537,8 +541,8 @@
   }
 
   .glassCells {
-    gap: 6px;
-    width: min(76%, 260px);
+    gap: 4px;
+    width: min(68%, 170px);
   }
 }
 

@@ -60,7 +60,7 @@ export default function ConsultationHero() {
             </h1>
             <p className={`${hero.role} ${styles.role}`}>{data.lead}</p>
             <div className={styles.actions}>
-              <PillCta label="Забронювати місце" onClick={openModal} />
+              <PillCta label="Забронювати" onClick={openModal} />
               <PillCta href="#dlya-koho" label="Деталі" />
             </div>
           </div>

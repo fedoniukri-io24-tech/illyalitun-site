@@ -40,6 +40,27 @@
   margin-top: 40px;
   display: flex;
   justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding-inline: 0;
+  box-sizing: border-box;
+}
+
+.sectionCta > a,
+.sectionCta > button {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .sectionCta {
+    margin-top: 28px;
+  }
+
+  .sectionCta > a,
+  .sectionCta > button {
+    width: min(100%, 320px);
+  }
 }
 
 .checkList {
