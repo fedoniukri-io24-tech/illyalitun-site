@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { APPLY_FORMS } from '../brand'
 import { STRAT } from '../strat-sesiya/data'
 import PillCta from './PillCta'
 import HeroThought from './HeroThought'
-import { useLeadModal } from './LeadModalContext'
 import hero from './Hero.module.css'
 import consult from './ConsultationHero.module.css'
 import styles from './StratHero.module.css'
@@ -35,7 +35,6 @@ function GlassStat({
 
 export default function StratHero() {
   const { hero: data } = STRAT
-  const { openModal } = useLeadModal()
 
   return (
     <div className="litunSkyDeep">
@@ -65,7 +64,7 @@ export default function StratHero() {
             </div>
             <p className={`${hero.role} ${consult.role} ${styles.lead}`}>{data.lead}</p>
             <div className={styles.actions}>
-              <PillCta label={data.cta} onClick={openModal} />
+              <PillCta label={data.cta} href={APPLY_FORMS.stratSesiya} external />
             </div>
           </div>
 

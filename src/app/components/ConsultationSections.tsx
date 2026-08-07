@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { APPLY_FORMS } from '../brand'
 import { CONSULTATION } from '../konsultatsiya/data'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
@@ -21,7 +22,7 @@ function Book() {
   return (
     <Reveal from="pop" delay={80}>
       <div className={page.sectionCta}>
-        <BookCta />
+        <BookCta href={APPLY_FORMS.konsultatsiya} />
       </div>
     </Reveal>
   )

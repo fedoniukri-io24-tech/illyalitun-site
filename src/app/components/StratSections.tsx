@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { APPLY_FORMS } from '../brand'
 import { STRAT } from '../strat-sesiya/data'
 import BookCta from './BookCta'
 import Reveal from './Reveal'
@@ -11,7 +12,7 @@ function Book({ label = 'Забронювати місце' }: { label?: string 
   return (
     <Reveal from="pop" delay={60}>
       <div className={page.sectionCta}>
-        <BookCta label={label} />
+        <BookCta label={label} href={APPLY_FORMS.stratSesiya} />
       </div>
     </Reveal>
   )
@@ -52,21 +53,32 @@ export default function StratSections() {
         </div>
       </section>
 
-      <section className={`${page.sectionLight} ${styles.bandSoft}`} id="fasylitator">
-        <div className={page.wrap}>
+      <section className={styles.facilitatorBand} id="fasylitator">
+        <div className={styles.facilitatorBg} aria-hidden="true">
+          <Image
+            src={d.facilitator.image}
+            alt=""
+            fill
+            sizes="100vw"
+            className={styles.facilitatorBgImg}
+          />
+        </div>
+        <div className={`${page.wrap} ${styles.facilitatorInner}`}>
           <Reveal from="clip">
-            <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.facilitator.title}</h2>
+            <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter} ${styles.facilitatorTitle}`}>
+              {d.facilitator.title}
+            </h2>
           </Reveal>
           <Reveal from="up" delay={40}>
-            <p className={styles.sectionLead}>{d.facilitator.lead}</p>
+            <p className={`${styles.sectionLead} ${styles.facilitatorLead}`}>{d.facilitator.lead}</p>
           </Reveal>
           <Reveal from="up" delay={70}>
-            <p className={styles.sectionIntro}>{d.facilitator.intro}</p>
+            <p className={`${styles.sectionIntro} ${styles.facilitatorIntro}`}>{d.facilitator.intro}</p>
           </Reveal>
           <div className={styles.threeGrid}>
             {d.facilitator.items.map((item, i) => (
               <Reveal key={item.title} from="tilt" delay={i * 70}>
-                <article className={styles.featureCard}>
+                <article className={`${styles.featureCard} ${styles.facilitatorCard}`}>
                   <span className={styles.keyN} aria-hidden="true">
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -205,7 +217,7 @@ export default function StratSections() {
                     <span className={styles.priceLabel}>Вартість</span>
                     <p className={styles.price}>{d.offer.price}</p>
                   </div>
-                  <BookCta label="Забронювати місце" />
+                  <BookCta label="Забронювати місце" href={APPLY_FORMS.stratSesiya} />
                 </div>
               </div>
             </Reveal>

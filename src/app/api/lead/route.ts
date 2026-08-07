@@ -70,6 +70,8 @@ function line(label: string, value: string) {
 function buildMessage(payload: {
   name: string
   phone: string
+  instagram: string
+  telegram: string
   comment: string
   serviceLabel: string
   tariff: string
@@ -88,7 +90,9 @@ function buildMessage(payload: {
     `👤 <b>Контакт</b>`,
     line('Імʼя', payload.name),
     line('Телефон', payload.phone),
-    line('Коментар', payload.comment || '—'),
+    line('Instagram', payload.instagram),
+    line('Telegram', payload.telegram),
+    line('Коментар', payload.comment),
     ``,
     `🎯 <b>Послуга</b>`,
     line('Послуга', payload.serviceLabel),
@@ -126,6 +130,8 @@ export async function POST(req: NextRequest) {
 
   const name = clean(body.name, MAX_NAME)
   const phone = clean(body.phone, MAX_PHONE)
+  const instagram = clean(body.instagram, 64)
+  const telegram = clean(body.telegram, 64)
   const comment = clean(body.comment, MAX_COMMENT)
   const pagePath = clean(body.pagePath, MAX_META) || '/'
   const pageUrl = clean(body.pageUrl, MAX_META)
@@ -187,6 +193,8 @@ export async function POST(req: NextRequest) {
   const text = buildMessage({
     name,
     phone,
+    instagram,
+    telegram,
     comment,
     serviceLabel: service.label,
     tariff,

@@ -47,7 +47,7 @@ export default function ClubHero() {
             fill
             priority
             sizes="(max-width: 768px) 90vw, 55vw"
-            className={`${hero.portraitImage} ${consult.portraitBlend}`}
+            className={`${hero.portraitImage} ${styles.portraitImg}`}
           />
         </div>
 

@@ -3,8 +3,6 @@ export const CONSULTATION = {
     headlineTop: 'Від хаосу до системи',
     headlineBottom: 'за 1 розбір',
     lead: 'Розберемо ваші труднощі на поточному етапі, виявимо критичні помилки та складемо чіткий план зростання.',
-    statLeft: { value: '1', lines: ['сесія', '1-на-1'] },
-    statRight: { value: '$199', lines: ['вартість', 'консультації'] },
     formatLabel: 'Формат:',
     formatText: 'консультаційна сесія 1-на-1',
     image: '/images/consultation-hero.png',
@@ -128,7 +126,7 @@ export const CONSULTATION = {
         ],
       },
       {
-        name: 'Natalia Kravtsiv',
+        name: 'Наталія Кравців',
         before: [
           'Бізнес тримається на одній людині',
           'Відсутня системність',
@@ -165,7 +163,7 @@ export const CONSULTATION = {
   about: {
     title: 'Чому тобі варто прийти на консультацію',
     name: 'Ілля Літун',
-    image: '/images/about-author.jpg',
+    image: '/images/consultation-about.jpg',
     p1: 'У свої 24 я побудував екосистему TURBO EDUCATION.',
     p2: 'Моя екосистема входить у Forbes Next 250. Має 7000 активних учнів щомісяця та 30000+ випускників загалом.',
     p3: 'Моєю місією є реформа української освіти, тому завдяки допомозі власникам онлайн-шкіл я можу покращити сферу навчання в Україні.',

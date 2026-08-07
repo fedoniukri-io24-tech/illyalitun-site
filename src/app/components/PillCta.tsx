@@ -4,10 +4,13 @@ export default function PillCta({
   href = '#kontakt',
   label = 'Забронювати місце',
   onClick,
+  external = false,
 }: {
   href?: string
   label?: string
   onClick?: () => void
+  /** Open in new tab (Google Form etc.) */
+  external?: boolean
 }) {
   const cls = `${styles.cta} ${styles.primary}`
   const content = (
@@ -30,7 +33,13 @@ export default function PillCta({
   }
 
   return (
-    <a href={href} className={cls}>
+    <a
+      href={href}
+      className={cls}
+      {...(external
+        ? { target: '_blank', rel: 'noopener noreferrer' }
+        : {})}
+    >
       {content}
     </a>
   )

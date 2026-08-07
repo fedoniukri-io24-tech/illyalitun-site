@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '../seo'
 import { CONSULTATION } from './data'
+import { APPLY_FORMS } from '../brand'
 import { PageJsonLd } from '../components/JsonLd'
 import Navbar from '../components/Navbar'
 import ConsultationHero from '../components/ConsultationHero'
@@ -28,7 +29,12 @@ export default function KonsultatsiyaPage() {
         <ConsultationProblem />
         <ConsultationSections />
         <ConsultationFaq />
-        <ContactSection tightTop />
+        <ContactSection
+          tightTop
+          mode="apply"
+          applyHref={APPLY_FORMS.konsultatsiya}
+          ctaLabel="Забронювати місце"
+        />
       </main>
       <Footer />
     </>

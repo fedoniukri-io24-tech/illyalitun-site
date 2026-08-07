@@ -11,6 +11,13 @@ export const BRAND = {
   contactImage: '/images/contact-author.jpg',
 } as const
 
+/** Зовнішні анкети (Google Forms) для заявок */
+export const APPLY_FORMS = {
+  konsaltyng: 'https://forms.gle/ghaDLCe1rkZvJDms8',
+  konsultatsiya: 'https://forms.gle/ghaDLCe1rkZvJDms8',
+  stratSesiya: 'https://forms.gle/ghaDLCe1rkZvJDms8',
+} as const
+
 export const STATS = [
   { value: '7000', label: 'активних учнів' },
   { value: '30000+', label: 'випускників' },

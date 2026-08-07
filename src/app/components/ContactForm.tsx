@@ -8,6 +8,8 @@ import styles from './ContactSection.module.css'
 type FormState = {
   name: string
   phone: string
+  instagram: string
+  telegram: string
   comment: string
   consent: boolean
   website: string // honeypot
@@ -42,6 +44,13 @@ function formatUaPhone(raw: string): string {
 
 function phoneDigits(phone: string) {
   return phone.replace(/\D/g, '')
+}
+
+/** Keep @handle — strip spaces/invalid chars, ensure single leading @ */
+function formatHandle(raw: string): string {
+  const cleaned = raw.replace(/^@+/, '').replace(/[^\w.]/g, '')
+  if (!cleaned) return raw.startsWith('@') && raw.length === 1 ? '@' : ''
+  return `@${cleaned.slice(0, 30)}`
 }
 
 function collectUtm() {
@@ -109,6 +118,8 @@ export default function ContactForm({
   const [form, setForm] = useState<FormState>({
     name: '',
     phone: '',
+    instagram: '',
+    telegram: '',
     comment: '',
     consent: false,
     website: '',
@@ -127,6 +138,12 @@ export default function ContactForm({
     setForm((f) => ({ ...f, phone: formatUaPhone(e.target.value) }))
   }
 
+  const handleHandle =
+    (field: 'instagram' | 'telegram') =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setForm((f) => ({ ...f, [field]: formatHandle(e.target.value) }))
+    }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setTouched({ name: true, phone: true })
@@ -137,6 +154,8 @@ export default function ContactForm({
     const payload = {
       name: form.name.trim(),
       phone: form.phone.trim(),
+      instagram: form.instagram.trim(),
+      telegram: form.telegram.trim(),
       comment: form.comment.trim(),
       consent: form.consent,
       website: form.website,
@@ -260,6 +279,48 @@ export default function ContactForm({
         {touched.phone && !phoneOk && (
           <span className={styles.hint}>Введіть повний номер</span>
         )}
+      </div>
+
+      <div className={styles.field}>
+        <label htmlFor={id('instagram')}>
+          Instagram <span className={styles.optional}>необовʼязково</span>
+        </label>
+        <input
+          id={id('instagram')}
+          type="text"
+          inputMode="text"
+          autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck={false}
+          placeholder="@nickname"
+          value={form.instagram}
+          onChange={handleHandle('instagram')}
+          onFocus={() => {
+            if (!form.instagram) setForm((f) => ({ ...f, instagram: '@' }))
+          }}
+          autoComplete="username"
+        />
+      </div>
+
+      <div className={styles.field}>
+        <label htmlFor={id('telegram')}>
+          Telegram <span className={styles.optional}>необовʼязково</span>
+        </label>
+        <input
+          id={id('telegram')}
+          type="text"
+          inputMode="text"
+          autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck={false}
+          placeholder="@nickname"
+          value={form.telegram}
+          onChange={handleHandle('telegram')}
+          onFocus={() => {
+            if (!form.telegram) setForm((f) => ({ ...f, telegram: '@' }))
+          }}
+          autoComplete="username"
+        />
       </div>
 
       <div className={styles.field}>

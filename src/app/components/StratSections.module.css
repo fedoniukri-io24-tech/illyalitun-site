@@ -32,6 +32,61 @@
   background: #fff;
 }
 
+.facilitatorBand {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  padding: var(--c-pad, clamp(56px, 7vw, 100px)) var(--page-pad);
+}
+
+.facilitatorBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.facilitatorBgImg {
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.facilitatorBand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(10, 16, 32, 0.72) 0%, rgba(10, 16, 32, 0.55) 42%, rgba(10, 16, 32, 0.78) 100%),
+    linear-gradient(90deg, rgba(10, 16, 32, 0.45) 0%, transparent 55%);
+}
+
+.facilitatorInner {
+  position: relative;
+  z-index: 2;
+}
+
+.facilitatorTitle {
+  color: #fff !important;
+}
+
+.facilitatorLead {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.facilitatorIntro {
+  color: rgba(255, 255, 255, 0.94) !important;
+}
+
+.facilitatorCard {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 16px 40px rgba(8, 14, 30, 0.28);
+}
+
 .quote {
   margin: 0 auto 36px;
   max-width: 36ch;
@@ -848,6 +903,10 @@
 }
 
 @media (max-width: 900px) {
+  .facilitatorBgImg {
+    object-position: center 28%;
+  }
+
   .resultFeature {
     grid-template-columns: 1fr;
     max-width: 520px;

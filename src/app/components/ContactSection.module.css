@@ -10,6 +10,16 @@
   padding-top: 40px;
 }
 
+.applySection {
+  padding-bottom: 96px;
+}
+
+.applyCta {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
 .inner {
   width: 100%;
   display: flex;

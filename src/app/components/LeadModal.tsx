@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import ContactForm from './ContactForm'
 import type { LeadIntent } from './LeadModalContext'
 import styles from './LeadModal.module.css'
 
 function lockScroll() {
-  const scrollY = window.scrollY
+  const scrollY = window.scrollY || window.pageYOffset || 0
   const { body, documentElement } = document
 
   body.dataset.scrollLockY = String(scrollY)
@@ -22,7 +22,8 @@ function lockScroll() {
 
 function unlockScroll() {
   const { body, documentElement } = document
-  const scrollY = Number(body.dataset.scrollLockY || '0')
+  const raw = body.dataset.scrollLockY
+  const scrollY = raw != null && Number.isFinite(Number(raw)) ? Number(raw) : 0
 
   body.style.overflow = ''
   body.style.position = ''
@@ -33,7 +34,13 @@ function unlockScroll() {
   documentElement.style.overflow = ''
   delete body.dataset.scrollLockY
 
-  window.scrollTo(0, scrollY)
+  // Restore immediately (no smooth scroll) — also set scrollTop for Safari
+  const prev = documentElement.style.scrollBehavior
+  documentElement.style.scrollBehavior = 'auto'
+  window.scrollTo({ top: scrollY, left: 0, behavior: 'auto' })
+  documentElement.scrollTop = scrollY
+  body.scrollTop = scrollY
+  documentElement.style.scrollBehavior = prev
 }
 
 export default function LeadModal({
@@ -46,6 +53,10 @@ export default function LeadModal({
   intent?: LeadIntent | null
 }) {
   const [mounted, setMounted] = useState(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const previouslyFocused = useRef<HTMLElement | null>(null)
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
 
   useEffect(() => {
     setMounted(true)
@@ -54,28 +65,46 @@ export default function LeadModal({
   useEffect(() => {
     if (!open) return
 
+    previouslyFocused.current = document.activeElement as HTMLElement | null
     lockScroll()
 
+    // Focus dialog container (not a far-off page control after close)
+    const t = window.setTimeout(() => {
+      dialogRef.current?.focus({ preventScroll: true })
+    }, 0)
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') onCloseRef.current()
     }
     window.addEventListener('keydown', onKey)
 
     return () => {
-      unlockScroll()
+      window.clearTimeout(t)
       window.removeEventListener('keydown', onKey)
+      unlockScroll()
+      // Restore focus without scrolling the page to the trigger
+      const el = previouslyFocused.current
+      if (el && typeof el.focus === 'function') {
+        try {
+          el.focus({ preventScroll: true })
+        } catch {
+          // ignore
+        }
+      }
     }
-  }, [open, onClose])
+  }, [open])
 
   if (!mounted || !open) return null
 
   return createPortal(
     <div className={styles.overlay} role="presentation" onClick={onClose}>
       <div
+        ref={dialogRef}
         className={styles.dialog}
         role="dialog"
         aria-modal="true"
         aria-labelledby="lead-modal-title"
+        tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
       >
         <button type="button" className={styles.close} onClick={onClose} aria-label="Закрити">

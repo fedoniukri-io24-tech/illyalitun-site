@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '../seo'
 import { CONSULTING } from './data'
+import { APPLY_FORMS } from '../brand'
 import { PageJsonLd } from '../components/JsonLd'
 import Navbar from '../components/Navbar'
 import ConsultingHero from '../components/ConsultingHero'
@@ -26,7 +27,12 @@ export default function KonsaltyngPage() {
         <ConsultingHero />
         <ConsultingSections />
         <ConsultingFaq />
-        <ContactSection tightTop />
+        <ContactSection
+          tightTop
+          mode="apply"
+          applyHref={APPLY_FORMS.konsaltyng}
+          ctaLabel="Забронювати місце"
+        />
       </main>
       <Footer />
     </>

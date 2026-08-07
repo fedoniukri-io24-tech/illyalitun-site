@@ -203,6 +203,38 @@
   font-weight: 500;
 }
 
+/* After — bubbles left, photo right */
+.afterLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.afterPhotoReveal {
+  width: 100%;
+  max-width: 360px;
+  justify-self: end;
+}
+
+.afterPhoto {
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #e8eef8;
+  box-shadow: 0 22px 48px rgba(26, 49, 105, 0.16);
+  line-height: 0;
+}
+
+.afterPhotoImg {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
 /* After — organic scatter of circles (not a neat row wrap) */
 .afterGrid {
   display: flex;
@@ -211,9 +243,9 @@
   align-items: center;
   column-gap: clamp(0px, 1.2vw, 16px);
   row-gap: clamp(4px, 1.5vw, 18px);
-  max-width: 1080px;
-  margin-inline: auto;
-  padding: clamp(8px, 1.5vw, 20px) 2% clamp(28px, 3vw, 40px);
+  max-width: none;
+  margin-inline: 0;
+  padding: clamp(8px, 1.5vw, 20px) 0 clamp(12px, 2vw, 24px);
 }
 
 .afterGrid > * {
@@ -306,15 +338,15 @@
 }
 
 .afterLg {
-  width: clamp(214px, 23vw, 276px);
+  width: clamp(168px, 18vw, 230px);
 }
 
 .afterMd {
-  width: clamp(170px, 17.5vw, 216px);
+  width: clamp(140px, 14.5vw, 186px);
 }
 
 .afterSm {
-  width: clamp(136px, 14vw, 172px);
+  width: clamp(118px, 12vw, 150px);
 }
 
 .afterFilled {
@@ -461,6 +493,24 @@
 
 .tariffFeatured li::before {
   background: #fff;
+}
+
+.tariffStruck {
+  text-decoration: line-through;
+  color: rgba(15, 15, 15, 0.38);
+  font-weight: 500;
+}
+
+.tariffFeatured .tariffStruck {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.tariffStruck::before {
+  background: rgba(42, 100, 233, 0.28);
+}
+
+.tariffFeatured .tariffStruck::before {
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .tariff :global(button) {
@@ -617,11 +667,28 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .afterLayout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .afterPhotoReveal {
+    order: 2;
+    max-width: min(360px, 72vw);
+    justify-self: center;
+    margin-inline: auto;
+  }
+
+  .afterPhoto {
+    border-radius: 20px;
+  }
+
   .afterGrid {
+    order: 1;
     column-gap: 0;
     row-gap: 2px;
     max-width: 100%;
-    padding: 4px 0 20px;
+    padding: 4px 0 8px;
   }
 
   .afterGrid > *:nth-child(n) {

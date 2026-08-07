@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { APPLY_FORMS } from '../brand'
 import { CONSULTING } from '../konsaltyng/data'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
@@ -12,7 +13,7 @@ function Join({ label = 'Доєднатися' }: { label?: string }) {
   return (
     <Reveal from="pop" delay={60}>
       <div className={page.sectionCta}>
-        <BookCta label={label} />
+        <BookCta label={label} href={APPLY_FORMS.konsaltyng} />
       </div>
     </Reveal>
   )
@@ -119,31 +120,46 @@ export default function ConsultingSections() {
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.after.title}</h2>
           </Reveal>
-          <div className={styles.afterGrid}>
-            {d.after.items.map((item, i) => {
-              /* Irregular size mix — not alternating Lg/Md/Sm */
-              const sizes = [
-                styles.afterLg,
-                styles.afterSm,
-                styles.afterMd,
-                styles.afterLg,
-                styles.afterSm,
-                styles.afterMd,
-                styles.afterSm,
-                styles.afterLg,
-              ] as const
-              return (
-                <Reveal key={item} from="pop" delay={i * 55}>
-                  <article
-                    className={`${styles.afterBubble} ${sizes[i]} ${
-                      i % 3 === 0 ? styles.afterFilled : styles.afterOutline
-                    }`}
-                  >
-                    <p>{item}</p>
-                  </article>
-                </Reveal>
-              )
-            })}
+          <div className={styles.afterLayout}>
+            <div className={styles.afterGrid}>
+              {d.after.items.map((item, i) => {
+                /* Irregular size mix — not alternating Lg/Md/Sm */
+                const sizes = [
+                  styles.afterLg,
+                  styles.afterSm,
+                  styles.afterMd,
+                  styles.afterLg,
+                  styles.afterSm,
+                  styles.afterMd,
+                  styles.afterSm,
+                  styles.afterLg,
+                ] as const
+                return (
+                  <Reveal key={item} from="pop" delay={i * 55}>
+                    <article
+                      className={`${styles.afterBubble} ${sizes[i]} ${
+                        i % 3 === 0 ? styles.afterFilled : styles.afterOutline
+                      }`}
+                    >
+                      <p>{item}</p>
+                    </article>
+                  </Reveal>
+                )
+              })}
+            </div>
+            <Reveal from="tilt" delay={120} className={styles.afterPhotoReveal}>
+              <div className={styles.afterPhoto}>
+                <Image
+                  src={d.after.image}
+                  alt="Після консалтингу"
+                  width={587}
+                  height={889}
+                  sizes="(max-width: 900px) 70vw, 360px"
+                  className={styles.afterPhotoImg}
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </div>
+            </Reveal>
           </div>
           <Join />
         </div>
@@ -164,11 +180,21 @@ export default function ConsultingSections() {
                   <h3>{tariff.name}</h3>
                   <p className={styles.tariffPrice}>{tariff.price}</p>
                   <ul>
-                    {tariff.features.map((f) => (
-                      <li key={f}>{f}</li>
-                    ))}
+                    {tariff.features.map((f) => {
+                      const text = typeof f === 'string' ? f : f.text
+                      const struck = typeof f !== 'string' && f.struck
+                      return (
+                        <li key={text} className={struck ? styles.tariffStruck : undefined}>
+                          {text}
+                        </li>
+                      )
+                    })}
                   </ul>
-                  <BookCta label="Доєднатися" tariff={`${tariff.name} · ${tariff.price}`} />
+                  <BookCta
+                    label="Доєднатися"
+                    tariff={`${tariff.name} · ${tariff.price}`}
+                    href={APPLY_FORMS.konsaltyng}
+                  />
                 </article>
               </Reveal>
             ))}
@@ -224,7 +250,7 @@ export default function ConsultingSections() {
           </div>
           <div className={`${page.sectionCta} ${styles.aboutCta}`}>
             <Reveal from="pop" delay={100}>
-              <BookCta label="Доєднатися" />
+              <BookCta label="Доєднатися" href={APPLY_FORMS.konsaltyng} />
             </Reveal>
           </div>
         </div>

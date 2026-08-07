@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '../seo'
 import { STRAT } from './data'
+import { APPLY_FORMS } from '../brand'
 import { PageJsonLd } from '../components/JsonLd'
 import Navbar from '../components/Navbar'
 import StratHero from '../components/StratHero'
@@ -26,7 +27,19 @@ export default function StratSesiyaPage() {
         <StratHero />
         <StratSections />
         <StratFaq />
-        <ContactSection tightTop />
+        <ContactSection
+          tightTop
+          mode="apply"
+          applyHref={APPLY_FORMS.stratSesiya}
+          ctaLabel="Забронювати місце"
+          title={
+            <>
+              Зроби перший крок
+              <br />
+              <em>для росту свого бізнесу</em>
+            </>
+          }
+        />
       </main>
       <Footer />
     </>

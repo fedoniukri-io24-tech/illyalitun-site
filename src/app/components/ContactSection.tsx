@@ -1,21 +1,70 @@
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { BRAND } from '../brand'
 import ContactForm from './ContactForm'
+import PillCta from './PillCta'
 import Reveal from './Reveal'
 import styles from './ContactSection.module.css'
 
-export default function ContactSection({ tightTop = false }: { tightTop?: boolean }) {
+type ContactSectionProps = {
+  tightTop?: boolean
+  /** form = заявка з полями; apply = кнопка на зовнішню анкету */
+  mode?: 'form' | 'apply'
+  title?: ReactNode
+  lead?: string
+  ctaLabel?: string
+  /** Посилання на Google Form / анкету */
+  applyHref?: string
+}
+
+export default function ContactSection({
+  tightTop = false,
+  mode = 'form',
+  title,
+  lead,
+  ctaLabel = 'Забронювати місце',
+  applyHref,
+}: ContactSectionProps) {
+  const heading =
+    title ?? (
+      <>
+        Поговорімо
+        <br />
+        <em>про ріст</em>
+      </>
+    )
+
+  const leadText =
+    lead ??
+    (mode === 'apply'
+      ? 'Залиште заявку в анкеті — підберемо формат роботи під ваш етап освітнього бізнесу.'
+      : 'Залиште заявку — підберемо формат роботи під ваш етап освітнього бізнесу.')
+
+  if (mode === 'apply' && applyHref) {
+    return (
+      <section id="kontakt" className={`${styles.section} ${tightTop ? styles.tightTop : ''} ${styles.applySection}`}>
+        <div className={styles.inner}>
+          <Reveal from="clip">
+            <div className={styles.intro}>
+              <h2 className={styles.heading}>{heading}</h2>
+              <p className={styles.lead}>{leadText}</p>
+              <div className={styles.applyCta}>
+                <PillCta href={applyHref} label={ctaLabel} external />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section id="kontakt" className={`${styles.section} ${tightTop ? styles.tightTop : ''}`}>
       <div className={styles.inner}>
         <Reveal from="clip">
           <div className={styles.intro}>
-            <h2 className={styles.heading}>
-              Поговорімо<br /><em>про ріст</em>
-            </h2>
-            <p className={styles.lead}>
-              Залиште заявку — підберемо формат роботи під ваш етап освітнього бізнесу.
-            </p>
+            <h2 className={styles.heading}>{heading}</h2>
+            <p className={styles.lead}>{leadText}</p>
           </div>
         </Reveal>
 

@@ -10,6 +10,19 @@
   height: 100%;
 }
 
+.portrait {
+  right: 0 !important;
+  width: min(44vw, 580px) !important;
+  height: min(96vh, 980px) !important;
+  bottom: 0;
+}
+
+.portraitImg {
+  mix-blend-mode: lighten;
+  object-fit: contain !important;
+  object-position: center top !important;
+}
+
 .titleRow {
   position: relative;
   display: block;
@@ -69,6 +82,15 @@
   .hero {
     height: 100svh;
     max-height: 100svh;
+  }
+
+  .portrait {
+    width: min(78vw, 400px) !important;
+    height: min(72vh, 560px) !important;
+  }
+
+  .portraitImg {
+    object-position: center top !important;
   }
 
   .titleRow {

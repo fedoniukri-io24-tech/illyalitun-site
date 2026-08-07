@@ -2,9 +2,9 @@
 
 import Image from 'next/image'
 import { CONSULTING } from '../konsaltyng/data'
+import { APPLY_FORMS } from '../brand'
 import PillCta from './PillCta'
 import HeroThought from './HeroThought'
-import { useLeadModal } from './LeadModalContext'
 import hero from './Hero.module.css'
 import consult from './ConsultationHero.module.css'
 import styles from './ConsultingHero.module.css'
@@ -35,19 +35,18 @@ function GlassStat({
 
 export default function ConsultingHero() {
   const { hero: data } = CONSULTING
-  const { openModal } = useLeadModal()
 
   return (
     <div className="litunSky">
       <section className={`${hero.hero} ${consult.consultHero} ${styles.hero}`}>
-        <div className={`${hero.portrait} ${consult.portrait}`}>
+        <div className={`${hero.portrait} ${consult.portrait} ${styles.portrait}`}>
           <Image
             src={data.image}
             alt="Ілля Літун"
             fill
             priority
             sizes="(max-width: 768px) 90vw, 55vw"
-            className={`${hero.portraitImage} ${consult.portraitBlend}`}
+            className={`${hero.portraitImage} ${styles.portraitImg}`}
           />
         </div>
 
@@ -65,7 +64,7 @@ export default function ConsultingHero() {
             </div>
             <p className={`${hero.role} ${consult.role} ${styles.lead}`}>{data.lead}</p>
             <div className={styles.actions}>
-              <PillCta label={data.cta} onClick={openModal} />
+              <PillCta label={data.cta} href={APPLY_FORMS.konsaltyng} external />
             </div>
           </div>
 

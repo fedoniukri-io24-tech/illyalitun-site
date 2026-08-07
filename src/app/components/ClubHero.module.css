@@ -35,6 +35,19 @@
   box-sizing: border-box;
 }
 
+.portrait {
+  right: 0 !important;
+  width: min(44vw, 580px) !important;
+  height: min(96vh, 980px) !important;
+  bottom: 0;
+}
+
+.portraitImg {
+  mix-blend-mode: lighten;
+  object-fit: contain !important;
+  object-position: center top !important;
+}
+
 .actions {
   margin-top: 32px;
   width: fit-content;
@@ -47,10 +60,6 @@
   justify-content: space-between;
   gap: 14px;
   box-sizing: border-box;
-}
-
-.portrait :global(img) {
-  object-position: right bottom;
 }
 
 @media (min-width: 769px) {
@@ -73,6 +82,15 @@
   .hero {
     height: 100svh;
     max-height: 100svh;
+  }
+
+  .portrait {
+    width: min(78vw, 400px) !important;
+    height: min(72vh, 560px) !important;
+  }
+
+  .portraitImg {
+    object-position: center top !important;
   }
 
   .titleRow {

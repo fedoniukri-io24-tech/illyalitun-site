@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar'
 import ClubHero from '../components/ClubHero'
 import ClubSections from '../components/ClubSections'
 import ClubFaq from '../components/ClubFaq'
-import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import page from '../konsultatsiya/consultation.module.css'
 
@@ -26,7 +25,6 @@ export default function KlubPage() {
         <ClubHero />
         <ClubSections />
         <ClubFaq />
-        <ContactSection tightTop />
       </main>
       <Footer />
     </>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { APPLY_FORMS } from '../brand'
 import { CONSULTATION } from '../konsultatsiya/data'
 import BookCta from './BookCta'
 import page from '../konsultatsiya/consultation.module.css'
@@ -69,7 +70,7 @@ export default function ConsultationProblem() {
       </div>
 
       <div className={page.sectionCta}>
-        <BookCta />
+        <BookCta href={APPLY_FORMS.konsultatsiya} />
       </div>
     </section>
   )
