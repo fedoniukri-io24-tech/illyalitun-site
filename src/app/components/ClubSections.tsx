@@ -145,6 +145,7 @@ export default function ClubSections() {
                   <BookCta
                     label="Обрати"
                     tariff={`${tariff.name} · ${tariff.price}${tariff.perMonth ? ` (${tariff.perMonth}/міс)` : ''}`}
+                    href={tariff.href}
                   />
                 </article>
               </Reveal>
