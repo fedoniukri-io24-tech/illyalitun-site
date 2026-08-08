@@ -40,13 +40,13 @@ export default function ClubHero() {
   return (
     <div className="litunSkyOrange">
       <section className={`${hero.hero} ${consult.consultHero} ${styles.hero}`}>
-        <div className={`${hero.portrait} ${consult.portrait} ${styles.portrait}`}>
+        <div className={`${hero.portrait} ${styles.portrait}`}>
           <Image
             src={data.image}
             alt="Turbo Education Club"
             fill
             priority
-            sizes="(max-width: 768px) 90vw, 55vw"
+            sizes="(max-width: 768px) 90vw, 60vw"
             className={`${hero.portraitImage} ${styles.portraitImg}`}
           />
         </div>

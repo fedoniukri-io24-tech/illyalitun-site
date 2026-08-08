@@ -39,14 +39,14 @@ export default function StratHero() {
   return (
     <div className="litunSkyDeep">
       <section className={`${hero.hero} ${consult.consultHero} ${styles.hero}`}>
-        <div className={`${hero.portrait} ${consult.portrait}`}>
+        <div className={`${hero.portrait} ${styles.portrait}`}>
           <Image
             src={data.image}
             alt="Ілля Літун"
             fill
             priority
-            sizes="(max-width: 768px) 90vw, 55vw"
-            className={`${hero.portraitImage} ${consult.portraitBlend}`}
+            sizes="(max-width: 768px) 55vw, 55vw"
+            className={`${hero.portraitImage} ${styles.portraitImg}`}
           />
         </div>
 

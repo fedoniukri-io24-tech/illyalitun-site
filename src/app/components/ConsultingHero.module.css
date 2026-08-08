@@ -12,7 +12,7 @@
 
 .portrait {
   right: 0 !important;
-  width: min(44vw, 580px) !important;
+  width: min(46vw, 620px) !important;
   height: min(96vh, 980px) !important;
   bottom: 0;
 }
@@ -43,8 +43,14 @@
   transform: none;
 }
 
+.headline {
+  max-width: min(16ch, 52vw) !important;
+  font-size: clamp(40px, 5.2vw, 72px) !important;
+  line-height: 0.98 !important;
+}
+
 .lead {
-  max-width: min(42ch, 48vw) !important;
+  max-width: min(36ch, 48vw) !important;
   box-sizing: border-box;
 }
 
@@ -85,12 +91,12 @@
   }
 
   .portrait {
-    width: min(78vw, 400px) !important;
-    height: min(72vh, 560px) !important;
+    width: min(72vw, 360px) !important;
+    height: min(64vh, 500px) !important;
   }
 
   .portraitImg {
-    object-position: center top !important;
+    object-position: right bottom !important;
   }
 
   .titleRow {
@@ -109,6 +115,11 @@
     position: relative;
     left: auto;
     top: auto;
+  }
+
+  .headline {
+    max-width: min(14ch, 58vw) !important;
+    font-size: clamp(32px, 8.5vw, 48px) !important;
   }
 
   .lead {
@@ -158,6 +169,11 @@
 }
 
 @media (max-width: 480px) {
+  .portrait {
+    width: min(68vw, 320px) !important;
+    height: min(58vh, 440px) !important;
+  }
+
   .lead {
     max-width: 50vw !important;
   }

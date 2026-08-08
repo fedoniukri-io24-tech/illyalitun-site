@@ -37,7 +37,7 @@ export default function ContactSection({
   const leadText =
     lead ??
     (mode === 'apply'
-      ? 'Залиште заявку в анкеті — підберемо формат роботи під ваш етап освітнього бізнесу.'
+      ? ''
       : 'Залиште заявку — підберемо формат роботи під ваш етап освітнього бізнесу.')
 
   if (mode === 'apply' && applyHref) {
@@ -47,7 +47,7 @@ export default function ContactSection({
           <Reveal from="clip">
             <div className={styles.intro}>
               <h2 className={styles.heading}>{heading}</h2>
-              <p className={styles.lead}>{leadText}</p>
+              {leadText ? <p className={styles.lead}>{leadText}</p> : null}
               <div className={styles.applyCta}>
                 <PillCta href={applyHref} label={ctaLabel} external />
               </div>

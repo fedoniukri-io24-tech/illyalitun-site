@@ -141,7 +141,12 @@ export default function ConsultationSections() {
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.testimonials.title}</h2>
           </Reveal>
-          <CasesCarousel items={d.testimonials.items} />
+          <CasesCarousel
+            items={d.testimonials.items}
+            beforeLabel="До"
+            afterLabel="Після"
+            variant="instagram"
+          />
         </div>
       </section>
 

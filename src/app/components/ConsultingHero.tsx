@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { CONSULTING } from '../konsaltyng/data'
 import { APPLY_FORMS } from '../brand'
 import PillCta from './PillCta'
-import HeroThought from './HeroThought'
 import hero from './Hero.module.css'
 import consult from './ConsultationHero.module.css'
 import styles from './ConsultingHero.module.css'
@@ -39,13 +38,13 @@ export default function ConsultingHero() {
   return (
     <div className="litunSky">
       <section className={`${hero.hero} ${consult.consultHero} ${styles.hero}`}>
-        <div className={`${hero.portrait} ${consult.portrait} ${styles.portrait}`}>
+        <div className={`${hero.portrait} ${styles.portrait}`}>
           <Image
             src={data.image}
             alt="Ілля Літун"
             fill
             priority
-            sizes="(max-width: 768px) 90vw, 55vw"
+            sizes="(max-width: 768px) 55vw, 55vw"
             className={`${hero.portraitImage} ${styles.portraitImg}`}
           />
         </div>
@@ -54,14 +53,11 @@ export default function ConsultingHero() {
           <a href="/" className={consult.back}>← На головну</a>
 
           <div className={`${hero.copy} ${consult.copy} ${styles.copy}`}>
-            <div className={styles.titleRow}>
-              <h1 className={`${hero.headline} ${consult.headline}`}>
-                {data.headlineTop}
-                <br />
-                <em>{data.headlineBottom}</em>
-              </h1>
-              <HeroThought>{data.eyebrow}</HeroThought>
-            </div>
+            <h1 className={`${hero.headline} ${consult.headline} ${styles.headline}`}>
+              {data.headlineTop}
+              <br />
+              <em>{data.headlineBottom}</em>
+            </h1>
             <p className={`${hero.role} ${consult.role} ${styles.lead}`}>{data.lead}</p>
             <div className={styles.actions}>
               <PillCta label={data.cta} href={APPLY_FORMS.konsaltyng} external />

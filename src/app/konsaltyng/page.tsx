@@ -19,7 +19,7 @@ export default function KonsaltyngPage() {
       <PageJsonLd
         pageKey="konsaltyng"
         serviceName="Консалтинг «Бізнес під крилом»"
-        serviceDescription={CONSULTING.hero.lead}
+        serviceDescription={`${CONSULTING.hero.headlineTop} ${CONSULTING.hero.headlineBottom} ${CONSULTING.hero.lead}`}
         faq={CONSULTING.faq}
       />
       <Navbar transparent />

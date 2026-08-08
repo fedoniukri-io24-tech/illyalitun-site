@@ -37,7 +37,7 @@
 
 .portrait {
   right: 0 !important;
-  width: min(44vw, 580px) !important;
+  width: min(46vw, 620px) !important;
   height: min(96vh, 980px) !important;
   bottom: 0;
 }
@@ -45,7 +45,7 @@
 .portraitImg {
   mix-blend-mode: lighten;
   object-fit: contain !important;
-  object-position: center top !important;
+  object-position: right bottom !important;
 }
 
 .actions {
@@ -85,12 +85,12 @@
   }
 
   .portrait {
-    width: min(78vw, 400px) !important;
-    height: min(72vh, 560px) !important;
+    width: min(72vw, 360px) !important;
+    height: min(64vh, 500px) !important;
   }
 
   .portraitImg {
-    object-position: center top !important;
+    object-position: right bottom !important;
   }
 
   .titleRow {
@@ -158,6 +158,11 @@
 }
 
 @media (max-width: 480px) {
+  .portrait {
+    width: min(68vw, 320px) !important;
+    height: min(58vh, 440px) !important;
+  }
+
   .lead {
     max-width: 50vw !important;
   }
