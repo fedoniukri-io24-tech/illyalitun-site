@@ -73,6 +73,7 @@ export default function ConsultingSections() {
         </div>
       </section>
 
+      {/* Video — uncomment when ready
       <section className={page.sectionLight} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
@@ -89,6 +90,7 @@ export default function ConsultingSections() {
           </Reveal>
         </div>
       </section>
+      */}
 
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="plan">
         <div className={page.wrap}>

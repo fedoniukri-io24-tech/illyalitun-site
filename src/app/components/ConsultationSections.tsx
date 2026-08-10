@@ -90,12 +90,14 @@ export default function ConsultationSections() {
               </Reveal>
               <Book />
             </div>
+            {/* Video — uncomment when ready
             <Reveal from="blur" delay={120}>
               <div className={styles.video}>
                 <span>Відео Іллі</span>
                 <p>Незабаром</p>
               </div>
             </Reveal>
+            */}
           </div>
         </div>
       </section>

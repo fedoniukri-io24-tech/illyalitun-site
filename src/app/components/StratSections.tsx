@@ -117,6 +117,7 @@ export default function StratSections() {
         </div>
       </section>
 
+      {/* Video — uncomment when ready
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
@@ -130,6 +131,7 @@ export default function StratSections() {
           </Reveal>
         </div>
       </section>
+      */}
 
       <section className={`${page.sectionLight} ${styles.scheduleSection}`} id="rozklad">
         <div className={`${page.wrap} ${styles.scheduleLayout}`}>
