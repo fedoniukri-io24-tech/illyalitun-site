@@ -1,4 +1,5 @@
 .hero {
+  position: relative;
   height: 100svh;
   max-height: 100svh;
   min-height: unset !important;
@@ -8,13 +9,19 @@
 .body {
   min-height: unset !important;
   height: 100%;
+  position: relative;
+  z-index: 2;
+  justify-content: flex-start !important;
 }
 
 .titleRow {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   width: fit-content;
-  max-width: 100%;
+  max-width: min(100%, 46vw);
 }
 
 .titleRow h1 {
@@ -22,35 +29,53 @@
   width: auto;
 }
 
-.titleRow > :last-child {
-  position: absolute;
-  left: calc(100% + 16px);
-  top: 0.15em;
+.thoughtWrap {
+  position: relative;
+  left: auto;
+  top: auto;
   margin: 0;
-  transform: none;
+  max-width: min(100%, 320px);
+  z-index: 3;
+}
+
+.copy {
+  max-width: min(100%, 48vw);
 }
 
 .lead {
-  max-width: min(42ch, 48vw) !important;
+  max-width: min(38ch, 42vw) !important;
   box-sizing: border-box;
 }
 
-.portrait {
-  right: 0 !important;
-  width: min(46vw, 620px) !important;
-  height: min(96vh, 980px) !important;
-  bottom: 0;
+/* Full photo — original proportions, desktop right */
+.photo {
+  position: absolute;
+  right: clamp(16px, 3.5vw, 48px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(46vw, 620px);
+  z-index: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 56px rgba(15, 15, 15, 0.22),
+    0 2px 0 rgba(255, 255, 255, 0.35) inset;
+  pointer-events: none;
 }
 
-.portraitImg {
-  mix-blend-mode: lighten;
-  object-fit: contain !important;
-  object-position: right bottom !important;
+.photoImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: none !important;
 }
 
 .actions {
   margin-top: 32px;
   width: fit-content;
+  position: relative;
+  z-index: 3;
 }
 
 .actions :global(button),
@@ -80,17 +105,87 @@
 
 @media (max-width: 768px) {
   .hero {
-    height: 100svh;
-    max-height: 100svh;
+    height: auto;
+    max-height: none;
+    min-height: 100svh !important;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
   }
 
-  .portrait {
-    width: min(72vw, 360px) !important;
-    height: min(64vh, 500px) !important;
+  .body {
+    height: auto;
+    flex: 1 1 auto;
+    min-height: 0 !important;
   }
 
-  .portraitImg {
-    object-position: right bottom !important;
+  /* Photo at bottom, original aspect ratio */
+  .photo {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: min(92vw, 560px);
+    margin: 8px auto max(16px, env(safe-area-inset-bottom));
+    border-radius: 16px;
+    flex: 0 0 auto;
+    z-index: 2;
+  }
+
+  .copy {
+    max-width: 100%;
+  }
+
+  /* Compact stats in one row */
+  .glassCells {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 6px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 16px;
+    padding: 0;
+  }
+
+  .stat {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    flex: 1 1 0;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0;
+    padding: 8px 8px 7px !important;
+    border-radius: 12px;
+  }
+
+  .stat > span:first-child {
+    display: none;
+  }
+
+  .statRow {
+    padding-right: 0 !important;
+    gap: 6px !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .statValue {
+    font-size: 18px !important;
+    line-height: 1 !important;
+  }
+
+  .statMeta {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    gap: 0 !important;
   }
 
   .titleRow {
@@ -99,42 +194,45 @@
     align-items: flex-start;
     gap: 12px;
     width: 100%;
+    max-width: 100%;
   }
 
   .titleRow h1 {
     width: 100%;
   }
 
-  .titleRow > :last-child {
+  .thoughtWrap {
     position: relative;
     left: auto;
     top: auto;
+    max-width: min(100%, 340px);
   }
 
   .lead {
-    max-width: 52vw !important;
+    max-width: min(42ch, 92vw) !important;
     width: auto;
     position: relative;
     z-index: 6;
   }
 
   .actions {
-    width: max-content;
-    max-width: 52vw;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 14px;
   }
 
   .actions > button,
   .actions > a {
-    width: auto;
+    width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    padding: 9px 7px 9px 14px;
-    font-size: 13px;
-    min-height: 0;
+    gap: 12px;
+    padding: 14px 12px 14px 20px;
+    font-size: 16px;
+    min-height: 54px;
     overflow: hidden;
   }
 
@@ -150,24 +248,43 @@
 
   .actions > button span:last-child,
   .actions > a span:last-child {
-    width: 28px !important;
-    height: 28px !important;
+    width: 36px !important;
+    height: 36px !important;
     margin-left: 0;
     flex: 0 0 auto;
   }
 }
 
 @media (max-width: 480px) {
-  .portrait {
-    width: min(68vw, 320px) !important;
-    height: min(58vh, 440px) !important;
+  .photo {
+    width: min(94vw, 480px);
+    border-radius: 14px;
   }
 
   .lead {
-    max-width: 50vw !important;
+    max-width: min(40ch, 94vw) !important;
   }
 
   .actions {
-    max-width: 50vw;
+    max-width: 100%;
+  }
+
+  .actions > button,
+  .actions > a {
+    font-size: 15px;
+    min-height: 52px;
+    padding: 13px 11px 13px 18px;
+  }
+
+  .stat {
+    padding: 7px 6px 6px !important;
+  }
+
+  .statValue {
+    font-size: 16px !important;
+  }
+
+  .statMeta {
+    font-size: 9px !important;
   }
 }

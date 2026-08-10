@@ -5,7 +5,7 @@ export const CLUB = {
     titleBottom: 'for owners',
     lead: 'Місце, де ти знаходиш сильне оточення і рішення на будь-яке своє питання',
     cta: 'Доєднатися',
-    image: '/images/club-hero.png',
+    image: '/images/club-hero.jpg',
   },
   fit: {
     title: 'Ти в правильному місці',

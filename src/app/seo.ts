@@ -118,7 +118,7 @@ export const PAGES: Record<
       'клуб Ілля Літун',
       'підзвітність власників шкіл',
     ],
-    image: '/images/club-hero.png',
+    image: '/images/club-hero.jpg',
     ogType: 'website',
   },
 }

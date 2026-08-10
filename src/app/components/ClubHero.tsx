@@ -19,11 +19,11 @@ function GlassStat({
   className?: string
 }) {
   return (
-    <div className={`${hero.glassCard} ${className ?? ''}`}>
+    <div className={`${hero.glassCard} ${styles.stat} ${className ?? ''}`}>
       <span className={hero.glassOrb} aria-hidden="true" />
-      <div className={hero.glassRow}>
-        <span className={hero.glassValue}>{value}</span>
-        <span className={hero.glassMeta}>
+      <div className={`${hero.glassRow} ${styles.statRow}`}>
+        <span className={`${hero.glassValue} ${styles.statValue}`}>{value}</span>
+        <span className={`${hero.glassMeta} ${styles.statMeta}`}>
           {lines.map((line) => (
             <span key={line}>{line}</span>
           ))}
@@ -40,17 +40,6 @@ export default function ClubHero() {
   return (
     <div className="litunSkyOrange">
       <section className={`${hero.hero} ${consult.consultHero} ${styles.hero}`}>
-        <div className={`${hero.portrait} ${styles.portrait}`}>
-          <Image
-            src={data.image}
-            alt="Turbo Education Club"
-            fill
-            priority
-            sizes="(max-width: 768px) 90vw, 60vw"
-            className={`${hero.portraitImage} ${styles.portraitImg}`}
-          />
-        </div>
-
         <div className={`${hero.body} ${consult.body} ${styles.body}`}>
           <a href="/" className={consult.back}>← На головну</a>
 
@@ -61,15 +50,14 @@ export default function ClubHero() {
                 <br />
                 <em>{data.titleBottom}</em>
               </h1>
-              <HeroThought>{data.badge}</HeroThought>
+              <div className={styles.thoughtWrap}>
+                <HeroThought>{data.badge}</HeroThought>
+              </div>
             </div>
             <p className={`${hero.role} ${consult.role} ${styles.lead}`}>{data.lead}</p>
-            <div className={styles.actions}>
-              <PillCta label={data.cta} onClick={openModal} />
-            </div>
           </div>
 
-          <div className={hero.glassCells} aria-label="Переваги клубу">
+          <div className={`${hero.glassCells} ${styles.glassCells}`} aria-label="Переваги клубу">
             <GlassStat
               value="20"
               lines={['місць у', 'потоці']}
@@ -86,6 +74,22 @@ export default function ClubHero() {
               className={hero.glassRight}
             />
           </div>
+
+          <div className={styles.actions}>
+            <PillCta label={data.cta} onClick={openModal} />
+          </div>
+        </div>
+
+        <div className={styles.photo}>
+          <Image
+            src={data.image}
+            alt="Turbo Education Club"
+            width={1290}
+            height={946}
+            priority
+            sizes="(max-width: 768px) 92vw, 48vw"
+            className={styles.photoImg}
+          />
         </div>
       </section>
     </div>
