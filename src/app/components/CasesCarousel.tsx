@@ -179,7 +179,16 @@ export default function CasesCarousel({
   }, [items.length, variant])
 
   useEffect(() => {
+    const root = scrollerRef.current?.closest('[aria-roledescription="carousel"]')
+    if (!root) return
+
     const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
+      // Don't steal arrows from inputs or when carousel isn't the active target
+      const target = e.target as HTMLElement | null
+      if (target?.closest('input, textarea, select, [contenteditable="true"]')) return
+      if (!root.contains(document.activeElement) && !root.matches(':hover')) return
+      e.preventDefault()
       if (e.key === 'ArrowLeft') goTo(active - 1)
       if (e.key === 'ArrowRight') goTo(active + 1)
     }

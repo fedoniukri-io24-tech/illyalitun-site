@@ -321,7 +321,8 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  touch-action: pan-x;
+  /* Allow vertical page scroll; don't lock the gesture to X only */
+  touch-action: pan-y;
   scrollbar-width: none;
   padding-bottom: 4px;
 }
@@ -342,7 +343,8 @@
   overflow-x: hidden;
   overflow-y: visible;
   scroll-snap-type: x mandatory;
-  overscroll-behavior-x: none;
+  overscroll-behavior: none;
+  /* Page scroll wins — slides change via arrows/dots only */
   touch-action: pan-y;
   padding: 8px max(0px, calc((100% - 780px) / 2)) 12px;
   scroll-padding-inline: max(0px, calc((100% - 780px) / 2));
@@ -914,10 +916,9 @@
     gap: 0;
     padding-inline: 0;
     scroll-padding-inline: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    touch-action: pan-x;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    touch-action: pan-y;
   }
 
   .casesIg > * {

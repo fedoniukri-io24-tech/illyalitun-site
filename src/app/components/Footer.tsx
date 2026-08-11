@@ -43,8 +43,6 @@ export default function Footer() {
                   <h3>Контакти</h3>
                   <p>{BRAND.address}</p>
                   <p>{BRAND.city}</p>
-                  <a href={`tel:${BRAND.phone.replace(/\s/g, '')}`}>{BRAND.phone}</a>
-                  <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
                 </div>
 
                 <div className={styles.col}>
