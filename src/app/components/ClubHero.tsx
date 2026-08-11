@@ -9,30 +9,6 @@ import hero from './Hero.module.css'
 import consult from './ConsultationHero.module.css'
 import styles from './ClubHero.module.css'
 
-function GlassStat({
-  value,
-  lines,
-  className,
-}: {
-  value: string
-  lines: readonly string[]
-  className?: string
-}) {
-  return (
-    <div className={`${hero.glassCard} ${styles.stat} ${className ?? ''}`}>
-      <span className={hero.glassOrb} aria-hidden="true" />
-      <div className={`${hero.glassRow} ${styles.statRow}`}>
-        <span className={`${hero.glassValue} ${styles.statValue}`}>{value}</span>
-        <span className={`${hero.glassMeta} ${styles.statMeta}`}>
-          {lines.map((line) => (
-            <span key={line}>{line}</span>
-          ))}
-        </span>
-      </div>
-    </div>
-  )
-}
-
 export default function ClubHero() {
   const { hero: data } = CLUB
   const { openModal } = useLeadModal()
@@ -55,28 +31,9 @@ export default function ClubHero() {
               </div>
             </div>
             <p className={`${hero.role} ${consult.role} ${styles.lead}`}>{data.lead}</p>
-          </div>
-
-          <div className={`${hero.glassCells} ${styles.glassCells}`} aria-label="Переваги клубу">
-            <GlassStat
-              value="20"
-              lines={['місць у', 'потоці']}
-              className={hero.glassLeft}
-            />
-            <GlassStat
-              value="Live"
-              lines={['зустрічі', 'зі мною']}
-              className={hero.glassMid}
-            />
-            <GlassStat
-              value="24/7"
-              lines={['чат', 'власників']}
-              className={hero.glassRight}
-            />
-          </div>
-
-          <div className={styles.actions}>
-            <PillCta label={data.cta} onClick={openModal} />
+            <div className={styles.actions}>
+              <PillCta label={data.cta} onClick={openModal} />
+            </div>
           </div>
         </div>
 

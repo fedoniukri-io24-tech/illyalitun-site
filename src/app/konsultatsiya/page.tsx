@@ -33,7 +33,8 @@ export default function KonsultatsiyaPage() {
           tightTop
           mode="apply"
           applyHref={APPLY_FORMS.konsultatsiya}
-          ctaLabel="Забронювати місце"
+          title={null}
+          ctaLabel="Залишити заявку"
         />
       </main>
       <Footer />

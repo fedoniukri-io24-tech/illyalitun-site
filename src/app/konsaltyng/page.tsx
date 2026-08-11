@@ -31,7 +31,8 @@ export default function KonsaltyngPage() {
           tightTop
           mode="apply"
           applyHref={APPLY_FORMS.konsaltyng}
-          ctaLabel="Забронювати місце"
+          title={null}
+          ctaLabel="Залишити заявку"
         />
       </main>
       <Footer />

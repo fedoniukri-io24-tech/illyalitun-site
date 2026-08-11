@@ -25,14 +25,13 @@ export default function ContactSection({
   ctaLabel = 'Забронювати місце',
   applyHref,
 }: ContactSectionProps) {
-  const heading =
-    title ?? (
-      <>
-        Поговорімо
-        <br />
-        <em>про ріст</em>
-      </>
-    )
+  const heading = title === undefined ? (
+    <>
+      Поговорімо
+      <br />
+      <em>про ріст</em>
+    </>
+  ) : title
 
   const leadText =
     lead ??
@@ -46,7 +45,7 @@ export default function ContactSection({
         <div className={styles.inner}>
           <Reveal from="clip">
             <div className={styles.intro}>
-              <h2 className={styles.heading}>{heading}</h2>
+              {heading ? <h2 className={styles.heading}>{heading}</h2> : null}
               {leadText ? <p className={styles.lead}>{leadText}</p> : null}
               <div className={styles.applyCta}>
                 <PillCta href={applyHref} label={ctaLabel} external />
