@@ -46,22 +46,7 @@
   }
 }
 
-@media (max-width: 768px) {
-  .portrait {
-    right: 0 !important;
-    width: min(72vw, 360px) !important;
-    height: min(64vh, 500px) !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .portrait {
-    right: 0 !important;
-    width: min(68vw, 320px) !important;
-    height: min(58vh, 440px) !important;
-  }
-}
-
+/* Shared with club / consulting / strat */
 .headline {
   font-size: clamp(46px, 6.4vw, 88px) !important;
   line-height: 0.94 !important;
@@ -73,12 +58,26 @@
   box-sizing: border-box;
 }
 
+/* Consultation page only */
+.consultHeadline {
+  font-size: clamp(40px, 5.4vw, 76px) !important;
+  line-height: 0.96 !important;
+  max-width: min(18ch, 54vw) !important;
+}
+
+.consultLead {
+  font-size: clamp(15px, 1.5vw, 19px) !important;
+  max-width: min(40ch, 46vw) !important;
+}
+
 .actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  width: min(100%, 520px);
-  margin-top: 32px;
+  gap: 12px;
+  width: min(100%, 440px);
+  margin-top: 28px;
+  position: relative;
+  z-index: 12;
 }
 
 .actions > a,
@@ -88,14 +87,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 14px 10px 14px 20px;
-  font-size: 16px;
+  padding: 14px 10px 14px 18px;
+  font-size: 15px;
   box-sizing: border-box;
   overflow: hidden;
   border: none !important;
   color: #fff !important;
   box-shadow: 0 8px 24px rgba(42, 100, 233, 0.28);
-  min-height: 54px;
+  min-height: 52px;
   min-width: 0;
   max-width: 100%;
 }
@@ -113,8 +112,8 @@
 
 .actions > a span:last-child,
 .actions > button span:last-child {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   flex: 0 0 auto;
 }
 
@@ -165,8 +164,36 @@
 }
 
 @media (min-width: 769px) {
+  .page .copy {
+    margin-bottom: 48px !important;
+    transform: none !important;
+    position: relative;
+    z-index: 12;
+  }
+
+  .gLeft {
+    left: auto !important;
+    right: clamp(300px, 34vw, 460px) !important;
+    bottom: clamp(72px, 11vh, 130px) !important;
+    width: min(220px, 26vw) !important;
+  }
+
+  .gMid {
+    left: auto !important;
+    right: clamp(36px, 7vw, 100px) !important;
+    bottom: clamp(24px, 4vh, 48px) !important;
+    transform: none !important;
+    width: min(240px, 28vw) !important;
+  }
+
+  .gRight {
+    right: clamp(12px, 3vw, 40px) !important;
+    bottom: clamp(170px, 24vh, 280px) !important;
+    width: min(220px, 26vw) !important;
+  }
+
   .formatCard {
-    width: min(260px, 32vw);
+    width: min(220px, 26vw);
   }
 }
 
@@ -214,7 +241,6 @@
     width: 100%;
   }
 
-  /* Lead + CTA stay in the left column — clear of portrait */
   .role {
     font-size: 16px !important;
     max-width: 52vw !important;
@@ -224,32 +250,68 @@
     box-sizing: border-box;
   }
 
-  .actions {
-    margin-top: 16px;
+  /* —— consultation page only —— */
+  .page {
+    overflow: hidden !important;
+  }
+
+  .page .body {
+    justify-content: flex-start;
+    gap: 0;
+    overflow: hidden;
+    padding-top: 72px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+
+  .page .copy {
+    display: flex !important;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: 6px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .consultHeadline {
+    font-size: clamp(34px, 9vw, 44px) !important;
+    line-height: 1.02 !important;
+    max-width: 100% !important;
+  }
+
+  .consultLead {
+    margin-top: 10px !important;
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    max-width: 54vw !important;
+  }
+
+  .page .actions {
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     width: max-content;
-    max-width: 52vw;
+    max-width: 58vw;
     gap: 8px;
+    padding-top: 16px;
   }
 
-  .actions > a,
-  .actions > button {
+  .page .actions > a,
+  .page .actions > button {
     width: 100%;
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
     overflow: hidden;
-    font-size: 12px;
-    padding: 8px 6px 8px 10px;
-    min-height: 0;
-    gap: 6px;
+    font-size: 14px;
+    padding: 11px 8px 11px 14px;
+    min-height: 44px;
+    gap: 8px;
     box-shadow: 0 6px 16px rgba(42, 100, 233, 0.22);
   }
 
-  .actions > a span:first-child,
-  .actions > button span:first-child {
+  .page .actions > a span:first-child,
+  .page .actions > button span:first-child {
     flex: 1 1 auto;
     min-width: 0;
     overflow: hidden;
@@ -257,42 +319,79 @@
     white-space: nowrap;
   }
 
-  .actions > a span:last-child,
-  .actions > button span:last-child {
-    width: 24px !important;
-    height: 24px !important;
+  .page .actions > a span:last-child,
+  .page .actions > button span:last-child {
+    width: 28px !important;
+    height: 28px !important;
     flex: 0 0 auto;
   }
 
-  .actions > a span:last-child svg,
-  .actions > button span:last-child svg {
-    width: 9px;
-    height: 9px;
+  .page .actions > a span:last-child svg,
+  .page .actions > button span:last-child svg {
+    width: 10px;
+    height: 10px;
   }
 
-  .portrait {
-    right: 0 !important;
-    width: min(72vw, 360px) !important;
-    height: min(64vh, 500px) !important;
+  .page .portrait {
+    right: -4% !important;
+    width: min(62vw, 300px) !important;
+    height: min(52vh, 400px) !important;
     z-index: 3;
     pointer-events: none;
   }
 
-  .formatCard {
-    padding: 8px 10px 7px !important;
+  .page .glassCells {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: min(58vw, 210px);
+    max-width: 210px;
+    margin-top: 10px !important;
+    margin-bottom: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    align-self: flex-start;
+    flex-shrink: 0;
   }
 
-  .formatLabel {
-    margin: 0 0 3px;
+  .page .glassCells :global([class*='glassCard']) {
+    padding: 12px 12px 10px !important;
+  }
+
+  .page .glassCells :global([class*='glassValue']) {
+    font-size: 22px !important;
+  }
+
+  .page .glassCells :global([class*='glassMeta']) {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+
+  .page .glassCells :global([class*='glassOrb']) {
+    width: 16px;
+    height: 16px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .page .formatCard {
+    padding: 12px 12px 10px !important;
+    width: 100% !important;
+  }
+
+  .page .formatLabel {
+    margin: 0 0 4px;
     padding-right: 18px;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 0.1em;
   }
 
-  .formatText {
-    padding-right: 8px;
-    font-size: 11px;
-    line-height: 1.25;
+  .page .formatText {
+    padding-right: 6px;
+    font-size: 13px;
+    line-height: 1.3;
   }
 }
 
@@ -306,32 +405,54 @@
     max-width: 50vw !important;
   }
 
-  .actions {
-    max-width: 50vw;
-    width: max-content;
+  .page .body {
+    padding-top: 68px;
+  }
+
+  .consultHeadline {
+    font-size: clamp(32px, 8.5vw, 40px) !important;
+  }
+
+  .consultLead {
+    font-size: 14px !important;
+    max-width: 52vw !important;
+  }
+
+  .page .actions {
+    max-width: 56vw;
+    gap: 7px;
+  }
+
+  .page .actions > a,
+  .page .actions > button {
+    font-size: 13px;
+    padding: 10px 7px 10px 12px;
+    min-height: 42px;
+  }
+
+  .page .actions > a span:last-child,
+  .page .actions > button span:last-child {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .page .portrait {
+    width: min(58vw, 260px) !important;
+    height: min(46vh, 340px) !important;
+  }
+
+  .page .glassCells {
+    width: min(56vw, 190px);
+    max-width: 190px;
+    margin-top: 8px !important;
     gap: 6px;
-    margin-top: 14px;
   }
 
-  .actions > a,
-  .actions > button {
-    font-size: 11px;
-    padding: 7px 5px 7px 9px;
+  .page .glassCells :global([class*='glassValue']) {
+    font-size: 20px !important;
   }
 
-  .actions > a span:last-child,
-  .actions > button span:last-child {
-    width: 22px !important;
-    height: 22px !important;
-  }
-
-  .portrait {
-    right: 0 !important;
-    width: min(68vw, 320px) !important;
-    height: min(58vh, 440px) !important;
-  }
-
-  .formatText {
-    font-size: 10px;
+  .page .formatText {
+    font-size: 12px;
   }
 }

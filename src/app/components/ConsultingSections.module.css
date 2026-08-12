@@ -454,6 +454,12 @@
   line-height: 1;
 }
 
+.tariffFooter {
+  margin-top: auto;
+  display: grid;
+  gap: 14px;
+}
+
 .tariffFeatured .tariffPrice {
   color: #fff;
 }

@@ -57,6 +57,8 @@
 .actions {
   margin-top: 32px;
   width: fit-content;
+  position: relative;
+  z-index: 12;
 }
 
 .actions :global(button),
@@ -69,6 +71,35 @@
 }
 
 @media (min-width: 769px) {
+  .copy {
+    margin-bottom: 48px !important;
+    transform: none !important;
+    position: relative;
+    z-index: 12;
+  }
+
+  /* Badges sit on the portrait, never over the CTA */
+  .gLeft {
+    left: auto !important;
+    right: clamp(300px, 34vw, 460px) !important;
+    bottom: clamp(72px, 11vh, 130px) !important;
+    width: min(220px, 26vw) !important;
+  }
+
+  .gMid {
+    left: auto !important;
+    right: clamp(36px, 7vw, 100px) !important;
+    bottom: clamp(24px, 4vh, 48px) !important;
+    transform: none !important;
+    width: min(240px, 28vw) !important;
+  }
+
+  .gRight {
+    right: clamp(12px, 3vw, 40px) !important;
+    bottom: clamp(170px, 24vh, 280px) !important;
+    width: min(200px, 24vw) !important;
+  }
+
   .actions :global(button),
   .actions :global(a) {
     min-width: 260px;

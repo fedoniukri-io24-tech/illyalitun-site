@@ -65,8 +65,14 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
           </button>
         </div>
 
-        <button className={styles.hamburger} onClick={() => setMenuOpen(true)} aria-label="Відкрити меню">
-          <span/><span/><span/>
+        <button type="button" className={styles.hamburger} onClick={() => setMenuOpen(true)} aria-label="Відкрити меню">
+          <span className={styles.menuText}>[menu</span>
+          <span className={styles.menuArrow} aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 14 L14 2 M6 2 H14 V10"/>
+            </svg>
+          </span>
+          <span className={styles.menuText} aria-hidden="true">]</span>
         </button>
       </nav>
 

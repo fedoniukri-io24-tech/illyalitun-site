@@ -47,14 +47,14 @@
   box-sizing: border-box;
 }
 
-/* Portrait photo — original proportions, desktop right */
+/* Landscape photo — original proportions, desktop right */
 .photo {
   position: absolute;
   right: clamp(16px, 3.5vw, 48px);
   top: 50%;
   transform: translateY(-50%);
-  width: min(36vw, 420px);
-  max-height: min(90vh, 860px);
+  width: min(46vw, 620px);
+  max-height: none;
   z-index: 1;
   border-radius: 20px;
   overflow: hidden;
@@ -68,7 +68,7 @@
   display: block;
   width: 100%;
   height: auto;
-  max-height: min(90vh, 860px);
+  max-height: none;
   object-fit: contain;
   filter: none !important;
 }
@@ -127,7 +127,7 @@
     right: auto;
     top: auto;
     transform: none;
-    width: min(70vw, 340px);
+    width: min(92vw, 560px);
     max-height: none;
     margin: 8px auto max(16px, env(safe-area-inset-bottom));
     border-radius: 16px;
@@ -212,7 +212,7 @@
 
 @media (max-width: 480px) {
   .photo {
-    width: min(72vw, 300px);
+    width: min(94vw, 480px);
     border-radius: 14px;
   }
 

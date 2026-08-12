@@ -20,6 +20,18 @@
   background: #fff;
 }
 
+.fitSection {
+  padding-bottom: clamp(24px, 3.5vw, 40px);
+}
+
+.fitSection :global([class*='sectionCta']) {
+  margin-top: 28px;
+}
+
+.includesSection {
+  padding-top: clamp(28px, 4vw, 48px);
+}
+
 .keyN {
   flex-shrink: 0;
   width: 44px;
@@ -117,6 +129,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.includeIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  font-size: 22px;
+  line-height: 1;
+  background: rgba(42, 100, 233, 0.08);
+  border: 1px solid rgba(42, 100, 233, 0.14);
 }
 
 .cadence {

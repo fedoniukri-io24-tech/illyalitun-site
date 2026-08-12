@@ -64,21 +64,21 @@ export default function ConsultingHero() {
             </div>
           </div>
 
-          <div className={hero.glassCells} aria-label="Переваги консалтингу">
+          <div className={`${hero.glassCells} ${styles.glassCells}`} aria-label="Переваги консалтингу">
             <GlassStat
               value="1:1"
               lines={['особистий', 'супровід']}
-              className={hero.glassLeft}
+              className={`${hero.glassLeft} ${styles.gLeft}`}
             />
             <GlassStat
               value="ТОПи"
               lines={['команда', 'експертів']}
-              className={hero.glassMid}
+              className={`${hero.glassMid} ${styles.gMid}`}
             />
             <GlassStat
               value="×2"
               lines={['чистий', 'прибуток']}
-              className={hero.glassRight}
+              className={`${hero.glassRight} ${styles.gRight}`}
             />
           </div>
         </div>

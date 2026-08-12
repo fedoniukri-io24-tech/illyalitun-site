@@ -22,7 +22,7 @@ export default function ClubSections() {
 
   return (
     <>
-      <section className={page.sectionLight} id="fit">
+      <section className={`${page.sectionLight} ${styles.fitSection}`} id="fit">
         <div className={page.wrap}>
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.fit.title}</h2>
@@ -49,7 +49,7 @@ export default function ClubSections() {
         </div>
       </section>
 
-      <section className={`${page.sectionLight} ${styles.bandSoft}`} id="vkhodyt">
+      <section className={`${page.sectionLight} ${styles.bandSoft} ${styles.includesSection}`} id="vkhodyt">
         <div className={page.wrap}>
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.includes.title}</h2>
@@ -61,13 +61,21 @@ export default function ClubSections() {
             {d.includes.items.map((item, i) => (
               <Reveal key={item.title} from="tilt" delay={i * 45} className={styles.includeReveal}>
                 <article className={styles.includeCard}>
-                  <span className={`${styles.cadence} ${styles.cadenceRight}`}>
-                    {item.cadence}
-                  </span>
-                  <div className={styles.includeTop}>
-                    <span className={styles.keyN} aria-hidden="true">
-                      {String(i + 1).padStart(2, '0')}
+                  {item.cadence ? (
+                    <span className={`${styles.cadence} ${styles.cadenceRight}`}>
+                      {item.cadence}
                     </span>
+                  ) : null}
+                  <div className={styles.includeTop}>
+                    {'icon' in item && item.icon ? (
+                      <span className={styles.includeIcon} aria-hidden="true">
+                        {item.icon}
+                      </span>
+                    ) : (
+                      <span className={styles.keyN} aria-hidden="true">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    )}
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -165,11 +173,11 @@ export default function ClubSections() {
                 <p className={styles.aboutLead}>{d.about.p1}</p>
               </Reveal>
               <Reveal from="up" delay={140}>
-                <p>{d.about.role}</p>
+                <p>{d.about.p2}</p>
               </Reveal>
               <Reveal from="clip" delay={180}>
                 <blockquote className={styles.aboutQuote}>
-                  <p>{d.about.p2}</p>
+                  <p>{d.about.p3}</p>
                   <footer>— {d.about.name}</footer>
                 </blockquote>
               </Reveal>

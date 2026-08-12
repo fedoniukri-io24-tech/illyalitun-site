@@ -5,7 +5,6 @@ import { APPLY_FORMS } from '../brand'
 import { PageJsonLd } from '../components/JsonLd'
 import Navbar from '../components/Navbar'
 import ConsultationHero from '../components/ConsultationHero'
-import ConsultationProblem from '../components/ConsultationProblem'
 import ConsultationSections from '../components/ConsultationSections'
 import ConsultationFaq from '../components/ConsultationFaq'
 import ContactSection from '../components/ContactSection'
@@ -26,7 +25,6 @@ export default function KonsultatsiyaPage() {
       <Navbar transparent />
       <main className={page.page}>
         <ConsultationHero />
-        <ConsultationProblem />
         <ConsultationSections />
         <ConsultationFaq />
         <ContactSection

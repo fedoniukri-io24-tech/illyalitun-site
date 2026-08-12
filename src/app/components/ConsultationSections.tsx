@@ -5,6 +5,7 @@ import { APPLY_FORMS } from '../brand'
 import { CONSULTATION } from '../konsultatsiya/data'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
+import ConsultationProblem from './ConsultationProblem'
 import Reveal from './Reveal'
 import page from '../konsultatsiya/consultation.module.css'
 import styles from './ConsultationSections.module.css'
@@ -33,6 +34,7 @@ export default function ConsultationSections() {
 
   return (
     <>
+      {/* 1 — Консультація для */}
       <section className={page.sectionLight} id="dlya-koho">
         <div className={page.wrap}>
           <Reveal from="clip">
@@ -52,7 +54,11 @@ export default function ConsultationSections() {
         </div>
       </section>
 
-      <section className={page.sectionLight}>
+      {/* 2 — Повністю прописаний шлях / 80% */}
+      <ConsultationProblem />
+
+      {/* 3 — Пропрацюємо будь-який запит */}
+      <section className={page.sectionLight} id="zapyt">
         <div className={page.wrap}>
           <Reveal from="clip">
             <h2 className={page.sectionTitle}>{d.topics.title}</h2>
@@ -74,6 +80,7 @@ export default function ConsultationSections() {
         </div>
       </section>
 
+      {/* 4 — Як результат консультації */}
       <section className={page.sectionLight}>
         <div className={page.wrap}>
           <div className={styles.split}>
@@ -102,15 +109,14 @@ export default function ConsultationSections() {
         </div>
       </section>
 
+      {/* 5 — Що входить */}
       <section className={page.sectionLight} id="oferta">
         <div className={page.wrap}>
           <div className={styles.offerLayout}>
             <Reveal from="clip">
               <div>
                 <h2 className={page.sectionTitle}>{d.offer.title}</h2>
-                <p className={styles.offerLead}>
-                  Все необхідне, щоб після сесії вийти з чітким планом і підтримкою на впровадження.
-                </p>
+                <p className={styles.offerLead}>{d.offer.lead}</p>
               </div>
             </Reveal>
             <Reveal from="tilt" delay={100}>
@@ -128,9 +134,12 @@ export default function ConsultationSections() {
                 <div className={styles.offerFooter}>
                   <div className={styles.priceBlock}>
                     <span className={styles.priceLabel}>Вартість</span>
-                    <p className={styles.price}>{d.offer.price}</p>
+                    <p className={styles.priceRow}>
+                      <span className={styles.priceOld}>{d.offer.oldPrice}</span>
+                      <span className={styles.price}>{d.offer.price}</span>
+                    </p>
                   </div>
-                  <BookCta />
+                  <BookCta href={APPLY_FORMS.konsultatsiya} label={d.offer.cta} />
                 </div>
               </div>
             </Reveal>
@@ -138,13 +147,14 @@ export default function ConsultationSections() {
         </div>
       </section>
 
-      <section className={page.sectionLight}>
+      {/* 6 — Результати учасників */}
+      <section className={`${page.sectionLight} ${styles.resultsSection}`} id="rezultaty">
         <div className={page.wrap}>
           <Reveal from="clip">
-            <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.testimonials.title}</h2>
+            <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.results.title}</h2>
           </Reveal>
           <CasesCarousel
-            items={d.testimonials.items}
+            items={d.results.items}
             beforeLabel="До"
             afterLabel="Після"
             variant="instagram"
@@ -152,6 +162,7 @@ export default function ConsultationSections() {
         </div>
       </section>
 
+      {/* 7 — Чому варто прийти */}
       <section className={styles.aboutBand}>
         <div className={page.wrap}>
           <Reveal from="blur">
@@ -159,6 +170,18 @@ export default function ConsultationSections() {
           </Reveal>
 
           <div className={styles.aboutLayout}>
+            <Reveal from="tilt" delay={80} className={styles.aboutPhotoReveal}>
+              <div className={styles.aboutPhoto}>
+                <Image
+                  src={d.about.image}
+                  alt={d.about.name}
+                  fill
+                  sizes="(max-width: 900px) 86vw, 400px"
+                  className={styles.aboutPhotoImg}
+                />
+              </div>
+            </Reveal>
+
             <div className={styles.aboutCopy}>
               <Reveal from="up" delay={80}>
                 <p className={styles.aboutLead}>{d.about.p1}</p>
@@ -173,23 +196,11 @@ export default function ConsultationSections() {
                 </blockquote>
               </Reveal>
             </div>
-
-            <Reveal from="tilt" delay={120} className={styles.aboutPhotoReveal}>
-              <div className={styles.aboutPhoto}>
-                <Image
-                  src={d.about.image}
-                  alt={d.about.name}
-                  fill
-                  sizes="(max-width: 900px) 86vw, 400px"
-                  className={styles.aboutPhotoImg}
-                />
-              </div>
-            </Reveal>
           </div>
 
           <div className={`${page.sectionCta} ${styles.aboutCta}`}>
             <Reveal from="pop" delay={120}>
-              <BookCta />
+              <BookCta href={APPLY_FORMS.konsultatsiya} />
             </Reveal>
           </div>
         </div>

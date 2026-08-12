@@ -103,8 +103,8 @@ export default function StratSections() {
             {d.prep.items.map((item, i) => (
               <Reveal key={item.title} from="right" delay={i * 50}>
                 <article className={styles.prepItem}>
-                  <span className={styles.keyN} aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
+                  <span className={styles.prepIcon} aria-hidden="true">
+                    {item.icon}
                   </span>
                   <div>
                     <h3>{item.title}</h3>
@@ -117,7 +117,6 @@ export default function StratSections() {
         </div>
       </section>
 
-      {/* Video — uncomment when ready
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
@@ -131,7 +130,6 @@ export default function StratSections() {
           </Reveal>
         </div>
       </section>
-      */}
 
       <section className={`${page.sectionLight} ${styles.scheduleSection}`} id="rozklad">
         <div className={`${page.wrap} ${styles.scheduleLayout}`}>

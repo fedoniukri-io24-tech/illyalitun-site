@@ -1,9 +1,13 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent } from 'react'
 import Image from 'next/image'
-import Reveal from './Reveal'
 import styles from './ConsultationSections.module.css'
+
+const AXIS_LOCK_PX = 10
+const MIN_SWIPE_PX = 48
+const SWIPE_RATIO = 0.18
+const FLICK_VELOCITY = 0.42
 
 type CaseItem = {
   name: string
@@ -13,7 +17,6 @@ type CaseItem = {
   shot?: string
   role?: string
   handle?: string
-  /** Instagram profile URL; derived from handle if omitted */
   href?: string
 }
 
@@ -42,7 +45,7 @@ function CaseCardBody({
         <div className={styles.igShot}>
           <Image
             src={c.shot}
-            alt={`Instagram ${c.handle || c.name}`}
+            alt={c.handle ? `Instagram ${c.handle}` : c.name}
             width={998}
             height={1362}
             sizes="(max-width: 900px) 100vw, 280px"
@@ -63,6 +66,7 @@ function CaseCardBody({
                 fill
                 sizes="96px"
                 className={styles.casePhotoImg}
+                draggable={false}
               />
             </div>
           ) : null}
@@ -75,7 +79,6 @@ function CaseCardBody({
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
                 >
                   {c.handle}
                 </a>
@@ -129,73 +132,170 @@ export default function CasesCarousel({
   items: readonly CaseItem[]
   beforeLabel?: string
   afterLabel?: string
-  /** plain = text cards; instagram = gallery with swipe */
   variant?: 'plain' | 'instagram'
 }) {
-  const scrollerRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
+  const [dragging, setDragging] = useState(false)
   const isIg = variant === 'instagram'
+  const last = items.length - 1
+  const canSwipe = last > 0
+
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const activeRef = useRef(active)
+  activeRef.current = active
+
+  const gesture = useRef<{
+    pointerId: number
+    startX: number
+    startY: number
+    lastX: number
+    lastT: number
+    vx: number
+    axis: 'undecided' | 'x' | 'y'
+  } | null>(null)
+  const suppressClick = useRef(false)
 
   const goTo = useCallback((index: number) => {
-    const el = scrollerRef.current
-    if (!el) return
-    const next = Math.max(0, Math.min(items.length - 1, index))
-    const card = el.children[next] as HTMLElement | undefined
-    if (!card) return
-    // Scroll only the track — avoid scrollIntoView (it steals page scroll)
-    const left = card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2
-    el.scrollTo({ left: Math.max(0, left), behavior: 'smooth' })
-    setActive(next)
-  }, [items.length])
+    setActive(Math.max(0, Math.min(last, index)))
+  }, [last])
+
+  const dragRef = useRef(0)
+
+  const setDragPx = useCallback((px: number) => {
+    dragRef.current = px
+    viewportRef.current?.style.setProperty('--drag', `${px}px`)
+  }, [])
 
   useEffect(() => {
-    const el = scrollerRef.current
-    if (!el) return
+    viewportRef.current?.style.setProperty('--i', String(active))
+  }, [active])
 
-    const update = () => {
-      const cards = Array.from(el.children) as HTMLElement[]
-      if (!cards.length) return
-      const center = el.scrollLeft + el.clientWidth / 2
-      let best = 0
-      let bestDist = Infinity
-      cards.forEach((card, i) => {
-        const mid = card.offsetLeft + card.offsetWidth / 2
-        const dist = Math.abs(mid - center)
-        if (dist < bestDist) {
-          bestDist = dist
-          best = i
-        }
+  const rubber = (dx: number, index: number) => {
+    const atStart = index <= 0 && dx > 0
+    const atEnd = index >= last && dx < 0
+    if (atStart || atEnd) return dx * 0.32
+    return dx
+  }
+
+  const releasePointer = (el: HTMLDivElement, pointerId: number) => {
+    gesture.current = null
+    if (el.hasPointerCapture(pointerId)) {
+      el.releasePointerCapture(pointerId)
+    }
+  }
+
+  const settle = (next: number) => {
+    const el = viewportRef.current
+    const from = activeRef.current
+    const slide = el?.querySelector(`.${styles.caseSlide}`) as HTMLElement | null
+    const gap = el ? parseFloat(getComputedStyle(el).getPropertyValue('--gap')) || 0 : 0
+    const step = (slide?.offsetWidth ?? el?.clientWidth ?? 0) + gap
+    const remainder = dragRef.current + (next - from) * step
+
+    el?.style.setProperty('--i', String(next))
+    setDragPx(remainder)
+    goTo(next)
+
+    requestAnimationFrame(() => {
+      setDragging(false)
+      requestAnimationFrame(() => {
+        setDragPx(0)
       })
-      setActive(best)
+    })
+  }
+
+  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (!canSwipe || e.button !== 0) return
+    if (gesture.current) return
+    suppressClick.current = false
+    gesture.current = {
+      pointerId: e.pointerId,
+      startX: e.clientX,
+      startY: e.clientY,
+      lastX: e.clientX,
+      lastT: e.timeStamp,
+      vx: 0,
+      axis: 'undecided',
+    }
+  }
+
+  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const g = gesture.current
+    if (!g || g.pointerId !== e.pointerId) return
+
+    const dx = e.clientX - g.startX
+    const dy = e.clientY - g.startY
+    const dt = e.timeStamp - g.lastT
+
+    if (dt > 0) {
+      g.vx = (e.clientX - g.lastX) / dt
+      g.lastX = e.clientX
+      g.lastT = e.timeStamp
     }
 
-    update()
-    el.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    return () => {
-      el.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [items.length, variant])
-
-  useEffect(() => {
-    const root = scrollerRef.current?.closest('[aria-roledescription="carousel"]')
-    if (!root) return
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
-      // Don't steal arrows from inputs or when carousel isn't the active target
-      const target = e.target as HTMLElement | null
-      if (target?.closest('input, textarea, select, [contenteditable="true"]')) return
-      if (!root.contains(document.activeElement) && !root.matches(':hover')) return
-      e.preventDefault()
-      if (e.key === 'ArrowLeft') goTo(active - 1)
-      if (e.key === 'ArrowRight') goTo(active + 1)
+    if (g.axis === 'undecided') {
+      if (Math.abs(dx) < AXIS_LOCK_PX && Math.abs(dy) < AXIS_LOCK_PX) return
+      // Vertical wins on ties so page scroll is never stolen.
+      g.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y'
+      if (g.axis === 'y') {
+        gesture.current = null
+        return
+      }
+      e.currentTarget.setPointerCapture(e.pointerId)
+      setDragging(true)
     }
 
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [active, goTo])
+    if (g.axis !== 'x') return
+
+    suppressClick.current = true
+    setDragPx(rubber(dx, activeRef.current))
+  }
+
+  const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const g = gesture.current
+    if (!g || g.pointerId !== e.pointerId) return
+
+    const el = e.currentTarget
+    const index = activeRef.current
+    const dx = e.clientX - g.startX
+    const width = el.clientWidth || 1
+    const threshold = Math.max(MIN_SWIPE_PX, width * SWIPE_RATIO)
+    const flicked = Math.abs(g.vx) >= FLICK_VELOCITY
+    const wasSwipe = g.axis === 'x'
+
+    releasePointer(el, e.pointerId)
+
+    if (!wasSwipe) {
+      setDragging(false)
+      setDragPx(0)
+      return
+    }
+
+    let next = index
+    if (dx <= -threshold || (flicked && g.vx < 0 && dx < 0)) next = index + 1
+    else if (dx >= threshold || (flicked && g.vx > 0 && dx > 0)) next = index - 1
+    next = Math.max(0, Math.min(last, next))
+    settle(next)
+  }
+
+  const onPointerCancel = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const g = gesture.current
+    if (!g || g.pointerId !== e.pointerId) return
+    const wasSwipe = g.axis === 'x'
+    releasePointer(e.currentTarget, e.pointerId)
+    if (wasSwipe) settle(activeRef.current)
+    else {
+      setDragging(false)
+      setDragPx(0)
+    }
+  }
+
+  const onClickCapture = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (!suppressClick.current) return
+    e.preventDefault()
+    e.stopPropagation()
+    suppressClick.current = false
+  }
 
   return (
     <div
@@ -204,16 +304,25 @@ export default function CasesCarousel({
       aria-label={isIg ? 'Результати учасників' : 'Відгуки'}
     >
       <div
-        ref={scrollerRef}
-        className={`${styles.cases} ${isIg ? styles.casesIg : styles.casesPlain}`}
+        ref={viewportRef}
+        className={`${styles.casesViewport} ${isIg ? styles.casesViewportIg : styles.casesViewportPlain} ${
+          dragging ? styles.casesViewportDragging : ''
+        } ${canSwipe ? styles.casesViewportSwipe : ''}`}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}
+        onLostPointerCapture={onPointerCancel}
+        onClickCapture={onClickCapture}
+        onDragStart={(e) => e.preventDefault()}
       >
-        {items.map((c, i) => (
-          <div key={`${c.name}-${i}`} className={styles.caseSlide}>
-            <Reveal
-              from={i % 2 === 0 ? 'fan' : 'tilt'}
-              delay={isIg ? 0 : i * 90}
-              className={styles.caseReveal}
-            >
+        <div
+          className={`${styles.casesTrack} ${isIg ? styles.casesTrackIg : styles.casesTrackPlain} ${
+            dragging ? styles.casesTrackDragging : ''
+          }`}
+        >
+          {items.map((c, i) => (
+            <div key={`${c.name}-${i}`} className={styles.caseSlide}>
               <article
                 className={`${styles.case} ${isIg ? styles.caseIg : styles.casePlain} ${
                   isIg && i % 2 === 1 ? styles.caseIgTiltAlt : ''
@@ -226,15 +335,12 @@ export default function CasesCarousel({
                   afterLabel={afterLabel}
                 />
               </article>
-            </Reveal>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div
-        className={`${styles.casesControls} ${styles.casesControlsVisible}`}
-        aria-label="Навігація"
-      >
+      <div className={`${styles.casesControls} ${styles.casesControlsVisible}`} aria-label="Навігація">
         <div className={styles.casesGalleryNav}>
           <button
             type="button"
@@ -266,7 +372,7 @@ export default function CasesCarousel({
             type="button"
             className={`${styles.casesArrow} ${styles.casesGalleryArrow}`}
             onClick={() => goTo(active + 1)}
-            disabled={active >= items.length - 1}
+            disabled={active >= last}
             aria-label="Наступний"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

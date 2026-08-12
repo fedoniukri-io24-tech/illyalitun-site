@@ -26,8 +26,8 @@
   color: var(--color-accent);
 }
 
-.transparent .hamburger span {
-  background: var(--color-bg);
+.transparent .hamburger {
+  color: var(--color-bg);
 }
 
 .solid {
@@ -51,14 +51,14 @@
   color: var(--color-accent);
 }
 
-.solid .hamburger span {
-  background: var(--color-bg);
+.solid .hamburger {
+  color: var(--color-bg);
 }
 
 .brand {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 24px;
+  font-size: 30px;
   letter-spacing: -0.02em;
   color: var(--color-bg);
   text-decoration: none;
@@ -182,29 +182,47 @@
 
 .hamburger {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
+  align-items: center;
+  gap: 4px;
   cursor: pointer;
   background: none;
   border: none;
   border-radius: 0;
-  padding: 4px;
+  padding: 4px 0;
   width: auto;
   height: auto;
-  transition: opacity 0.2s;
+  color: var(--color-bg);
+  transition: opacity 0.2s, color 0.2s;
 }
+
 .hamburger:hover {
   background: none;
-  opacity: 0.7;
+  opacity: 0.72;
+  color: var(--color-accent);
 }
-.hamburger span {
+
+.menuText {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  line-height: 1;
+}
+
+.menuArrow {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.menuArrow svg {
   display: block;
-  width: 24px;
-  height: 2.5px;
-  background: var(--color-bg);
-  border-radius: 4px;
-  margin-inline: 0;
 }
 
 .drawer {
@@ -340,5 +358,5 @@
   .solid { padding: 12px var(--page-pad); }
   .right { display: none; }
   .hamburger { display: flex; }
-  .brand { font-size: 22px; }
+  .brand { font-size: 26px; }
 }

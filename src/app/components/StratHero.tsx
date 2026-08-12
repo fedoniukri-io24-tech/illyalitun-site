@@ -51,39 +51,39 @@ export default function StratHero() {
         </div>
 
         <div className={`${hero.body} ${consult.body} ${styles.body}`}>
-          <a href="/" className={consult.back}>← На головну</a>
+          <a href="/" className={`${consult.back} ${styles.back}`}>← На головну</a>
 
           <div className={`${hero.copy} ${consult.copy} ${styles.copy}`}>
-            <div className={styles.titleRow}>
-              <h1 className={`${hero.headline} ${consult.headline}`}>
-                {data.headlineTop}
-                <br />
-                <em>{data.headlineBottom}</em>
-              </h1>
+            <div className={styles.eyebrow}>
               <HeroThought tone="deep">{data.eyebrow}</HeroThought>
             </div>
-            <p className={`${hero.role} ${consult.role} ${styles.lead}`}>{data.lead}</p>
+            <h1 className={`${hero.headline} ${consult.headline} ${styles.headline}`}>
+              {data.headlineTop}
+              <br />
+              <em>{data.headlineBottom}</em>
+            </h1>
+            <p className={`${hero.role} ${consult.role} ${styles.lead}`}>
+              Без стратегії власник 24/7 загрузає в операційці, а команда працює без мети.{' '}
+              <em className={styles.leadAccent}>Стратегічна сесія —</em> момент, де стає видно, що працює, а що ні.
+            </p>
             <div className={styles.actions}>
               <PillCta label={data.cta} href={APPLY_FORMS.stratSesiya} external />
             </div>
           </div>
 
           <div className={hero.glassCells} aria-label="Деталі страт сесії">
-            <GlassStat
-              value="8г"
-              lines={['інтенсивної', 'роботи']}
-              className={hero.glassLeft}
-            />
-            <GlassStat
-              value="4"
-              lines={['блоки', 'глибини']}
-              className={hero.glassMid}
-            />
-            <GlassStat
-              value="UA"
-              lines={['Київ /', 'Львів']}
-              className={hero.glassRight}
-            />
+            {data.stats.map((stat, index) => (
+              <GlassStat
+                key={stat.value}
+                value={stat.value}
+                lines={stat.lines}
+                className={[
+                  `${hero.glassLeft} ${styles.gLeft}`,
+                  `${hero.glassMid} ${styles.gMid}`,
+                  `${hero.glassRight} ${styles.gRight}`,
+                ][index]}
+              />
+            ))}
           </div>
         </div>
       </section>

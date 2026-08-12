@@ -82,6 +82,12 @@
     transform: translateY(-20px);
   }
 
+  /* Home-only layout: title higher, achievement pills shifted left */
+  .home .copy {
+    margin-bottom: clamp(168px, 20vh, 240px);
+    transform: translateY(-56px);
+  }
+
   .glassCells {
     z-index: 6;
   }
@@ -570,5 +576,17 @@
 
   .glassRight {
     z-index: 11;
+  }
+
+  .home .glassMid {
+    left: clamp(200px, 26vw, 360px);
+    transform: none;
+  }
+
+  .home .glassRight {
+    left: clamp(360px, 44vw, 560px);
+    right: auto;
+    bottom: clamp(128px, 16vh, 200px);
+    width: min(210px, 28vw);
   }
 }

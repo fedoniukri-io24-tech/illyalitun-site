@@ -20,7 +20,7 @@ function statLines(label: string): string[] {
 
 export default function Hero() {
   return (
-    <section className={styles.hero}>
+    <section className={`${styles.hero} ${styles.home}`}>
       <div className={styles.portrait}>
         <Image
           src={BRAND.heroDesktop}

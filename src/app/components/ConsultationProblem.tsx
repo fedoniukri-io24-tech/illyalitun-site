@@ -40,6 +40,8 @@ export default function ConsultationProblem() {
     <section className={styles.section} id="problem">
       <div className={styles.chart} aria-hidden="true" />
 
+      <h2 className={styles.sectionTitle}>{problem.sectionTitle}</h2>
+
       <div
         ref={stageRef}
         className={`${styles.stage} ${revealed ? styles.revealed : ''}`}
@@ -47,11 +49,11 @@ export default function ConsultationProblem() {
         <div className={styles.copy}>
           <p className={styles.eyebrow}>[ {problem.eyebrow} ]</p>
 
-          <h2 className={styles.title}>
+          <h3 className={styles.title}>
             {problem.titleLines.map((line) => (
               <span key={line}>{line}</span>
             ))}
-          </h2>
+          </h3>
 
           <p className={styles.question}>{problem.question}</p>
         </div>

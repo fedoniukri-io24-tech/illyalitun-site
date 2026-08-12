@@ -23,35 +23,44 @@
   object-position: center top !important;
 }
 
-.titleRow {
-  position: relative;
-  display: block;
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
   width: fit-content;
+  max-width: 100%;
+  margin-bottom: 16px;
+}
+
+.eyebrow :global(aside) {
+  width: fit-content !important;
   max-width: 100%;
 }
 
-.titleRow h1 {
-  max-width: none;
-  width: auto;
-}
-
-.titleRow > :last-child {
-  position: absolute;
-  left: calc(100% + 16px);
-  top: 0.15em;
-  margin: 0;
-  transform: none;
+.headline {
+  max-width: min(18ch, 58vw) !important;
 }
 
 .lead {
-  max-width: min(42ch, 48vw) !important;
+  max-width: min(46ch, 52vw) !important;
   color: #fff !important;
   box-sizing: border-box;
 }
 
+.leadAccent {
+  font-style: normal;
+  font-weight: 750;
+  color: var(--color-accent) !important;
+}
+
 .actions {
-  margin-top: 32px;
+  margin-top: 28px;
   width: fit-content;
+  position: relative;
+  z-index: 12;
 }
 
 .actions :global(button),
@@ -64,6 +73,52 @@
 }
 
 @media (min-width: 769px) {
+  .body {
+    justify-content: flex-start !important;
+  }
+
+  .copy {
+    max-width: min(62vw, 840px);
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    transform: none !important;
+    position: relative;
+    z-index: 12;
+  }
+
+  .headline {
+    font-size: clamp(48px, 6.2vw, 88px) !important;
+    line-height: 1.02 !important;
+    max-width: min(18ch, 58vw) !important;
+  }
+
+  .lead {
+    margin-top: 18px;
+    font-size: clamp(17px, 1.8vw, 22px) !important;
+    max-width: min(46ch, 50vw) !important;
+  }
+
+  .gLeft {
+    left: auto !important;
+    right: clamp(300px, 34vw, 460px) !important;
+    bottom: clamp(72px, 11vh, 130px) !important;
+    width: min(220px, 26vw) !important;
+  }
+
+  .gMid {
+    left: auto !important;
+    right: clamp(36px, 7vw, 100px) !important;
+    bottom: clamp(24px, 4vh, 48px) !important;
+    transform: none !important;
+    width: min(240px, 28vw) !important;
+  }
+
+  .gRight {
+    right: clamp(12px, 3vw, 40px) !important;
+    bottom: clamp(170px, 24vh, 280px) !important;
+    width: min(200px, 24vw) !important;
+  }
+
   .actions :global(button),
   .actions :global(a) {
     min-width: 260px;
@@ -94,22 +149,12 @@
     object-position: right bottom !important;
   }
 
-  .titleRow {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    width: 100%;
+  .eyebrow {
+    margin-bottom: 12px;
   }
 
-  .titleRow h1 {
-    width: 100%;
-  }
-
-  .titleRow > :last-child {
-    position: relative;
-    left: auto;
-    top: auto;
+  .headline {
+    max-width: 100% !important;
   }
 
   .lead {

@@ -73,14 +73,10 @@ export default function ConsultingSections() {
         </div>
       </section>
 
-      {/* Video — uncomment when ready
       <section className={page.sectionLight} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.video.title}</h2>
-          </Reveal>
-          <Reveal from="up" delay={50}>
-            <p className={styles.sectionLead}>{d.video.lead}</p>
           </Reveal>
           <Reveal from="blur" delay={100}>
             <div className={styles.video}>
@@ -90,7 +86,6 @@ export default function ConsultingSections() {
           </Reveal>
         </div>
       </section>
-      */}
 
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="plan">
         <div className={page.wrap}>
@@ -180,7 +175,6 @@ export default function ConsultingSections() {
                     <span className={styles.tariffBadge}>{tariff.badge}</span>
                   ) : null}
                   <h3>{tariff.name}</h3>
-                  <p className={styles.tariffPrice}>{tariff.price}</p>
                   <ul>
                     {tariff.features.map((f) => {
                       const text = typeof f === 'string' ? f : f.text
@@ -192,11 +186,14 @@ export default function ConsultingSections() {
                       )
                     })}
                   </ul>
-                  <BookCta
-                    label="Доєднатися"
-                    tariff={`${tariff.name} · ${tariff.price}`}
-                    href={APPLY_FORMS.konsaltyng}
-                  />
+                  <div className={styles.tariffFooter}>
+                    <p className={styles.tariffPrice}>{tariff.price}</p>
+                    <BookCta
+                      label="Доєднатися"
+                      tariff={`${tariff.name} · ${tariff.price}`}
+                      href={APPLY_FORMS.konsaltyng}
+                    />
+                  </div>
                 </article>
               </Reveal>
             ))}
