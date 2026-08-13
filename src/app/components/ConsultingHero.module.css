@@ -145,8 +145,9 @@
   }
 
   .portrait {
-    width: min(72vw, 360px) !important;
-    height: min(60vh, 460px) !important;
+    right: -3% !important;
+    width: min(86vw, 432px) !important;
+    height: min(72vh, 552px) !important;
   }
 
   .portraitImg {
@@ -243,8 +244,9 @@
   }
 
   .portrait {
-    width: min(68vw, 300px) !important;
-    height: min(52vh, 400px) !important;
+    right: -4% !important;
+    width: min(82vw, 360px) !important;
+    height: min(62vh, 480px) !important;
   }
 
   .copy {

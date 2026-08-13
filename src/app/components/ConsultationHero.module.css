@@ -266,9 +266,9 @@
   .page .copy {
     display: flex !important;
     flex-direction: column;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     min-height: 0;
-    margin-top: 6px !important;
+    margin-top: 4px !important;
     margin-bottom: 0 !important;
   }
 
@@ -279,21 +279,21 @@
   }
 
   .consultLead {
-    margin-top: 10px !important;
+    margin-top: 8px !important;
     font-size: 15px !important;
     line-height: 1.4 !important;
     max-width: 54vw !important;
   }
 
   .page .actions {
-    margin-top: auto;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     width: max-content;
     max-width: 58vw;
     gap: 8px;
-    padding-top: 16px;
+    padding-top: 0;
   }
 
   .page .actions > a,
@@ -333,9 +333,9 @@
   }
 
   .page .portrait {
-    right: -4% !important;
-    width: min(62vw, 300px) !important;
-    height: min(52vh, 400px) !important;
+    right: -6% !important;
+    width: min(84vw, 420px) !important;
+    height: min(70vh, 540px) !important;
     z-index: 3;
     pointer-events: none;
   }
@@ -345,10 +345,10 @@
     inset: auto !important;
     display: grid !important;
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 7px;
     width: min(58vw, 210px);
     max-width: 210px;
-    margin-top: 10px !important;
+    margin-top: 12px !important;
     margin-bottom: 0;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -421,6 +421,7 @@
   .page .actions {
     max-width: 56vw;
     gap: 7px;
+    margin-top: 14px;
   }
 
   .page .actions > a,
@@ -437,14 +438,15 @@
   }
 
   .page .portrait {
-    width: min(58vw, 260px) !important;
-    height: min(46vh, 340px) !important;
+    right: -7% !important;
+    width: min(80vw, 380px) !important;
+    height: min(60vh, 460px) !important;
   }
 
   .page .glassCells {
     width: min(56vw, 190px);
     max-width: 190px;
-    margin-top: 8px !important;
+    margin-top: 10px !important;
     gap: 6px;
   }
 
