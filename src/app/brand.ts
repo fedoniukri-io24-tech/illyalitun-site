@@ -13,7 +13,7 @@ export const BRAND = {
 
 /** Зовнішні анкети (Google Forms) для заявок */
 export const APPLY_FORMS = {
-  konsaltyng: 'https://forms.gle/ghaDLCe1rkZvJDms8',
+  konsaltyng: 'https://forms.gle/2mffo2YmFnMM76M39',
   konsultatsiya: 'https://forms.gle/ghaDLCe1rkZvJDms8',
   stratSesiya: 'https://forms.gle/ghaDLCe1rkZvJDms8',
 } as const
