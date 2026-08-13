@@ -41,8 +41,8 @@ export default function ClubHero() {
           <Image
             src={data.image}
             alt="Turbo Education Club"
-            width={1290}
-            height={946}
+            width={2560}
+            height={1920}
             priority
             sizes="(max-width: 768px) 92vw, 48vw"
             className={styles.photoImg}

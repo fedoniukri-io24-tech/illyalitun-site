@@ -46,11 +46,9 @@ function CaseCardBody({
           <Image
             src={c.shot}
             alt={c.handle ? `Instagram ${c.handle}` : c.name}
-            width={998}
-            height={1362}
-            sizes="(max-width: 900px) 100vw, 280px"
+            fill
+            sizes="(max-width: 900px) 42vw, 280px"
             className={styles.igShotImg}
-            style={{ width: '100%', height: 'auto' }}
             draggable={false}
           />
         </div>

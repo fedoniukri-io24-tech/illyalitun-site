@@ -83,8 +83,8 @@ export default function ConsultationSections() {
       {/* 4 — Як результат консультації */}
       <section className={page.sectionLight}>
         <div className={page.wrap}>
-          <div className={styles.split}>
-            <div>
+          <div className={`splitMedia ${styles.split}`}>
+            <div className="splitMediaCopy">
               <Reveal from="clip">
                 <h2 className={page.sectionTitle}>{d.outcomes.title}</h2>
               </Reveal>
@@ -97,14 +97,17 @@ export default function ConsultationSections() {
               </Reveal>
               <Book />
             </div>
-            {/* Video — uncomment when ready
-            <Reveal from="blur" delay={120}>
-              <div className={styles.video}>
-                <span>Відео Іллі</span>
-                <p>Незабаром</p>
+            <Reveal from="tilt" delay={120} className={`splitMediaPhotoWrap ${styles.outcomesPhotoReveal}`}>
+              <div className={`splitMediaPhoto ${styles.outcomesPhoto}`}>
+                <Image
+                  src={d.outcomes.image}
+                  alt={d.outcomes.title}
+                  fill
+                  sizes="(max-width: 900px) 86vw, 380px"
+                  className={`splitMediaPhotoImg ${styles.outcomesPhotoImg}`}
+                />
               </div>
             </Reveal>
-            */}
           </div>
         </div>
       </section>
@@ -170,18 +173,6 @@ export default function ConsultationSections() {
           </Reveal>
 
           <div className={styles.aboutLayout}>
-            <Reveal from="tilt" delay={80} className={styles.aboutPhotoReveal}>
-              <div className={styles.aboutPhoto}>
-                <Image
-                  src={d.about.image}
-                  alt={d.about.name}
-                  fill
-                  sizes="(max-width: 900px) 86vw, 400px"
-                  className={styles.aboutPhotoImg}
-                />
-              </div>
-            </Reveal>
-
             <div className={styles.aboutCopy}>
               <Reveal from="up" delay={80}>
                 <p className={styles.aboutLead}>{d.about.p1}</p>

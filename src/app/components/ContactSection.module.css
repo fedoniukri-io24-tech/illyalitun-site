@@ -72,6 +72,7 @@
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
   gap: 0;
+  align-items: stretch;
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
@@ -81,7 +82,13 @@
 
 .visual {
   position: relative;
-  min-height: 580px;
+  min-height: 340px;
+}
+
+@media (min-width: 981px) {
+  .visual {
+    min-height: 100%;
+  }
 }
 
 .img {

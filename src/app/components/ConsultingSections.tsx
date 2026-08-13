@@ -73,6 +73,7 @@ export default function ConsultingSections() {
         </div>
       </section>
 
+      {/* Video — uncomment when ready
       <section className={page.sectionLight} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
@@ -86,6 +87,7 @@ export default function ConsultingSections() {
           </Reveal>
         </div>
       </section>
+      */}
 
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="plan">
         <div className={page.wrap}>
@@ -117,7 +119,7 @@ export default function ConsultingSections() {
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.after.title}</h2>
           </Reveal>
-          <div className={styles.afterLayout}>
+          <div className={`splitMedia ${styles.afterLayout}`}>
             <div className={styles.afterGrid}>
               {d.after.items.map((item, i) => {
                 /* Irregular size mix — not alternating Lg/Md/Sm */
@@ -144,16 +146,14 @@ export default function ConsultingSections() {
                 )
               })}
             </div>
-            <Reveal from="tilt" delay={120} className={styles.afterPhotoReveal}>
-              <div className={styles.afterPhoto}>
+            <Reveal from="tilt" delay={120} className={`splitMediaPhotoWrap ${styles.afterPhotoReveal}`}>
+              <div className={`splitMediaPhoto ${styles.afterPhoto}`}>
                 <Image
                   src={d.after.image}
                   alt="Після консалтингу"
-                  width={587}
-                  height={889}
-                  sizes="(max-width: 900px) 70vw, 360px"
-                  className={styles.afterPhotoImg}
-                  style={{ width: '100%', height: 'auto' }}
+                  fill
+                  sizes="(max-width: 900px) 70vw, 380px"
+                  className={`splitMediaPhotoImg ${styles.afterPhotoImg}`}
                 />
               </div>
             </Reveal>
@@ -220,8 +220,8 @@ export default function ConsultingSections() {
           <Reveal from="blur">
             <h2 className={styles.aboutTitle}>{d.about.title}</h2>
           </Reveal>
-          <div className={styles.aboutLayout}>
-            <div className={styles.aboutCopy}>
+          <div className={`splitMedia ${styles.aboutLayout}`}>
+            <div className={`splitMediaCopy ${styles.aboutCopy}`}>
               <Reveal from="up" delay={80}>
                 <p className={styles.aboutLead}>{d.about.p1}</p>
               </Reveal>
@@ -235,14 +235,14 @@ export default function ConsultingSections() {
                 </blockquote>
               </Reveal>
             </div>
-            <Reveal from="tilt" delay={120} className={styles.aboutPhotoReveal}>
-              <div className={styles.aboutPhoto}>
+            <Reveal from="tilt" delay={120} className={`splitMediaPhotoWrap ${styles.aboutPhotoReveal}`}>
+              <div className={`splitMediaPhoto ${styles.aboutPhoto}`}>
                 <Image
                   src={d.about.image}
                   alt={d.about.name}
                   fill
-                  sizes="(max-width: 900px) 86vw, 400px"
-                  className={styles.aboutPhotoImg}
+                  sizes="(max-width: 900px) 86vw, 380px"
+                  className={`splitMediaPhotoImg ${styles.aboutPhotoImg}`}
                 />
               </div>
             </Reveal>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import HomeMission from './components/HomeMission'
 import Footer from './components/Footer'
 import { pageMetadata, SITE, absoluteUrl } from './seo'
 import { SERVICES } from './brand'
@@ -45,6 +46,7 @@ export default function LitunPage() {
         <div className="litunSky">
           <Hero />
         </div>
+        <HomeMission />
       </main>
       <Footer />
     </>

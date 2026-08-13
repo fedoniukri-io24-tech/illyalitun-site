@@ -117,6 +117,7 @@ export default function StratSections() {
         </div>
       </section>
 
+      {/* Video — uncomment when ready
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
@@ -130,6 +131,7 @@ export default function StratSections() {
           </Reveal>
         </div>
       </section>
+      */}
 
       <section className={`${page.sectionLight} ${styles.scheduleSection}`} id="rozklad">
         <div className={`${page.wrap} ${styles.scheduleLayout}`}>
@@ -230,8 +232,8 @@ export default function StratSections() {
           <Reveal from="blur">
             <h2 className={styles.aboutTitle}>{d.about.title}</h2>
           </Reveal>
-          <div className={styles.aboutLayout}>
-            <div className={styles.aboutCopy}>
+          <div className={`splitMedia ${styles.aboutLayout}`}>
+            <div className={`splitMediaCopy ${styles.aboutCopy}`}>
               <Reveal from="up" delay={80}>
                 <p className={styles.aboutLead}>{d.about.p1}</p>
               </Reveal>
@@ -253,14 +255,14 @@ export default function StratSections() {
                 ))}
               </div>
             </div>
-            <Reveal from="tilt" delay={100} className={styles.aboutPhotoReveal}>
-              <div className={styles.aboutPhoto}>
+            <Reveal from="tilt" delay={100} className={`splitMediaPhotoWrap ${styles.aboutPhotoReveal}`}>
+              <div className={`splitMediaPhoto ${styles.aboutPhoto}`}>
                 <Image
                   src={d.about.image}
                   alt={d.about.name}
                   fill
-                  sizes="(max-width: 900px) 86vw, 400px"
-                  className={styles.aboutPhotoImg}
+                  sizes="(max-width: 900px) 86vw, 380px"
+                  className={`splitMediaPhotoImg ${styles.aboutPhotoImg}`}
                 />
               </div>
             </Reveal>

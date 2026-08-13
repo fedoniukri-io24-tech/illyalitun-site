@@ -47,8 +47,6 @@ export default function ConsultationProblem() {
         className={`${styles.stage} ${revealed ? styles.revealed : ''}`}
       >
         <div className={styles.copy}>
-          <p className={styles.eyebrow}>[ {problem.eyebrow} ]</p>
-
           <h3 className={styles.title}>
             {problem.titleLines.map((line) => (
               <span key={line}>{line}</span>

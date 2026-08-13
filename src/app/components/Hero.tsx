@@ -9,10 +9,9 @@ const COLOR_CLASS: Record<(typeof SERVICES)[number]['color'], string> = {
   orange: styles.cardOrange,
 }
 
-const GLASS_POS = [styles.glassLeft, styles.glassMid, styles.glassRight] as const
+const GLASS_POS = [styles.glassLeft, styles.glassMid] as const
 
 function statLines(label: string): string[] {
-  if (label === 'Next 250') return ['Next', '250']
   if (label === 'активних учнів') return ['активних', 'учнів']
   if (label === 'випускників') return ['випускників']
   return [label]
@@ -52,7 +51,7 @@ export default function Hero() {
 
         <div className={styles.copy}>
           <h1 className={styles.headline}>
-            Освітній бізнес<br />з&nbsp;<em>Іллею Літуном</em>
+            Масштабуй свій освітній<br />бізнес з&nbsp;<em>Іллею Літуном</em>
           </h1>
           <p className={styles.role}>{BRAND.role}</p>
         </div>

@@ -19,9 +19,8 @@ export const APPLY_FORMS = {
 } as const
 
 export const STATS = [
-  { value: '7000', label: 'активних учнів' },
-  { value: '30000+', label: 'випускників' },
-  { value: 'Forbes', label: 'Next 250' },
+  { value: '7 тис.', label: 'активних учнів' },
+  { value: '30 тис', label: 'випускників' },
 ] as const
 
 export const SOCIALS = [

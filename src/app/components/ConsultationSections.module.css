@@ -141,12 +141,28 @@
   font-size: 17px;
 }
 
-/* Outcomes */
+/* Outcomes — desktop grid via .splitMedia; stack on tablet/mobile */
 .split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
+  gap: 28px;
+}
+
+.outcomesPhotoReveal {
+  width: 100%;
+}
+
+.outcomesPhoto {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #e8eef8;
+  box-shadow: 0 22px 48px rgba(26, 49, 105, 0.14);
+}
+
+.outcomesPhotoImg {
+  object-fit: cover;
+  object-position: center top;
 }
 
 .video {
@@ -396,11 +412,13 @@
   min-width: var(--slide);
   max-width: var(--slide);
   box-sizing: border-box;
+  display: flex;
   height: auto;
 }
 
 .casesViewportIg .caseSlide > * {
   width: 100%;
+  height: 100%;
 }
 
 .casesViewportPlain .caseSlide > * {
@@ -489,7 +507,7 @@
 .caseIg {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   gap: clamp(16px, 2.4vw, 24px);
   padding: clamp(14px, 2vw, 18px);
   border-radius: 28px;
@@ -502,7 +520,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transform: rotate(-1.25deg);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
-  height: auto;
+  height: 100%;
   width: 100%;
   overflow: visible;
 }
@@ -526,37 +544,27 @@
 }
 
 .igShot {
+  position: relative;
   flex: 0 0 min(280px, 36%);
   width: min(280px, 36%);
   max-width: 280px;
-  align-self: flex-start;
+  align-self: stretch;
   border-radius: 18px;
-  overflow: visible;
+  overflow: hidden;
   background: #f0f3fa;
   box-shadow: 0 14px 32px rgba(26, 49, 105, 0.12);
-  display: block;
-}
-
-.igShot :global(> span) {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  max-height: none !important;
-  overflow: visible !important;
+  min-height: 0;
 }
 
 .igShotImg {
-  display: block;
-  width: 100% !important;
-  height: auto !important;
-  max-height: none !important;
-  object-fit: contain;
+  object-fit: cover;
   object-position: top center;
   border-radius: 18px;
 }
 
 .caseContent {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 14px;
   min-width: 0;
   flex: 1 1 0;
@@ -650,6 +658,7 @@
   grid-template-columns: 1fr;
   gap: 14px;
   align-items: start;
+  flex: 1;
 }
 
 .caseFlow {
@@ -748,21 +757,26 @@
 }
 
 .aboutLayout {
-  display: grid;
-  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
-  gap: 40px 56px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  max-width: 1080px;
+  gap: 32px;
+  max-width: 720px;
   margin-inline: auto;
+  text-align: center;
 }
 
 .aboutPhotoReveal {
-  justify-self: start;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .aboutCopy {
   display: grid;
   gap: 18px;
+  width: 100%;
+  text-align: center;
 }
 
 .aboutCopy p {
@@ -783,13 +797,13 @@
 .aboutPhoto {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 340px;
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 18px 44px rgba(15, 15, 15, 0.24);
   background: rgba(255, 255, 255, 0.1);
-  justify-self: start;
+  margin-inline: auto;
 }
 
 .aboutPhotoImg {
@@ -798,10 +812,11 @@
 }
 
 .aboutQuote {
-  margin: 8px 0 0;
+  margin: 8px auto 0;
   padding: 20px 0 0;
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.22);
+  text-align: center;
 }
 
 .aboutQuote p {
@@ -821,6 +836,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.72);
+  text-align: center;
 }
 
 .aboutCta a,
@@ -849,6 +865,14 @@
 .aboutCta a:hover span:last-child,
 .aboutCta button:hover span:last-child {
   transform: rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  .split {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
 }
 
 @media (max-width: 980px) {
@@ -943,32 +967,22 @@
     font-size: 12.5px;
   }
 
-  .split,
   .offerLayout {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 
-  .aboutLayout {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
+  .outcomesPhoto {
+    max-width: 360px;
+    margin-inline: auto;
   }
 
-  .aboutPhotoReveal {
-    order: -1;
-    width: 100%;
+  .aboutLayout {
+    gap: 24px;
   }
 
   .aboutPhoto {
-    max-width: 340px;
-    margin-inline: auto;
-    justify-self: center;
-  }
-
-  .aboutCopy,
-  .aboutQuote {
-    text-align: center;
+    max-width: 280px;
   }
 
   .casesWrap {
@@ -1025,14 +1039,12 @@
     flex: 0 0 auto;
     width: min(42vw, 148px);
     max-width: 148px;
+    height: 180px;
     align-self: center;
   }
 
   .igShotImg {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 180px !important;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .caseIg .caseContent {
