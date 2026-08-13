@@ -117,13 +117,36 @@
 
 @media (max-width: 768px) {
   .hero {
-    height: 100svh;
-    max-height: 100svh;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100svh;
+    min-height: 100dvh;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  .body {
+    height: auto !important;
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
+    justify-content: flex-start;
+    flex: none;
+    padding: 84px var(--hero-pad) max(24px, calc(16px + env(safe-area-inset-bottom)));
+    gap: 0;
+  }
+
+  .copy {
+    margin-top: 16px;
+    max-width: 58%;
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
 
   .portrait {
     width: min(72vw, 360px) !important;
-    height: min(64vh, 500px) !important;
+    height: min(60vh, 460px) !important;
   }
 
   .portraitImg {
@@ -149,11 +172,15 @@
   }
 
   .headline {
-    max-width: min(14ch, 58vw) !important;
-    font-size: clamp(32px, 8.5vw, 48px) !important;
+    max-width: 100% !important;
+    font-size: clamp(36px, 10vw, 52px) !important;
+    line-height: 1.02 !important;
   }
 
   .lead {
+    margin-top: 10px;
+    font-size: 17px !important;
+    line-height: 1.45 !important;
     max-width: 52vw !important;
     width: auto;
     position: relative;
@@ -161,8 +188,19 @@
   }
 
   .actions {
+    margin-top: 22px;
+    padding-top: 0;
     width: max-content;
     max-width: 52vw;
+  }
+
+  .glassCells {
+    position: relative !important;
+    inset: auto !important;
+    margin-top: 16px !important;
+    padding-top: 0 !important;
+    align-self: flex-start;
+    flex-shrink: 0;
   }
 
   .actions > button,
@@ -200,16 +238,63 @@
 }
 
 @media (max-width: 480px) {
+  .body {
+    padding-top: 78px;
+  }
+
   .portrait {
-    width: min(68vw, 320px) !important;
-    height: min(58vh, 440px) !important;
+    width: min(68vw, 300px) !important;
+    height: min(52vh, 400px) !important;
+  }
+
+  .copy {
+    max-width: 56%;
+    margin-top: 12px;
+  }
+
+  .headline {
+    font-size: clamp(34px, 9.5vw, 48px) !important;
+    line-height: 1.02 !important;
   }
 
   .lead {
+    font-size: 16px !important;
     max-width: 50vw !important;
   }
 
   .actions {
     max-width: 50vw;
+    margin-top: 18px;
+  }
+
+  .glassCells {
+    margin-top: 14px !important;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 740px) {
+  .body {
+    padding-top: 72px;
+  }
+
+  .copy {
+    margin-top: 10px;
+  }
+
+  .headline {
+    font-size: clamp(32px, 9vw, 46px) !important;
+  }
+
+  .lead {
+    font-size: 16px !important;
+    margin-top: 8px;
+  }
+
+  .actions {
+    margin-top: 16px;
+  }
+
+  .glassCells {
+    margin-top: 12px !important;
   }
 }
