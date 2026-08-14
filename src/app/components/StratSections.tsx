@@ -233,28 +233,6 @@ export default function StratSections() {
             <h2 className={styles.aboutTitle}>{d.about.title}</h2>
           </Reveal>
           <div className={`splitMedia ${styles.aboutLayout}`}>
-            <div className={`splitMediaCopy ${styles.aboutCopy}`}>
-              <Reveal from="up" delay={80}>
-                <p className={styles.aboutLead}>{d.about.p1}</p>
-              </Reveal>
-              <Reveal from="up" delay={120}>
-                <p>{d.about.p2}</p>
-              </Reveal>
-              <Reveal from="clip" delay={160}>
-                <blockquote className={styles.aboutQuote}>
-                  <p>{d.about.p3}</p>
-                  <footer>— {d.about.name}</footer>
-                </blockquote>
-              </Reveal>
-              <div className={styles.aboutStats}>
-                {d.about.stats.map((s) => (
-                  <div key={s.label} className={styles.aboutStat}>
-                    <strong>{s.value}</strong>
-                    <span>{s.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
             <Reveal from="tilt" delay={100} className={`splitMediaPhotoWrap ${styles.aboutPhotoReveal}`}>
               <div className={`splitMediaPhoto ${styles.aboutPhoto}`}>
                 <Image
@@ -266,6 +244,23 @@ export default function StratSections() {
                 />
               </div>
             </Reveal>
+            <div className={`splitMediaCopy ${styles.aboutCopy}`}>
+              <Reveal from="up" delay={80}>
+                <p className={styles.aboutName}>{d.about.name}</p>
+              </Reveal>
+              <Reveal from="up" delay={100}>
+                <p className={styles.aboutLead}>{d.about.p1}</p>
+              </Reveal>
+              <Reveal from="up" delay={140}>
+                <p>{d.about.p2}</p>
+              </Reveal>
+              <Reveal from="clip" delay={180}>
+                <blockquote className={styles.aboutQuote}>
+                  <p>{d.about.p3}</p>
+                  <footer>— {d.about.name}</footer>
+                </blockquote>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
@@ -288,7 +283,13 @@ export default function StratSections() {
                 />
               </div>
               <div className={styles.resultBody}>
-                <p className={styles.resultName}>{d.results.name}</p>
+                <div className={styles.resultIdentity}>
+                  <p className={styles.resultName}>{d.results.name}</p>
+                  <p className={styles.resultSchool}>
+                    <span className={styles.resultSchoolName}>{d.results.school}</span>
+                    <span className={styles.resultHandle}>@{d.results.handle}</span>
+                  </p>
+                </div>
                 <div className={styles.resultCols}>
                   <div>
                     <p className={styles.resultLabel}>До сесії</p>

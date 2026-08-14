@@ -13,14 +13,15 @@
 .portrait {
   right: 0 !important;
   width: min(46vw, 620px) !important;
-  height: min(96vh, 980px) !important;
+  height: 100% !important;
   bottom: 0;
+  top: auto;
 }
 
 .portraitImg {
   mix-blend-mode: lighten;
   object-fit: contain !important;
-  object-position: center top !important;
+  object-position: center bottom !important;
 }
 
 .titleRow {
