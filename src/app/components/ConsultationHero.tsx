@@ -13,7 +13,7 @@ function GlassStat({
   className,
 }: {
   value: string
-  lines: readonly string[]
+  lines: readonly string[] 
   className?: string
 }) {
   return (
