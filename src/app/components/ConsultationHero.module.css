@@ -341,7 +341,7 @@
   }
 
   .page .glassCells {
-    position: relative !important;
+    position: static !important;
     inset: auto !important;
     display: grid !important;
     grid-template-columns: 1fr;
@@ -377,8 +377,15 @@
   }
 
   .page .formatCard {
-    padding: 12px 12px 10px !important;
-    width: 100% !important;
+    position: absolute !important;
+    left: auto !important;
+    right: var(--hero-pad) !important;
+    top: auto !important;
+    bottom: min(58vh, 430px) !important;
+    width: min(46vw, 176px) !important;
+    max-width: 176px !important;
+    z-index: 8;
+    padding: 10px 12px 9px !important;
   }
 
   .page .formatLabel {
@@ -452,6 +459,14 @@
 
   .page .glassCells :global([class*='glassValue']) {
     font-size: 20px !important;
+  }
+
+  .page .formatCard {
+    right: var(--hero-pad) !important;
+    bottom: min(50vh, 370px) !important;
+    width: min(48vw, 160px) !important;
+    max-width: 160px !important;
+    padding: 9px 10px 8px !important;
   }
 
   .page .formatText {
