@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { BRAND, SERVICES, SOCIALS } from '../brand'
 import { SOCIAL_ICONS } from '../socialIcons'
 import SocialsSection from './SocialsSection'
@@ -46,6 +47,13 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.col}>
+                  <Image
+                    src="/black_full_logo_1200_px.png"
+                    alt="Litun logo"
+                    width={120}
+                    height={48}
+                    className={styles.footerLogo}
+                  />
                   <h3>Документи</h3>
                   <a href="/oferta">Договір оферти</a>
                   <a href="/polityka">Політика конфіденційності</a>
