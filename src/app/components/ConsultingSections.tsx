@@ -6,6 +6,7 @@ import { CONSULTING } from '../konsaltyng/data'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
 import Reveal from './Reveal'
+import YouTubeEmbed from './YouTubeEmbed'
 import page from '../konsultatsiya/consultation.module.css'
 import styles from './ConsultingSections.module.css'
 
@@ -73,21 +74,16 @@ export default function ConsultingSections() {
         </div>
       </section>
 
-      {/* Video — uncomment when ready
       <section className={page.sectionLight} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.video.title}</h2>
           </Reveal>
           <Reveal from="blur" delay={100}>
-            <div className={styles.video}>
-              <span>Відео Іллі</span>
-              <p>{d.video.placeholder}</p>
-            </div>
+            <YouTubeEmbed videoId={d.video.youtubeId} title={d.video.title} />
           </Reveal>
         </div>
       </section>
-      */}
 
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="plan">
         <div className={page.wrap}>

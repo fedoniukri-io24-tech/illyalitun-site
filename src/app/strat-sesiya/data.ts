@@ -90,7 +90,7 @@ export const STRAT = {
   },
   video: {
     title: 'Відео Іллі про страт сесію',
-    placeholder: 'Незабаром',
+    youtubeId: 'ecmWQb0if-s',
   },
   schedule: {
     title: 'Розклад дня',

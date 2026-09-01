@@ -11,6 +11,10 @@ export const CONSULTATION = {
     ],
     image: '/images/consultation-hero.png',
   },
+  video: {
+    title: 'Відео Іллі про консультацію',
+    youtubeId: '9t27b_RMveE',
+  },
   audience: {
     title: 'Консультація для:',
     items: [

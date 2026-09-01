@@ -5,6 +5,7 @@ import { APPLY_FORMS } from '../brand'
 import { STRAT } from '../strat-sesiya/data'
 import BookCta from './BookCta'
 import Reveal from './Reveal'
+import YouTubeEmbed from './YouTubeEmbed'
 import page from '../konsultatsiya/consultation.module.css'
 import styles from './StratSections.module.css'
 
@@ -117,21 +118,16 @@ export default function StratSections() {
         </div>
       </section>
 
-      {/* Video — uncomment when ready
       <section className={`${page.sectionLight} ${styles.bandSoft}`} id="video">
         <div className={page.wrap}>
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.video.title}</h2>
           </Reveal>
           <Reveal from="blur" delay={80}>
-            <div className={styles.video}>
-              <span>Відео Іллі</span>
-              <p>{d.video.placeholder}</p>
-            </div>
+            <YouTubeEmbed videoId={d.video.youtubeId} title={d.video.title} />
           </Reveal>
         </div>
       </section>
-      */}
 
       <section className={`${page.sectionLight} ${styles.scheduleSection}`} id="rozklad">
         <div className={`${page.wrap} ${styles.scheduleLayout}`}>

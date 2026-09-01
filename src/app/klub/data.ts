@@ -7,6 +7,10 @@ export const CLUB = {
     cta: 'Доєднатися',
     image: '/images/club-hero.jpg',
   },
+  video: {
+    title: 'Відео Іллі про спільноту',
+    youtubeId: 'Y8tZsONYnEY',
+  },
   fit: {
     title: 'Ти в правильному місці',
     lead: 'Якщо:',

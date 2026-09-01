@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { CLUB } from '../klub/data'
 import BookCta from './BookCta'
 import Reveal from './Reveal'
+import YouTubeEmbed from './YouTubeEmbed'
 import page from '../konsultatsiya/consultation.module.css'
 import styles from './ClubSections.module.css'
 
@@ -46,6 +47,17 @@ export default function ClubSections() {
             ))}
           </div>
           <Join />
+        </div>
+      </section>
+
+      <section className={page.sectionLight} id="video">
+        <div className={page.wrap}>
+          <Reveal from="clip">
+            <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.video.title}</h2>
+          </Reveal>
+          <Reveal from="blur" delay={80}>
+            <YouTubeEmbed videoId={d.video.youtubeId} title={d.video.title} />
+          </Reveal>
         </div>
       </section>
 

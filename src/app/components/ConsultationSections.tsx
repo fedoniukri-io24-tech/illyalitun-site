@@ -7,6 +7,7 @@ import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
 import ConsultationProblem from './ConsultationProblem'
 import Reveal from './Reveal'
+import YouTubeEmbed from './YouTubeEmbed'
 import page from '../konsultatsiya/consultation.module.css'
 import styles from './ConsultationSections.module.css'
 
@@ -51,6 +52,18 @@ export default function ConsultationSections() {
             ))}
           </div>
           <Book />
+        </div>
+      </section>
+
+      {/* 2 — Відео */}
+      <section className={page.sectionLight} id="video">
+        <div className={page.wrap}>
+          <Reveal from="clip">
+            <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.video.title}</h2>
+          </Reveal>
+          <Reveal from="blur" delay={80}>
+            <YouTubeEmbed videoId={d.video.youtubeId} title={d.video.title} />
+          </Reveal>
         </div>
       </section>
 
