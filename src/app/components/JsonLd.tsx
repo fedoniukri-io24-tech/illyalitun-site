@@ -63,7 +63,7 @@ export default function JsonLd() {
     logo: absoluteUrl('/icon.svg'),
     image: absoluteUrl(SITE.image),
     description:
-      'Освітня екосистема TURBO EDUCATION (Forbes Next 250). 7000+ активних учнів щомісяця, 30 000+ випускників.',
+      'Освітня екосистема TURBO EDUCATION. Засновник — лауреат номінації Forbes 30 до 30. 7000+ активних учнів щомісяця, 30 000+ випускників.',
     email: SITE.email,
     telephone: SITE.phone,
     founder: {

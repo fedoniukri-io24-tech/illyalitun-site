@@ -2,7 +2,7 @@ export const BRAND = {
   name: 'Ілля Літун',
   ecosystem: 'TURBO EDUCATION',
   tagline: 'Освітній бізнес з Іллею Літуном',
-  role: 'Засновник освітньої екосистеми TURBO EDUCATION, яка є в списку Forbes Next 250',
+  role: 'Засновник освітньої екосистеми TURBO EDUCATION, лауреат номінації Forbes 30 до 30',
   phone: '+380 67 000 00 00',
   email: 'hello@turbo.education',
   address: 'онлайн · Київ',

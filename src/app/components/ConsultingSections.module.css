@@ -453,6 +453,33 @@
   line-height: 1;
 }
 
+.tariffPriceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tariffOldPrice {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(15, 15, 15, 0.42);
+}
+
+.tariffOldPrice s {
+  text-decoration-thickness: 1.5px;
+}
+
+.tariffPriceLabel {
+  font-family: inherit;
+  font-size: 0.45em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: inherit;
+  opacity: 0.72;
+  vertical-align: middle;
+}
+
 .tariffFooter {
   margin-top: auto;
   display: grid;
@@ -461,6 +488,14 @@
 
 .tariffFeatured .tariffPrice {
   color: #fff;
+}
+
+.tariffFeatured .tariffOldPrice {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.tariffFeatured .tariffPriceLabel {
+  opacity: 0.8;
 }
 
 .tariff ul {
