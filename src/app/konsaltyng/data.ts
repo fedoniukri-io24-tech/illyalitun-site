@@ -105,13 +105,10 @@ export const CONSULTING = {
   },
   tariffs: {
     title: 'Тарифи консалтингу',
-    offerEndsAt: '2026-09-02T23:59:00+03:00',
-    offerLabel: 'Пропозиція доступна до 2 вересня 23:59',
     items: [
       {
         name: 'Груповий',
-        oldPrice: '$3490',
-        price: '$1490',
+        price: '$3490',
         featured: false,
         features: [
           '4 групові Zoom-зустрічі зі мною',
@@ -129,8 +126,7 @@ export const CONSULTING = {
       },
       {
         name: 'Індивідуальний',
-        oldPrice: '$5490',
-        price: '$3490',
+        price: '$5490',
         featured: true,
         features: [
           '4 індивідуальні Zoom-зустрічі зі мною',
@@ -148,8 +144,7 @@ export const CONSULTING = {
       },
       {
         name: 'Поглиблена індивідуальна робота з Іллею',
-        oldPrice: '$7490',
-        price: '$5490',
+        price: '$7490',
         featured: false,
         badge: 'Максимум з Іллею',
         features: [

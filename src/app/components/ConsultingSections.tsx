@@ -5,7 +5,6 @@ import { APPLY_FORMS } from '../brand'
 import { CONSULTING } from '../konsaltyng/data'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
-import OfferCountdown from './OfferCountdown'
 import Reveal from './Reveal'
 import YouTubeEmbed from './YouTubeEmbed'
 import page from '../konsultatsiya/consultation.module.css'
@@ -164,9 +163,6 @@ export default function ConsultingSections() {
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.tariffs.title}</h2>
           </Reveal>
-          <Reveal from="up" delay={40}>
-            <OfferCountdown endsAt={d.tariffs.offerEndsAt} label={d.tariffs.offerLabel} />
-          </Reveal>
           <div className={styles.tariffs}>
             {d.tariffs.items.map((tariff, i) => (
               <Reveal key={tariff.name} from="up" delay={i * 80}>
@@ -187,18 +183,10 @@ export default function ConsultingSections() {
                     })}
                   </ul>
                   <div className={styles.tariffFooter}>
-                    <div className={styles.tariffPriceBlock}>
-                      {'oldPrice' in tariff && tariff.oldPrice ? (
-                        <p className={styles.tariffOldPrice}>
-                          <span>Вартість: </span>
-                          <s>{tariff.oldPrice}</s>
-                        </p>
-                      ) : null}
-                      <p className={styles.tariffPrice}>
-                        <span className={styles.tariffPriceLabel}>Вартість: </span>
-                        {tariff.price}
-                      </p>
-                    </div>
+                    <p className={styles.tariffPrice}>
+                      <span className={styles.tariffPriceLabel}>Вартість: </span>
+                      {tariff.price}
+                    </p>
                     <BookCta
                       label="Доєднатися"
                       tariff={`${tariff.name} · ${tariff.price}`}
