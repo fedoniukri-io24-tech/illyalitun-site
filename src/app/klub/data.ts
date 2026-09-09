@@ -1,6 +1,5 @@
 export const CLUB = {
   hero: {
-    badge: 'Перший потік — 20 місць, встигай попасти',
     titleTop: 'Turbo Education Club',
     titleBottom: 'for owners',
     lead: 'Місце де власники онлайн-шкіл знаходяться в сильному оточені та знаходять рішення на будь-які свої питання',

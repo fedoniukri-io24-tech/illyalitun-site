@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { CLUB } from '../klub/data'
 import PillCta from './PillCta'
-import HeroThought from './HeroThought'
 import { useLeadModal } from './LeadModalContext'
 import hero from './Hero.module.css'
 import consult from './ConsultationHero.module.css'
@@ -20,16 +19,11 @@ export default function ClubHero() {
           <a href="/" className={consult.back}>← На головну</a>
 
           <div className={`${hero.copy} ${consult.copy} ${styles.copy}`}>
-            <div className={styles.titleRow}>
-              <h1 className={`${hero.headline} ${consult.headline}`}>
-                {data.titleTop}
-                <br />
-                <em>{data.titleBottom}</em>
-              </h1>
-              <div className={styles.thoughtWrap}>
-                <HeroThought>{data.badge}</HeroThought>
-              </div>
-            </div>
+            <h1 className={`${hero.headline} ${consult.headline}`}>
+              {data.titleTop}
+              <br />
+              <em>{data.titleBottom}</em>
+            </h1>
             <p className={`${hero.role} ${consult.role} ${styles.lead}`}>{data.lead}</p>
             <div className={styles.actions}>
               <PillCta label={data.cta} onClick={openModal} />
