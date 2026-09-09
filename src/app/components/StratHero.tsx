@@ -63,7 +63,7 @@ export default function StratHero() {
               <em>{data.headlineBottom}</em>
             </h1>
             <p className={`${hero.role} ${consult.role} ${styles.lead}`}>
-              Без стратегії власник 24/7 загрузає в операційці, а команда працює без мети.{' '}
+              Без стратегії власник 24/7 потопає в операційці, а команда працює без мети.{' '}
               <em className={styles.leadAccent}>Стратегічна сесія —</em> момент, де стає видно, що працює, а що ні.
             </p>
             <div className={styles.actions}>

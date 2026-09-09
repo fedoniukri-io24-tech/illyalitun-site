@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { APPLY_FORMS } from '../brand'
 import { CONSULTATION } from '../konsultatsiya/data'
+import { monthUa, slotsLine } from '../slots'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
 import ConsultationProblem from './ConsultationProblem'
@@ -32,6 +33,8 @@ function Book() {
 
 export default function ConsultationSections() {
   const d = CONSULTATION
+  const month = monthUa(1)
+  const offerCta = `Забронювати місце (${slotsLine(d.offer.slots.left, d.offer.slots.total, month).toLowerCase()})`
 
   return (
     <>
@@ -154,8 +157,9 @@ export default function ConsultationSections() {
                       <span className={styles.priceOld}>{d.offer.oldPrice}</span>
                       <span className={styles.price}>{d.offer.price}</span>
                     </p>
+                    <p className={styles.scarcityUrgency}>{d.offer.urgency}</p>
                   </div>
-                  <BookCta href={APPLY_FORMS.konsultatsiya} label={d.offer.cta} />
+                  <BookCta href={APPLY_FORMS.konsultatsiya} label={offerCta} />
                 </div>
               </div>
             </Reveal>

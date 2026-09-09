@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { APPLY_FORMS } from '../brand'
+import { slotsLine } from '../slots'
 import { STRAT } from '../strat-sesiya/data'
 import BookCta from './BookCta'
 import Reveal from './Reveal'
@@ -50,7 +51,7 @@ export default function StratSections() {
               <p className={styles.bridgeLead}>{d.pains.bridgeLead}</p>
             </div>
           </Reveal>
-          <Book label="Забронювати сесію" />
+          <Book label="Забронювати місце" />
         </div>
       </section>
 
@@ -211,11 +212,13 @@ export default function StratSections() {
                   ))}
                 </ul>
                 <div className={styles.offerFooter}>
-                  <div>
-                    <span className={styles.priceLabel}>Вартість</span>
-                    <p className={styles.price}>{d.offer.price}</p>
+                  <div className={styles.scarcity}>
+                    <p className={styles.scarcitySlots}>
+                      {slotsLine(d.offer.slots.left, d.offer.slots.total, d.offer.slots.period)}
+                    </p>
+                    <p className={styles.scarcityUrgency}>{d.offer.urgency}</p>
                   </div>
-                  <BookCta label="Забронювати місце" href={APPLY_FORMS.stratSesiya} />
+                  <BookCta label={d.offer.cta} href={APPLY_FORMS.stratSesiya} />
                 </div>
               </div>
             </Reveal>

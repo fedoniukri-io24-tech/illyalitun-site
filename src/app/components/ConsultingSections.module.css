@@ -387,6 +387,32 @@
 }
 
 /* Tariffs */
+.tariffsScarcity {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+  margin: 8px auto 28px;
+  max-width: 36rem;
+}
+
+.scarcitySlots {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #141414;
+}
+
+.scarcityUrgency {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.35;
+  color: var(--color-accent);
+}
+
 .tariffs {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

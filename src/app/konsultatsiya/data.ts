@@ -13,7 +13,7 @@ export const CONSULTATION = {
   },
   video: {
     title: 'Відео Іллі про консультацію',
-    youtubeId: '9t27b_RMveE',
+    youtubeId: 'TQ4OswBChNk',
   },
   audience: {
     title: 'Консультація для:',
@@ -102,7 +102,8 @@ export const CONSULTATION = {
     ],
     oldPrice: '$249',
     price: '$199',
-    cta: 'Забронювати місце (залишилося 3 місця на серпень)',
+    slots: { left: 2, total: 5 },
+    urgency: 'Встигайте забронювати місце',
   },
   results: {
     title: 'Результати учасників',

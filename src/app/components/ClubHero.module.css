@@ -47,14 +47,14 @@
   box-sizing: border-box;
 }
 
-/* Landscape photo — original proportions, desktop right */
+/* Portrait photo — desktop right */
 .photo {
   position: absolute;
   right: clamp(16px, 3.5vw, 48px);
   top: 50%;
   transform: translateY(-50%);
-  width: min(46vw, 620px);
-  max-height: none;
+  width: min(38vw, 420px);
+  max-height: min(88svh, 720px);
   z-index: 1;
   border-radius: 20px;
   overflow: hidden;
@@ -62,14 +62,15 @@
     0 24px 56px rgba(15, 15, 15, 0.22),
     0 2px 0 rgba(255, 255, 255, 0.35) inset;
   pointer-events: none;
+  aspect-ratio: 3 / 4;
 }
 
 .photoImg {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: none;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   filter: none !important;
 }
 
@@ -121,22 +122,19 @@
     min-height: 0 !important;
   }
 
-  /* Photo at bottom, original aspect ratio */
+  /* Photo at bottom, portrait */
   .photo {
     position: relative;
     right: auto;
     top: auto;
     transform: none;
-    width: min(92vw, 560px);
+    width: min(78vw, 420px);
     max-height: none;
     margin: 8px auto max(16px, env(safe-area-inset-bottom));
     border-radius: 16px;
     flex: 0 0 auto;
     z-index: 2;
-  }
-
-  .photoImg {
-    max-height: none;
+    aspect-ratio: 3 / 4;
   }
 
   .copy {
@@ -212,7 +210,7 @@
 
 @media (max-width: 480px) {
   .photo {
-    width: min(94vw, 480px);
+    width: min(86vw, 360px);
     border-radius: 14px;
   }
 

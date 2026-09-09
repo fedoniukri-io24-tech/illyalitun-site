@@ -133,15 +133,11 @@
 
 .includeIcon {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 11px;
-  font-size: 22px;
+  display: block;
+  font-size: 30px;
   line-height: 1;
-  background: rgba(42, 100, 233, 0.08);
-  border: 1px solid rgba(42, 100, 233, 0.14);
+  background: none;
+  border: none;
 }
 
 .cadence {

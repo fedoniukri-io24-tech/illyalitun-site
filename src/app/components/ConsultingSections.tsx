@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { APPLY_FORMS } from '../brand'
 import { CONSULTING } from '../konsaltyng/data'
+import { monthUa, slotsLine } from '../slots'
 import BookCta from './BookCta'
 import CasesCarousel from './CasesCarousel'
 import Reveal from './Reveal'
@@ -163,6 +164,14 @@ export default function ConsultingSections() {
           <Reveal from="clip">
             <h2 className={`${page.sectionTitle} ${page.sectionTitleCenter}`}>{d.tariffs.title}</h2>
           </Reveal>
+          <Reveal from="up" delay={40}>
+            <div className={styles.tariffsScarcity}>
+              <p className={styles.scarcitySlots}>
+                {slotsLine(d.tariffs.slots.left, d.tariffs.slots.total, monthUa(0))}
+              </p>
+              <p className={styles.scarcityUrgency}>{d.tariffs.urgency}</p>
+            </div>
+          </Reveal>
           <div className={styles.tariffs}>
             {d.tariffs.items.map((tariff, i) => (
               <Reveal key={tariff.name} from="up" delay={i * 80}>
@@ -183,13 +192,9 @@ export default function ConsultingSections() {
                     })}
                   </ul>
                   <div className={styles.tariffFooter}>
-                    <p className={styles.tariffPrice}>
-                      <span className={styles.tariffPriceLabel}>Вартість: </span>
-                      {tariff.price}
-                    </p>
                     <BookCta
                       label="Доєднатися"
-                      tariff={`${tariff.name} · ${tariff.price}`}
+                      tariff={tariff.name}
                       href={APPLY_FORMS.konsaltyng}
                     />
                   </div>
