@@ -105,11 +105,13 @@ export default function ContactForm({
   idPrefix = '',
   compact = false,
   tariff,
+  tone = 'default',
 }: {
   idPrefix?: string
   compact?: boolean
   /** Selected tariff when opened from pricing cards */
   tariff?: string
+  tone?: 'default' | 'forest'
 }) {
   const pathname = usePathname() || '/'
   const service = useMemo(() => serviceFromPathname(pathname), [pathname])
@@ -203,8 +205,20 @@ export default function ContactForm({
 
   if (status === 'success') {
     return (
-      <div className={`${styles.success} ${compact ? styles.successCompact : ''}`}>
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="var(--blue)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <div
+        className={`${styles.success} ${compact ? styles.successCompact : ''} ${tone === 'forest' ? styles.successForest : ''}`}
+      >
+        <svg
+          width="48"
+          height="48"
+          viewBox="0 0 48 48"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
           <circle cx="24" cy="24" r="20" />
           <path d="M14 24 L21 31 L34 18" />
         </svg>
@@ -216,7 +230,7 @@ export default function ContactForm({
 
   return (
     <form
-      className={`${styles.form} ${compact ? styles.formCompact : ''}`}
+      className={`${styles.form} ${compact ? styles.formCompact : ''} ${tone === 'forest' ? styles.formForest : ''}`}
       onSubmit={handleSubmit}
       noValidate
     >

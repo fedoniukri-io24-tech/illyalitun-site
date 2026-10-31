@@ -1,0 +1,316 @@
+.section {
+  --fit-ink: var(--brand-ink, #141414);
+  --fit-green: var(--color-accent, #1f6b4a);
+  --fit-sand: var(--brand-sand, #e7e0d4);
+  --fit-paper: var(--brand-paper, #f4efe6);
+  --fit-line: var(--brand-line, rgba(15, 51, 38, 0.14));
+  background: var(--fit-sand);
+  color: var(--fit-ink);
+  overflow: clip;
+}
+
+.sectionScroll {
+  height: calc((var(--scroll-steps, 4) + 1) * 100vh);
+  height: calc((var(--scroll-steps, 4) + 1) * 100dvh);
+}
+
+.sectionStatic {
+  min-height: auto;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  height: 100dvh;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.sectionStatic .sticky {
+  position: relative;
+  height: auto;
+  min-height: auto;
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(72px, 10vh, 100px) var(--page-pad) 28px;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.header {
+  text-align: center;
+  flex-shrink: 0;
+  margin-bottom: clamp(12px, 2vh, 24px);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4.2vw, 52px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--fit-ink);
+  margin: 0 0 12px;
+}
+
+.lead {
+  margin: 0 auto;
+  max-width: 36ch;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 550;
+  color: rgba(15, 51, 38, 0.62);
+}
+
+.stepHint {
+  margin: 14px auto 0;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--fit-green);
+}
+
+.stage {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  margin-inline: auto;
+  max-width: 1180px;
+}
+
+.card {
+  position: absolute;
+  min-height: min(48vh, 420px);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 22px 22px;
+  background: var(--fit-paper);
+  border: 1px solid var(--fit-line);
+  border-radius: var(--radius);
+  box-shadow:
+    0 18px 40px rgba(15, 51, 38, 0.12),
+    0 2px 0 rgba(255, 255, 255, 0.55) inset;
+  transform-origin: center center;
+  will-change: transform, opacity, left, top;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+.rivet {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.55), transparent 45%),
+    rgba(15, 51, 38, 0.18);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+.rivetTl { top: 10px; left: 10px; }
+.rivetTr { top: 10px; right: 10px; }
+.rivetBl { bottom: 10px; left: 10px; }
+.rivetBr { bottom: 10px; right: 10px; }
+
+.cardTop {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 16px;
+}
+
+.index {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(15, 51, 38, 0.55);
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--fit-green);
+}
+
+.cardBottom {
+  padding-top: 16px;
+  border-top: 1px solid var(--fit-line);
+  display: grid;
+  gap: 10px;
+}
+
+.fitLabel {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fit-green);
+}
+
+.fitText {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(20, 20, 20, 0.68);
+}
+
+@media (max-width: 900px) {
+  .sticky {
+    /* Keep sticky full-screen but leave room under cards */
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    box-sizing: border-box;
+  }
+
+  .inner {
+    padding-top: 64px;
+    padding-bottom: 8px;
+    /* Push header up, give stage more vertical room for 4 cards */
+    justify-content: flex-start;
+  }
+
+  .header {
+    margin-bottom: 6px;
+  }
+
+  .title {
+    margin-bottom: 8px;
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .lead {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .stepHint {
+    margin-top: 8px;
+  }
+
+  .stage {
+    max-width: 440px;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: 4px;
+  }
+
+  .card {
+    min-height: min(26vh, 220px);
+    max-height: none;
+    height: auto;
+    padding: 18px 16px 16px;
+  }
+
+  .cardTop {
+    gap: 10px;
+    padding-bottom: 12px;
+  }
+
+  .cardBottom {
+    padding-top: 12px;
+    gap: 8px;
+  }
+
+  .cardTitle {
+    font-size: clamp(22px, 6.5vw, 28px);
+  }
+
+  .fitLabel {
+    font-size: 12px;
+  }
+
+  .fitText {
+    font-size: 14px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .inner {
+    padding-top: 58px;
+  }
+
+  .card {
+    min-height: min(24vh, 200px);
+    padding: 16px 14px 14px;
+  }
+
+  .cardTitle {
+    font-size: clamp(20px, 6vw, 26px);
+  }
+
+  .fitText {
+    font-size: 13px;
+    -webkit-line-clamp: 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sectionScroll {
+    height: auto;
+  }
+
+  .sticky {
+    position: relative;
+    height: auto;
+    min-height: auto;
+  }
+
+  .stepHint {
+    display: none;
+  }
+
+  .stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    min-height: 0;
+    height: auto;
+  }
+
+  .card {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    min-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 900px) {
+  .stage {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}

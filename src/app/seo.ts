@@ -30,7 +30,7 @@ export const SITE = {
   ],
 } as const
 
-export type PageSeoKey = 'home' | 'konsultatsiya' | 'konsaltyng' | 'stratSesiya' | 'klub'
+export type PageSeoKey = 'home' | 'konsultatsiya' | 'konsaltyng' | 'stratSesiya' | 'klub' | 'brend'
 
 export const PAGES: Record<
   PageSeoKey,
@@ -119,6 +119,23 @@ export const PAGES: Record<
       'підзвітність власників шкіл',
     ],
     image: '/images/club-hero.jpg',
+    ogType: 'website',
+  },
+  brend: {
+    path: '/brend',
+    title: 'Освітній бренд для викладача — курс Іллі Літуна',
+    description:
+      'Курс «Освітній бренд для викладача»: за 2 місяці побудуєте особистий бренд, піднімете чек на послуги в 1,5 рази та заповните календар учнів. Старт 23 листопада.',
+    keywords: [
+      'освітній бренд викладача',
+      'особистий бренд викладача',
+      'курс Ілля Літун',
+      'як знайти учнів викладачу',
+      'блог викладача',
+      'продажі послуг викладача',
+      'особистий бренд освіта',
+    ],
+    image: '/images/brand-hero.jpg',
     ogType: 'website',
   },
 }

@@ -1,0 +1,230 @@
+.section {
+  --prog-sand: var(--brand-sand, #e7e0d4);
+  --prog-ink: var(--brand-ink, #141414);
+  --prog-green: var(--color-accent, #1f6b4a);
+  --prog-green-deep: var(--color-accent-dark, #0f3326);
+  --prog-line: var(--brand-line, rgba(15, 51, 38, 0.14));
+  background: var(--prog-sand);
+  color: var(--prog-ink);
+  padding: clamp(64px, 8vw, 110px) var(--page-pad);
+  overflow-x: clip;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.18fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.aside {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  padding-top: 4px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4.2vw, 52px);
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--prog-ink);
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.cta {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 16px 28px;
+  border-radius: var(--radius-pill);
+  background: var(--prog-green);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cta:hover {
+  background: var(--prog-green-deep);
+  transform: translateY(-1px);
+}
+
+.ctaDivider {
+  width: 1px;
+  height: 28px;
+  border-left: 1px dashed rgba(31, 107, 74, 0.35);
+}
+
+.ctaIcon {
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--prog-green);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.ctaIcon:hover {
+  background: var(--prog-green-deep);
+  transform: translateY(-1px);
+}
+
+.list {
+  border-top: 1px solid var(--prog-line);
+}
+
+.item {
+  border-bottom: 1px solid var(--prog-line);
+}
+
+.row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: background 0.2s;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.num {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--prog-green);
+  white-space: nowrap;
+}
+
+.rowTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(17px, 1.8vw, 22px);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--prog-ink);
+}
+
+.toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--prog-green);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  justify-self: end;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.itemOpen .toggle {
+  background: var(--prog-green-deep);
+}
+
+.panel {
+  padding: 0 60px 22px 72px;
+}
+
+.panel p {
+  margin: 0;
+  max-width: 48ch;
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  font-weight: 500;
+  color: rgba(20, 20, 20, 0.74);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .aside {
+    position: static;
+    gap: 18px;
+  }
+
+  .title {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  .row {
+    grid-template-columns: 48px minmax(0, 1fr) 38px;
+    gap: 10px;
+    padding: 18px 0;
+  }
+
+  .rowTitle {
+    font-size: clamp(16px, 4.6vw, 20px);
+  }
+
+  .toggle {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .panel {
+    padding: 0 8px 18px 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta {
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+
+  .ctaIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .num {
+    font-size: 11px;
+  }
+}

@@ -1,10 +1,15 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { createPortal } from 'react-dom'
 import ContactForm from './ContactForm'
 import type { LeadIntent } from './LeadModalContext'
 import styles from './LeadModal.module.css'
+
+function isForestPage(pathname: string) {
+  return pathname === '/brend' || pathname.startsWith('/brend/')
+}
 
 function lockScroll() {
   const scrollY = window.scrollY || window.pageYOffset || 0
@@ -52,6 +57,8 @@ export default function LeadModal({
   onClose: () => void
   intent?: LeadIntent | null
 }) {
+  const pathname = usePathname() || '/'
+  const forest = isForestPage(pathname)
   const [mounted, setMounted] = useState(false)
   const dialogRef = useRef<HTMLDivElement>(null)
   const previouslyFocused = useRef<HTMLElement | null>(null)
@@ -97,10 +104,14 @@ export default function LeadModal({
   if (!mounted || !open) return null
 
   return createPortal(
-    <div className={styles.overlay} role="presentation" onClick={onClose}>
+    <div
+      className={`${styles.overlay} ${forest ? styles.overlayForest : ''}`}
+      role="presentation"
+      onClick={onClose}
+    >
       <div
         ref={dialogRef}
-        className={styles.dialog}
+        className={`${styles.dialog} ${forest ? styles.dialogForest : ''}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="lead-modal-title"
@@ -114,7 +125,9 @@ export default function LeadModal({
         </button>
 
         <div className={styles.head}>
-          <h2 id="lead-modal-title" className={styles.title}>Забронювати місце</h2>
+          <h2 id="lead-modal-title" className={styles.title}>
+            {forest ? 'Доєднатися до курсу' : 'Забронювати місце'}
+          </h2>
           <p className={styles.lead}>
             {intent?.tariff
               ? `Обраний тариф: ${intent.tariff}. Залиште контакти — узгодимо час і деталі.`
@@ -122,7 +135,7 @@ export default function LeadModal({
           </p>
         </div>
 
-        <ContactForm idPrefix="modal" compact tariff={intent?.tariff} />
+        <ContactForm idPrefix="modal" compact tariff={intent?.tariff} tone={forest ? 'forest' : 'default'} />
       </div>
     </div>,
     document.body,

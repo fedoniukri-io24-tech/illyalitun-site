@@ -8,6 +8,15 @@
   overflow: visible;
 }
 
+.toneForest {
+  --color-accent: #1f6b4a;
+  --color-accent-hover: #185a3e;
+  --color-accent-dark: #0f3326;
+  --color-bg: #0f3326;
+  background: #e7e0d4;
+  border-top: 1px solid rgba(15, 51, 38, 0.12);
+}
+
 .inner {
   width: 100%;
   display: flex;

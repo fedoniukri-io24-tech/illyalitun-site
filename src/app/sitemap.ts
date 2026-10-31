@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/konsultatsiya': 0.9,
     '/strat-sesiya': 0.85,
     '/klub': 0.85,
+    '/brend': 0.9,
     '/oferta': 0.3,
     '/polityka': 0.3,
   }

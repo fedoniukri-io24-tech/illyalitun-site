@@ -3,9 +3,12 @@ import { SOCIAL_ICONS } from '../socialIcons'
 import Reveal from './Reveal'
 import styles from './SocialsSection.module.css'
 
-export default function SocialsSection() {
+export default function SocialsSection({ tone = 'default' }: { tone?: 'default' | 'forest' }) {
   return (
-    <section className={styles.section} aria-label="Соціальні мережі">
+    <section
+      className={`${styles.section} ${tone === 'forest' ? styles.toneForest : ''}`}
+      aria-label="Соціальні мережі"
+    >
       <div className={styles.inner}>
         <div className={styles.grid}>
           {SOCIALS.map((s, i) => (

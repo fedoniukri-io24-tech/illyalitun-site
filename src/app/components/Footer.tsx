@@ -5,11 +5,11 @@ import SocialsSection from './SocialsSection'
 import Reveal from './Reveal'
 import styles from './Footer.module.css'
 
-export default function Footer() {
+export default function Footer({ tone = 'default' }: { tone?: 'default' | 'forest' }) {
   return (
     <>
-      <SocialsSection />
-      <footer className={styles.footer}>
+      <SocialsSection tone={tone} />
+      <footer className={`${styles.footer} ${tone === 'forest' ? styles.toneForest : ''}`}>
         <div className={styles.inner}>
           <Reveal from="up">
             <div className={styles.main}>

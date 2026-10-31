@@ -39,6 +39,94 @@
   box-shadow: 0 8px 32px rgba(26, 49, 105, 0.06);
 }
 
+.toneForest {
+  --color-accent: #1f6b4a;
+  --color-accent-hover: #185a3e;
+  --color-accent-dark: #0f3326;
+  --color-bg: #0f3326;
+}
+
+.toneForest.solid {
+  background: rgba(231, 224, 212, 0.9);
+  border-bottom: 1px solid rgba(15, 51, 38, 0.1);
+  box-shadow: 0 8px 32px rgba(15, 51, 38, 0.08);
+}
+
+.toneForest.transparent .brand {
+  color: #fff;
+}
+
+.toneForest.transparent .brand span {
+  color: #c8ecd4;
+}
+
+.toneForest.transparent .center a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.toneForest.transparent .center a:hover {
+  color: #fff;
+}
+
+.toneForest.transparent .hamburger {
+  color: #fff;
+}
+
+.toneForest.transparent .menuArrow {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f3326;
+}
+
+.toneForest.transparent .cta {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.toneForest.transparent .cta:hover {
+  background: #fff;
+  color: #0f3326;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+.toneForest.transparent .ctaArrow {
+  background: #1f6b4a;
+}
+
+.toneForest.transparent .cta:hover .ctaArrow {
+  background: #0f3326;
+  color: #fff;
+}
+
+.toneForest.solid .center a {
+  color: rgba(15, 51, 38, 0.78);
+}
+
+.toneForest .cta {
+  border-color: rgba(31, 107, 74, 0.14);
+  box-shadow: 0 8px 24px rgba(15, 51, 38, 0.12);
+  color: #0f3326;
+}
+
+.toneForest .cta:hover {
+  box-shadow: 0 10px 28px rgba(31, 107, 74, 0.35);
+}
+
+.toneForest.solid .cta {
+  background: rgba(244, 239, 230, 0.95);
+}
+
+.drawer.toneForest {
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 0%, rgba(31, 107, 74, 0.16), transparent 55%),
+    linear-gradient(180deg, #f4efe6 0%, #e7e0d4 100%);
+  --color-accent: #1f6b4a;
+  --color-accent-hover: #185a3e;
+  --color-accent-dark: #0f3326;
+  --color-bg: #0f3326;
+}
+
 .solid .brand {
   color: var(--color-bg);
 }

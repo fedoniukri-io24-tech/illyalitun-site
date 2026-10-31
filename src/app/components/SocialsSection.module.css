@@ -6,6 +6,24 @@
   overflow: visible;
 }
 
+.toneForest {
+  --color-accent: #1f6b4a;
+  --color-accent-hover: #185a3e;
+  --color-accent-dark: #0f3326;
+  --color-bg: #0f3326;
+  background: #e7e0d4;
+}
+
+.toneForest .badge {
+  background: #f4efe6;
+  border-color: rgba(15, 51, 38, 0.1);
+  box-shadow: 0 12px 36px rgba(15, 51, 38, 0.08);
+}
+
+.toneForest .badge:hover {
+  box-shadow: 0 16px 44px rgba(31, 107, 74, 0.35);
+}
+
 .inner {
   width: 100%;
   display: flex;

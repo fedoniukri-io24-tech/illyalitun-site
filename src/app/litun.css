@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
 
 /* On :root so portals (modals) outside .litun still get brand tokens */
 :root {
@@ -37,6 +37,7 @@
   --font-sans: 'Manrope', sans-serif;
   --font-display: 'Oswald', sans-serif;
   --font-accent: 'Oswald', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .litun {
@@ -112,6 +113,18 @@
     radial-gradient(ellipse 55% 40% at 10% 72%, rgba(255, 214, 180, 0.82), transparent 58%),
     radial-gradient(ellipse 50% 35% at 88% 88%, rgba(232, 122, 46, 0.16), transparent 55%),
     linear-gradient(180deg, #ffffff 0%, #fff3ea 28%, #ffdfc4 58%, #ffd0a8 78%, #ffdfc4 100%);
+}
+
+.litunSkyForest {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 70% 42% at 78% 26%, rgba(31, 107, 74, 0.34), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 12% 10%, rgba(244, 239, 230, 0.9), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 8% 78%, rgba(169, 196, 176, 0.7), transparent 58%),
+    radial-gradient(ellipse 48% 36% at 90% 88%, rgba(15, 51, 38, 0.2), transparent 55%),
+    linear-gradient(180deg, #f4efe6 0%, #e7e0d4 28%, #d5d0b8 58%, #b7c7b4 78%, #c9d4c2 100%);
 }
 
 .litunBand {

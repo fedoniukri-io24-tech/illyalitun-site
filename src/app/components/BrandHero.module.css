@@ -1,0 +1,354 @@
+.sky {
+  position: relative;
+  isolation: isolate;
+  background: #0c0c0c;
+}
+
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #0c0c0c;
+}
+
+.hero::before {
+  display: none;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bgImage {
+  object-fit: cover;
+}
+
+.bgDesktop {
+  object-position: 72% center;
+}
+
+.bgMobile {
+  display: none;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.52) 42%,
+      rgba(0, 0, 0, 0.12) 58%,
+      rgba(0, 0, 0, 0.04) 100%
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 28%, transparent 100%);
+}
+
+.body {
+  position: relative;
+  z-index: 4;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(88px, 10vh, 108px) var(--hero-pad) clamp(28px, 4vh, 48px);
+  box-sizing: border-box;
+  gap: clamp(20px, 3vh, 32px);
+}
+
+.back {
+  color: rgba(255, 255, 255, 0.72) !important;
+  grid-row: 1;
+}
+
+.back:hover {
+  color: #fff !important;
+}
+
+.layout {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+  min-height: 0;
+}
+
+.copy {
+  margin: 0 !important;
+  transform: none !important;
+  max-width: min(520px, 100%) !important;
+  align-self: center;
+}
+
+.photoSlot {
+  min-height: min(52vh, 520px);
+}
+
+.mobileTopSpacer {
+  display: none;
+}
+
+.headline {
+  color: #fff !important;
+  text-shadow: 0 2px 32px rgba(0, 0, 0, 0.5);
+  max-width: 16ch !important;
+  font-size: clamp(40px, 4.8vw, 68px) !important;
+  line-height: 0.98 !important;
+}
+
+.lead {
+  margin-top: clamp(16px, 2vh, 24px) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 20px rgba(0, 0, 0, 0.45);
+  max-width: 40ch !important;
+  line-height: 1.55 !important;
+  font-size: clamp(15px, 1.35vw, 18px) !important;
+}
+
+.footBar {
+  grid-row: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 36px) clamp(24px, 4vw, 48px);
+  padding-top: clamp(16px, 2vh, 22px);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: min(720px, 54vw);
+}
+
+.metaItem {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.metaValue {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.footCta {
+  margin-left: auto;
+  flex: 0 1 auto;
+  min-width: min(100%, 220px);
+}
+
+.footCta :global(button),
+.footCta :global(a) {
+  width: 100%;
+  min-width: 200px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .photoSlot {
+    display: none;
+  }
+
+  .footBar {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .bgDesktop {
+    display: none;
+  }
+
+  .bgMobile {
+    display: block;
+    object-position: 72% 12%;
+  }
+
+  .bgOverlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.22) 30%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.5) 100%
+      ),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, transparent 58%);
+  }
+
+  .body {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    min-height: 100svh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    height: 100dvh;
+    padding-top: 64px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    gap: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .mobileTopSpacer {
+    display: none;
+  }
+
+  .back {
+    position: absolute;
+    top: max(60px, calc(10px + env(safe-area-inset-top)));
+    left: var(--hero-pad);
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    /* Slight lift above true center so copy sits higher over the photo */
+    padding-bottom: clamp(48px, 10vh, 88px);
+  }
+
+  .copy {
+    max-width: min(100%, 92vw) !important;
+  }
+
+  .headline {
+    font-size: clamp(28px, 7.5vw, 38px) !important;
+    max-width: 13ch !important;
+    line-height: 1 !important;
+  }
+
+  .lead {
+    font-size: 13px !important;
+    max-width: 36ch !important;
+    margin-top: 10px !important;
+    line-height: 1.4 !important;
+  }
+
+  .footBar {
+    margin-top: 0;
+    padding-top: 14px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 10px 20px;
+    border-top-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+  }
+
+  .metaItem {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .metaLabel {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .metaValue {
+    font-size: 16px;
+  }
+
+  .footCta {
+    grid-column: 1 / -1;
+    margin-top: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .footCta :global(button),
+  .footCta :global(a) {
+    min-width: 0;
+    width: min(100%, 360px);
+    max-width: 100%;
+    min-height: 56px;
+    padding: 16px 18px 16px 22px !important;
+    font-size: 16px !important;
+  }
+
+  .footCta :global(button) span:last-child,
+  .footCta :global(a) span:last-child {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .bgMobile {
+    object-position: 74% 10%;
+  }
+
+  .headline {
+    font-size: clamp(26px, 7vw, 34px) !important;
+  }
+
+  .lead {
+    font-size: 12px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 700px) {
+  .body {
+    padding-top: 58px;
+  }
+
+  .layout {
+    padding-bottom: clamp(32px, 8vh, 56px);
+  }
+
+  .headline {
+    font-size: clamp(24px, 6.8vw, 32px) !important;
+  }
+
+  .lead {
+    -webkit-line-clamp: 3;
+    margin-top: 8px !important;
+  }
+
+  .footBar {
+    padding-top: 10px;
+    gap: 6px 12px;
+  }
+
+  .metaValue {
+    font-size: 14px;
+  }
+}

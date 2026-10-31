@@ -4,7 +4,14 @@ import { SERVICES } from '../brand'
 import { useLeadModal } from './LeadModalContext'
 import styles from './Navbar.module.css'
 
-export default function Navbar({ transparent = false }: { transparent?: boolean }) {
+export default function Navbar({
+  transparent = false,
+  tone = 'default',
+}: {
+  transparent?: boolean
+  /** Forest sand theme for /brend */
+  tone?: 'default' | 'forest'
+}) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { openModal } = useLeadModal()
@@ -41,7 +48,10 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
   const navClass = [
     styles.nav,
     transparent && !scrolled ? styles.transparent : styles.solid,
-  ].join(' ')
+    tone === 'forest' ? styles.toneForest : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   return (
     <>
@@ -75,7 +85,18 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
         </button>
       </nav>
 
-      <div className={`${styles.drawer} ${menuOpen ? styles.open : ''}`} role="dialog" aria-modal="true" aria-hidden={!menuOpen}>
+      <div
+        className={[
+          styles.drawer,
+          menuOpen ? styles.open : '',
+          tone === 'forest' ? styles.toneForest : '',
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!menuOpen}
+      >
         <div className={styles.drawerTop}>
           <a href="/" className={styles.drawerBrand} onClick={() => setMenuOpen(false)}>
             TURBO <span>EDUCATION</span>

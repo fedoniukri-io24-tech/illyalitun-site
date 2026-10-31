@@ -7,6 +7,7 @@ const COLOR_CLASS: Record<(typeof SERVICES)[number]['color'], string> = {
   teal: styles.cardTeal,
   indigo: styles.cardIndigo,
   orange: styles.cardOrange,
+  green: styles.cardGreen,
 }
 
 const GLASS_POS = [styles.glassLeft, styles.glassMid] as const

@@ -1,0 +1,45 @@
+.brandPage {
+  /* Forest + sand tokens for the whole /brend surface */
+  --color-accent: #1f6b4a;
+  --color-accent-hover: #185a3e;
+  --color-accent-dark: #0f3326;
+  --color-light-card: #d5e8dc;
+  --color-bg: #0f3326;
+  --blue: #1f6b4a;
+  --blue-deep: #185a3e;
+  --blue-soft: #d5e8dc;
+  --brand-sand: #e7e0d4;
+  --brand-sand-deep: #ddd4c4;
+  --brand-paper: #f4efe6;
+  --brand-ink: #141414;
+  --brand-ink-soft: rgba(20, 20, 20, 0.62);
+  --brand-line: rgba(15, 51, 38, 0.14);
+  --c-text-dark: #141414;
+  --c-text-secondary: rgba(20, 20, 20, 0.62);
+
+  background: var(--brand-sand);
+  color: var(--brand-ink);
+  min-height: 100%;
+}
+
+/* Shared section heading rhythm — same as other product pages */
+.heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4.2vw, 52px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--brand-ink);
+  margin: 0;
+}
+
+.brandTheme {
+  background: transparent !important;
+}
+
+.brandTheme :global([class*='sectionLight']),
+.brandTheme :global([class*='bandSoft']),
+.brandTheme :global([class*='fitBridgeSection']) {
+  background: var(--brand-sand) !important;
+}
