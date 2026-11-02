@@ -322,7 +322,11 @@
 
 .tariffSecondary {
   appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  box-sizing: border-box;
   padding: 14px 18px;
   border-radius: var(--radius-pill);
   border: 1.5px solid rgba(26, 49, 105, 0.28);
@@ -331,6 +335,8 @@
   font-size: 14px;
   font-weight: 750;
   color: var(--color-accent);
+  text-decoration: none;
+  text-align: center;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }

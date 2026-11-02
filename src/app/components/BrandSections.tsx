@@ -71,14 +71,16 @@ export default function BrandSections() {
                     <BookCta
                       label={tariff.cta}
                       tariff={`${tariff.name} · ${tariff.price}`}
+                      href={tariff.buyHref}
                     />
-                    <button
-                      type="button"
+                    <a
                       className={styles.tariffSecondary}
-                      onClick={() => openModal({ tariff: `${tariff.name} · ${tariff.price}` })}
+                      href={d.tariffs.bookHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {tariff.secondaryCta}
-                    </button>
+                    </a>
                     <button
                       type="button"
                       className={styles.tariffAsk}

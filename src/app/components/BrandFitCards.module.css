@@ -89,7 +89,7 @@
 
 .card {
   position: absolute;
-  min-height: min(48vh, 420px);
+  min-height: min(52vh, 440px);
   display: flex;
   flex-direction: column;
   padding: 24px 22px 22px;
@@ -138,43 +138,34 @@
   color: rgba(26, 49, 105, 0.55);
 }
 
-.cardTitle {
+.segment {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(22px, 2.2vw, 30px);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--fit-green);
+  font-family: var(--font-sans);
+  font-weight: 650;
+  font-size: clamp(15px, 1.45vw, 18px);
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fit-ink);
 }
 
 .cardBottom {
-  padding-top: 16px;
+  margin-top: auto;
+  padding-top: 18px;
   border-top: 1px solid var(--fit-line);
   display: grid;
-  gap: 10px;
+  gap: 0;
 }
 
-.fitLabel {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fit-green);
-}
-
-.fitText {
+.result {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: clamp(14px, 1.3vw, 16px);
   font-weight: 550;
   line-height: 1.5;
   letter-spacing: 0;
   text-transform: none;
-  color: rgba(20, 20, 20, 0.68);
+  color: var(--fit-green);
 }
 
 @media (max-width: 900px) {
@@ -229,25 +220,18 @@
   }
 
   .cardBottom {
-    padding-top: 12px;
-    gap: 8px;
+    padding-top: 14px;
+    gap: 0;
   }
 
-  .cardTitle {
-    font-size: clamp(22px, 6.5vw, 28px);
-  }
-
-  .fitLabel {
-    font-size: 12px;
-  }
-
-  .fitText {
+  .segment {
     font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .result {
+    font-size: 13px;
     line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 }
 
@@ -257,17 +241,16 @@
   }
 
   .card {
-    min-height: min(24vh, 200px);
+    min-height: min(28vh, 240px);
     padding: 16px 14px 14px;
   }
 
-  .cardTitle {
-    font-size: clamp(20px, 6vw, 26px);
+  .segment {
+    font-size: 13px;
   }
 
-  .fitText {
-    font-size: 13px;
-    -webkit-line-clamp: 4;
+  .result {
+    font-size: 12px;
   }
 }
 

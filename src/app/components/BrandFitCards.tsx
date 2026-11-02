@@ -115,13 +115,13 @@ function cardMotion(
 
 function FitCard({
   index,
-  title,
-  fitIf,
+  segment,
+  result,
   style,
 }: {
   index: number
-  title: string
-  fitIf: string
+  segment: string
+  result: string
   style: CSSProperties
 }) {
   const n = String(index + 1).padStart(2, '0')
@@ -138,12 +138,11 @@ function FitCard({
         <span className={styles.index}>
           {n} / {total}
         </span>
-        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.segment}>{segment}</p>
       </div>
 
       <div className={styles.cardBottom}>
-        <p className={styles.fitLabel}>Підійде, якщо:</p>
-        <p className={styles.fitText}>{fitIf}</p>
+        <p className={styles.result}>{result}</p>
       </div>
     </article>
   )
@@ -233,10 +232,10 @@ export default function BrandFitCards() {
           <div className={styles.stage}>
             {items.map((item, index) => (
               <FitCard
-                key={item.title}
+                key={item.segment}
                 index={index}
-                title={item.title}
-                fitIf={item.fitIf}
+                segment={item.segment}
+                result={item.result}
                 style={cardMotion(index, motionProgress, isMobile)}
               />
             ))}

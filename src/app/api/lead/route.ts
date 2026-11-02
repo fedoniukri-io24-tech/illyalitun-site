@@ -84,8 +84,10 @@ function buildMessage(payload: {
     .map(([k, v]) => line(k, v))
     .join('\n')
 
+  const isBrend = /бренд|brend/i.test(payload.serviceLabel) || /brend/i.test(payload.formSource)
+
   return [
-    `🆕 <b>Нова заявка з сайту</b>`,
+    isBrend ? `🆕 <b>Заявка з курсу «Освітній бренд»</b>` : `🆕 <b>Нова заявка з сайту</b>`,
     ``,
     `👤 <b>Контакт</b>`,
     line('Імʼя', payload.name),
@@ -107,12 +109,25 @@ function buildMessage(payload: {
   ].join('\n')
 }
 
+/** Route /brend leads to a dedicated Telegram chat when configured. */
+function resolveChatId(pagePath: string, serviceSlug: string) {
+  const isBrend =
+    serviceSlug === 'brend' ||
+    pagePath === '/brend' ||
+    pagePath.startsWith('/brend/')
+
+  if (isBrend) {
+    return process.env.TELEGRAM_CHAT_ID_BREND || process.env.TELEGRAM_CHAT_ID || ''
+  }
+
+  return process.env.TELEGRAM_CHAT_ID || ''
+}
+
 export async function POST(req: NextRequest) {
   const token = process.env.TELEGRAM_BOT_TOKEN
-  const chatId = process.env.TELEGRAM_CHAT_ID
 
-  if (!token || !chatId) {
-    console.error('TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is missing')
+  if (!token) {
+    console.error('TELEGRAM_BOT_TOKEN is missing')
     return NextResponse.json({ ok: false, error: 'server_misconfigured' }, { status: 500 })
   }
 
@@ -136,6 +151,7 @@ export async function POST(req: NextRequest) {
   const pagePath = clean(body.pagePath, MAX_META) || '/'
   const pageUrl = clean(body.pageUrl, MAX_META)
   const formSource = clean(body.formSource, 80) || 'unknown'
+  const serviceSlugHint = clean(body.serviceSlug, 80)
 
   const consent = body.consent === true
   const digits = formatUaPhone(phone)
@@ -183,10 +199,18 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const service =
+  const fromPath = serviceFromPath(pagePath)
+  const serviceSlug = serviceSlugHint || fromPath.slug
+  const serviceLabel =
     typeof body.serviceLabel === 'string' && body.serviceLabel.trim()
-      ? { label: clean(body.serviceLabel, 160) }
-      : serviceFromPath(pagePath)
+      ? clean(body.serviceLabel, 160)
+      : fromPath.label
+
+  const chatId = resolveChatId(pagePath, serviceSlug)
+  if (!chatId) {
+    console.error('TELEGRAM_CHAT_ID (or TELEGRAM_CHAT_ID_BREND for /brend) is missing')
+    return NextResponse.json({ ok: false, error: 'server_misconfigured' }, { status: 500 })
+  }
 
   const tariff = clean(body.tariff, 200)
 
@@ -196,7 +220,7 @@ export async function POST(req: NextRequest) {
     instagram,
     telegram,
     comment,
-    serviceLabel: service.label,
+    serviceLabel,
     tariff,
     formSource,
     utm,
