@@ -358,63 +358,63 @@
   cursor: not-allowed;
 }
 
-/* Forest /brend modal + sand pages */
+/* Forest /brend modal + sand pages — dark blue accent */
 .formForest .field label {
-  color: rgba(15, 51, 38, 0.78);
+  color: rgba(26, 49, 105, 0.78);
 }
 
 .formForest .field input,
 .formForest .field textarea {
-  border-color: rgba(15, 51, 38, 0.16);
+  border-color: rgba(26, 49, 105, 0.16);
   background: rgba(255, 255, 255, 0.72);
   color: #141414;
 }
 
 .formForest .field input:focus,
 .formForest .field textarea:focus {
-  border-color: #1f6b4a;
-  box-shadow: 0 0 0 4px rgba(31, 107, 74, 0.16);
+  border-color: #1a3169;
+  box-shadow: 0 0 0 4px rgba(26, 49, 105, 0.16);
   background: #fff;
 }
 
 .formForest .consent {
   background: rgba(255, 255, 255, 0.55);
-  border-color: rgba(15, 51, 38, 0.1);
+  border-color: rgba(26, 49, 105, 0.1);
 }
 
 .formForest .consent input {
-  accent-color: #1f6b4a;
+  accent-color: #1a3169;
 }
 
 .formForest .consent a {
-  color: #1f6b4a;
+  color: #1a3169;
 }
 
 .formForest .consent a:hover {
-  color: #0f3326;
+  color: #0c1830;
 }
 
 .formForest .submit {
-  background: #1f6b4a;
+  background: #1a3169;
   border-radius: var(--radius-pill, 14px);
-  box-shadow: 0 8px 28px rgba(31, 107, 74, 0.32);
+  box-shadow: 0 8px 28px rgba(26, 49, 105, 0.32);
 }
 
 .formForest .submit:hover:not(:disabled) {
-  background: #185a3e;
-  box-shadow: 0 10px 32px rgba(31, 107, 74, 0.4);
+  background: #152a56;
+  box-shadow: 0 10px 32px rgba(26, 49, 105, 0.4);
 }
 
 .successForest {
-  color: #0f3326;
+  color: #0c1830;
 }
 
 .successForest svg {
-  color: #1f6b4a;
+  color: #1a3169;
 }
 
 .successForest h3 {
-  color: #0f3326;
+  color: #0c1830;
 }
 
 .success {

@@ -2,8 +2,8 @@
   --about-sand: var(--brand-sand, #e7e0d4);
   --about-paper: var(--brand-paper, #f4efe6);
   --about-ink: var(--brand-ink, #141414);
-  --about-green: var(--color-accent, #1f6b4a);
-  --about-line: var(--brand-line, rgba(15, 51, 38, 0.14));
+  --about-green: var(--color-accent, #1a3169);
+  --about-line: var(--brand-line, rgba(26, 49, 105, 0.14));
   background: var(--about-sand);
   padding: clamp(48px, 6vw, 88px) var(--page-pad);
   overflow-x: clip;
@@ -14,7 +14,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   max-width: 1180px;
   margin-inline: auto;
-  border: 1px solid rgba(15, 51, 38, 0.18);
+  border: 1px solid rgba(26, 49, 105, 0.18);
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--about-paper);
@@ -157,7 +157,7 @@
 }
 
 .cta:hover {
-  background: #0f3326;
+  background: #0c1830;
   transform: translateY(-1px);
 }
 

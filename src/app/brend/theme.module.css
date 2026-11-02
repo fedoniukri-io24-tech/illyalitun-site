@@ -1,19 +1,19 @@
 .brandPage {
-  /* Forest + sand tokens for the whole /brend surface */
-  --color-accent: #1f6b4a;
-  --color-accent-hover: #185a3e;
-  --color-accent-dark: #0f3326;
-  --color-light-card: #d5e8dc;
-  --color-bg: #0f3326;
-  --blue: #1f6b4a;
-  --blue-deep: #185a3e;
-  --blue-soft: #d5e8dc;
+  /* Dark blue + sand tokens for the whole /brend surface */
+  --color-accent: #1a3169;
+  --color-accent-hover: #152a56;
+  --color-accent-dark: #0c1830;
+  --color-light-card: #d8e0ef;
+  --color-bg: #0c1830;
+  --blue: #1a3169;
+  --blue-deep: #152a56;
+  --blue-soft: #d8e0ef;
   --brand-sand: #e7e0d4;
   --brand-sand-deep: #ddd4c4;
   --brand-paper: #f4efe6;
   --brand-ink: #141414;
   --brand-ink-soft: rgba(20, 20, 20, 0.62);
-  --brand-line: rgba(15, 51, 38, 0.14);
+  --brand-line: rgba(26, 49, 105, 0.14);
   --c-text-dark: #141414;
   --c-text-secondary: rgba(20, 20, 20, 0.62);
 

@@ -1,9 +1,9 @@
 .section {
   --prog-sand: var(--brand-sand, #e7e0d4);
   --prog-ink: var(--brand-ink, #141414);
-  --prog-green: var(--color-accent, #1f6b4a);
-  --prog-green-deep: var(--color-accent-dark, #0f3326);
-  --prog-line: var(--brand-line, rgba(15, 51, 38, 0.14));
+  --prog-green: var(--color-accent, #1a3169);
+  --prog-green-deep: var(--color-accent-dark, #0c1830);
+  --prog-line: var(--brand-line, rgba(26, 49, 105, 0.14));
   background: var(--prog-sand);
   color: var(--prog-ink);
   padding: clamp(64px, 8vw, 110px) var(--page-pad);
@@ -71,7 +71,7 @@
 .ctaDivider {
   width: 1px;
   height: 28px;
-  border-left: 1px dashed rgba(31, 107, 74, 0.35);
+  border-left: 1px dashed rgba(26, 49, 105, 0.35);
 }
 
 .ctaIcon {

@@ -4,9 +4,9 @@
   overflow: hidden;
   color: #e5e4d7;
   background:
-    radial-gradient(ellipse 75% 55% at 88% 12%, rgba(72, 130, 98, 0.42), transparent 58%),
-    radial-gradient(ellipse 45% 40% at 6% 92%, rgba(8, 20, 14, 0.9), transparent 52%),
-    linear-gradient(152deg, #061510 0%, #0f3326 38%, #0a2419 72%, #08140e 100%);
+    radial-gradient(ellipse 75% 55% at 88% 12%, rgba(58, 90, 150, 0.42), transparent 58%),
+    radial-gradient(ellipse 45% 40% at 6% 92%, rgba(8, 14, 28, 0.9), transparent 52%),
+    linear-gradient(152deg, #060c18 0%, #0c1830 38%, #122040 72%, #081018 100%);
 }
 
 .noise {
@@ -150,7 +150,7 @@
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.14em;
-  color: rgba(120, 210, 155, 0.95);
+  color: rgba(150, 180, 230, 0.95);
 }
 
 .stopTitle {
