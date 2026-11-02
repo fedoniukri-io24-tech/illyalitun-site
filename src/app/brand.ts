@@ -34,7 +34,7 @@ export const SOCIALS = [
 export const SERVICES = [
   {
     slug: 'brend' as const,
-    label: 'для викладачів',
+    label: 'Для викладачів',
     title: 'Освітній бренд для викладача',
     href: '/brend',
     color: 'green' as const,
