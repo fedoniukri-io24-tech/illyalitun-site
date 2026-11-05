@@ -80,8 +80,24 @@
   color: rgba(20, 20, 20, 0.76);
 }
 
+.mission {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.45vw, 18px);
+  font-weight: 650;
+  line-height: 1.62;
+  letter-spacing: 0;
+  color: var(--about-ink);
+}
+
 .facts {
   margin-top: 8px;
+  display: grid;
+  gap: 14px;
+}
+
+.facts .intro {
+  margin-bottom: 4px;
 }
 
 .factsTitle {

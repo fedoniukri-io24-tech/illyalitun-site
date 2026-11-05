@@ -17,7 +17,7 @@ export default function BrendPage() {
     <div className={theme.brandPage}>
       <PageJsonLd
         pageKey="brend"
-        serviceName="Освітній бренд для викладача"
+        serviceName="Особистий бренд для викладача"
         serviceDescription={BRAND_COURSE.hero.lead}
         faq={BRAND_COURSE.faq}
       />

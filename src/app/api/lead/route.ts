@@ -84,10 +84,11 @@ function buildMessage(payload: {
     .map(([k, v]) => line(k, v))
     .join('\n')
 
-  const isBrend = /бренд|brend/i.test(payload.serviceLabel) || /brend/i.test(payload.formSource)
+  const isBrend =
+    /бренд|викладач|brend/i.test(payload.serviceLabel) || /brend/i.test(payload.formSource)
 
   return [
-    isBrend ? `🆕 <b>Заявка з курсу «Освітній бренд»</b>` : `🆕 <b>Нова заявка з сайту</b>`,
+    isBrend ? `🆕 <b>Заявка з курсу «Особистий бренд для викладача»</b>` : `🆕 <b>Нова заявка з сайту</b>`,
     ``,
     `👤 <b>Контакт</b>`,
     line('Імʼя', payload.name),

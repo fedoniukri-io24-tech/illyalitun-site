@@ -39,7 +39,7 @@ export default function BrandIncludes() {
                     <div className={styles.stopBody}>
                       <span className={styles.stopNum}>{String(i + 1).padStart(2, '0')}</span>
                       <p className={styles.stopTitle}>{item.title}</p>
-                      <p className={styles.stopText}>{item.text}</p>
+                      {item.text ? <p className={styles.stopText}>{item.text}</p> : null}
                     </div>
                   </Reveal>
                   <span className={styles.railDot} aria-hidden="true" />

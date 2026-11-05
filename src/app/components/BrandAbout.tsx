@@ -25,10 +25,10 @@ export default function BrandAbout() {
 
         <div className={styles.copyCol}>
           <h2 className={styles.title}>{about.title}</h2>
-          <p className={styles.intro}>{about.intro}</p>
 
           <div className={styles.facts}>
             <p className={styles.factsTitle}>{about.factsTitle}</p>
+            <p className={styles.intro}>{about.intro}</p>
             <ul className={styles.factsList}>
               {about.facts.map((fact, i) => (
                 <li key={fact} className={styles.fact}>
@@ -40,6 +40,9 @@ export default function BrandAbout() {
               ))}
             </ul>
           </div>
+
+          <p className={styles.intro}>{about.story}</p>
+          <p className={styles.mission}>{about.mission}</p>
 
           <button type="button" className={styles.cta} onClick={() => openModal()}>
             {about.cta}
