@@ -200,7 +200,6 @@ export default function ConsultationSections() {
               <Reveal from="clip" delay={200}>
                 <blockquote className={styles.aboutQuote}>
                   <p>{d.about.p3}</p>
-                  <footer>— {d.about.name}</footer>
                 </blockquote>
               </Reveal>
             </div>

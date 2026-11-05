@@ -256,7 +256,6 @@ export default function StratSections() {
               <Reveal from="clip" delay={180}>
                 <blockquote className={styles.aboutQuote}>
                   <p>{d.about.p3}</p>
-                  <footer>— {d.about.name}</footer>
                 </blockquote>
               </Reveal>
             </div>
